@@ -1,4 +1,4 @@
 #sequência de comandos:
 cd financial_scraper 
 scrapy list 
-scrap crawl (nome do scrapy)
+scrapy crawl (nome do scrapy)
