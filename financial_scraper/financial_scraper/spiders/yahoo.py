@@ -1,6 +1,9 @@
 import scrapy
 from financial_scraper.items import FinancialNewsItem
 
+# nao estamos mais usando esse!!!!
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 class YahooSpider(scrapy.Spider):
     name = "yahoo"
     allowed_domains = ["finance.yahoo.com"]
