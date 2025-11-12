@@ -6,7 +6,7 @@
         "content":"Divisão de sorvetes — que inclui marcas como Magnum, Ben & Jerry’s e Cornetto — será desmembrada da Unilever e passará a operar de forma independente quando cisão for aprovada",
         "source":"Exame",
         "texto_completo":"O Ben continuará com o Jerry: paralisação no governo dos EUA adia separação de marcas da Unilever Divisão de sorvetes — que inclui marcas como Magnum, Ben & Jerry’s e Cornetto — será desmembrada da Unilever e passará a operar de forma independente quando cisão for aprovada",
-        "data_normalizada":"2025-10-21T00:00:00",
+        "data_normalizada":"2025-10-21T00:00:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Magnum",
@@ -15,7 +15,10 @@
         ],
         "tickers_citados":[
             "UNIL34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "UNIL34.SA":null
+        }
     },
     {
         "title":"5 ações recomendadas pelo BTG Pactual para quem quer ganhar dividendos em 2025",
@@ -24,14 +27,17 @@
         "content":"Confira algumas das ações que estão na carteira recomendada de dividendos do BTG Pactual e podem fazer parte da sua carteira de investimentos também",
         "source":"Exame",
         "texto_completo":"5 ações recomendadas pelo BTG Pactual para quem quer ganhar dividendos em 2025 Confira algumas das ações que estão na carteira recomendada de dividendos do BTG Pactual e podem fazer parte da sua carteira de investimentos também",
-        "data_normalizada":"2025-05-06T00:00:00",
+        "data_normalizada":"2025-05-06T00:00:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "BTG Pactual"
         ],
         "tickers_citados":[
             "BPAC11.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "BPAC11.SA":36.8063774109
+        }
     },
     {
         "title":"BTG Pactual zera IOF em compras internacionais com cartões de crédito e débito",
@@ -40,14 +46,17 @@
         "content":"Nova campanha do banco oferece economia imediata e benefícios exclusivos para clientes em viagens",
         "source":"Exame",
         "texto_completo":"BTG Pactual zera IOF em compras internacionais com cartões de crédito e débito Nova campanha do banco oferece economia imediata e benefícios exclusivos para clientes em viagens",
-        "data_normalizada":"2025-08-28T00:00:00",
+        "data_normalizada":"2025-08-28T00:00:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "BTG Pactual"
         ],
         "tickers_citados":[
             "BPAC11.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "BPAC11.SA":44.5
+        }
     },
     {
         "title":"Onde Investir 2025: relatório do BTG Pactual aponta os ativos mais promissores do segundo semestre",
@@ -56,7 +65,7 @@
         "content":"Equipe de Research do BTG Pactual, reconhecida como a melhor da América Latina, apresenta análises estratégicas para proteger e multiplicar patrimônio",
         "source":"Exame",
         "texto_completo":"Onde Investir 2025: relatório do BTG Pactual aponta os ativos mais promissores do segundo semestre Equipe de Research do BTG Pactual, reconhecida como a melhor da América Latina, apresenta análises estratégicas para proteger e multiplicar patrimônio",
-        "data_normalizada":"2025-09-23T00:00:00",
+        "data_normalizada":"2025-09-23T00:00:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "BTG Pactual",
@@ -64,7 +73,10 @@
         ],
         "tickers_citados":[
             "BPAC11.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "BPAC11.SA":47.8100013733
+        }
     },
     {
         "title":"BTG Pactual e Manu Cit mostram que controlar o dinheiro pode ser simples",
@@ -73,14 +85,17 @@
         "content":"Ferramenta simples para acompanhar despesas, organizar metas e equilibrar seu orçamento",
         "source":"Exame",
         "texto_completo":"BTG Pactual e Manu Cit mostram que controlar o dinheiro pode ser simples Ferramenta simples para acompanhar despesas, organizar metas e equilibrar seu orçamento",
-        "data_normalizada":"2025-10-13T00:00:00",
+        "data_normalizada":"2025-10-13T00:00:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "BTG Pactual"
         ],
         "tickers_citados":[
             "BPAC11.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "BPAC11.SA":47.3100013733
+        }
     },
     {
         "title":"Copel no lugar de Equatorial, Localiza em vez de Motiva: as mudanças na carteira de ações do BTG",
@@ -89,7 +104,7 @@
         "content":"Banco vê clima mais favorável para mercado de ações, com juros em queda nos Estados Unidos e expectativa de alívio monetário no Brasil",
         "source":"Exame",
         "texto_completo":"Copel no lugar de Equatorial, Localiza em vez de Motiva: as mudanças na carteira de ações do BTG Banco vê clima mais favorável para mercado de ações, com juros em queda nos Estados Unidos e expectativa de alívio monetário no Brasil",
-        "data_normalizada":"2025-10-01T00:00:00",
+        "data_normalizada":"2025-10-01T00:00:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "BTG Banco",
@@ -99,7 +114,11 @@
         "tickers_citados":[
             "BPAC11.SA",
             "CPLE6.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "BPAC11.SA":47.8199996948,
+            "CPLE6.SA":12.8599996567
+        }
     },
     {
         "title":"Busca do brasileiro por investimento em ouro aumenta com preço recorde do metal",
@@ -108,14 +127,17 @@
         "content":"Na B3, volume financeiro de futuros do ouro ainda é baixo, mas disparou 700% de um mês para o outro",
         "source":"Exame",
         "texto_completo":"Busca do brasileiro por investimento em ouro aumenta com preço recorde do metal Na B3, volume financeiro de futuros do ouro ainda é baixo, mas disparou 700% de um mês para o outro",
-        "data_normalizada":"2025-10-10T00:00:00",
+        "data_normalizada":"2025-10-10T00:00:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "B3"
         ],
         "tickers_citados":[
             "B3SA3.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "B3SA3.SA":12.6000003815
+        }
     },
     {
         "title":"GM dispara na bolsa após lucro acima do esperado e alívio com tarifas de Trump",
@@ -124,14 +146,17 @@
         "content":"A montadora elevou a projeção de lucro ajustado antes de juros e impostos para até US$ 13 bilhões em 2025, acima da faixa anterior de até US$ 12,5 bilhões",
         "source":"Exame",
         "texto_completo":"GM dispara na bolsa após lucro acima do esperado e alívio com tarifas de Trump A montadora elevou a projeção de lucro ajustado antes de juros e impostos para até US$ 13 bilhões em 2025, acima da faixa anterior de até US$ 12,5 bilhões",
-        "data_normalizada":"2025-10-21T00:00:00",
+        "data_normalizada":"2025-10-21T00:00:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "GM"
         ],
         "tickers_citados":[
             "GMCO34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "GMCO34.SA":89.3000030518
+        }
     },
     {
         "title":"Embraer (EMBR3) bate recorde e pedidos acumulam US$ 31,3 bilhões no 3º trim.",
@@ -140,7 +165,7 @@
         "content":"Crescimento nas unidades de negócios e contratos de Defesa & Segurança impulsionam os resultados",
         "source":"Exame",
         "texto_completo":"Embraer (EMBR3) bate recorde e pedidos acumulam US$ 31,3 bilhões no 3º trim. Crescimento nas unidades de negócios e contratos de Defesa & Segurança impulsionam os resultados",
-        "data_normalizada":"2025-10-21T00:00:00",
+        "data_normalizada":"2025-10-21T00:00:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "EMBR3",
@@ -149,7 +174,10 @@
         ],
         "tickers_citados":[
             "EMBR3.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "EMBR3.SA":85.6600036621
+        }
     },
     {
         "title":"Ibovespa opera em queda com Vale e Ambipar no radar",
@@ -158,14 +186,17 @@
         "content":"Dólar registrava alta de 0,08% às 13h, cotado a R$ 5,375",
         "source":"Exame",
         "texto_completo":"Ibovespa opera em queda com Vale e Ambipar no radar Dólar registrava alta de 0,08% às 13h, cotado a R$ 5,375",
-        "data_normalizada":"2025-10-21T00:00:00",
+        "data_normalizada":"2025-10-21T00:00:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Vale"
         ],
         "tickers_citados":[
             "VALE3.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "VALE3.SA":60.7999992371
+        }
     },
     {
         "title":"O que fez a Apple bater recorde de preço na bolsa e ultrapassar a Microsoft em valor de mercado",
@@ -174,7 +205,7 @@
         "content":"Ações fecharam a sessão de segunda-feira, 20, em alta de 3,9% a US$ 262,24, marcando o maior fechamento de todos os tempos",
         "source":"Exame",
         "texto_completo":"O que fez a Apple bater recorde de preço na bolsa e ultrapassar a Microsoft em valor de mercado Ações fecharam a sessão de segunda-feira, 20, em alta de 3,9% a US$ 262,24, marcando o maior fechamento de todos os tempos",
-        "data_normalizada":"2025-10-21T00:00:00",
+        "data_normalizada":"2025-10-21T00:00:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "Apple",
@@ -183,7 +214,11 @@
         "tickers_citados":[
             "AAPL34.SA",
             "MSFT34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "AAPL34.SA":70.5218658447,
+            "MSFT34.SA":115.3000030518
+        }
     },
     {
         "title":"Warner recebe novas ofertas de aquisição, diz site; ações sobem cerca de 12%",
@@ -192,7 +227,7 @@
         "content":"Entre as possibilidades avaliadas está a venda total da companhia ou a realização de transações separadas para suas duas grandes divisões: Warner Bros. e Discovery Global",
         "source":"Exame",
         "texto_completo":"Warner recebe novas ofertas de aquisição, diz site; ações sobem cerca de 12% Entre as possibilidades avaliadas está a venda total da companhia ou a realização de transações separadas para suas duas grandes divisões: Warner Bros. e Discovery Global",
-        "data_normalizada":"2025-10-21T00:00:00",
+        "data_normalizada":"2025-10-21T00:00:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "Warner Bros",
@@ -201,7 +236,10 @@
         ],
         "tickers_citados":[
             "WBDC34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "WBDC34.SA":null
+        }
     },
     {
         "title":"Bolha de IA? Para esse operador da Goldman Sachs, não é bem assim",
@@ -210,14 +248,17 @@
         "content":"Mike Washington, operador da divisão de bancos e mercados globais, avalia que o momento atual é sólido e distante de uma euforia irracional",
         "source":"Exame",
         "texto_completo":"Bolha de IA? Para esse operador da Goldman Sachs, não é bem assim Mike Washington, operador da divisão de bancos e mercados globais, avalia que o momento atual é sólido e distante de uma euforia irracional",
-        "data_normalizada":"2025-10-20T00:00:00",
+        "data_normalizada":"2025-10-20T00:00:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Goldman Sachs"
         ],
         "tickers_citados":[
             "GSGI34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "GSGI34.SA":136.6600036621
+        }
     },
     {
         "title":"Famílias americanas lucram US$ 5 trilhões com ações de IA, diz JPMorgan",
@@ -226,14 +267,17 @@
         "content":"Banco calcula que o avanço das ações ligadas à inteligência artificial pode elevar o consumo das famílias em até 0,9%",
         "source":"Exame",
         "texto_completo":"Famílias americanas lucram US$ 5 trilhões com ações de IA, diz JPMorgan Banco calcula que o avanço das ações ligadas à inteligência artificial pode elevar o consumo das famílias em até 0,9%",
-        "data_normalizada":"2025-10-20T00:00:00",
+        "data_normalizada":"2025-10-20T00:00:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "JPMorgan Banco"
         ],
         "tickers_citados":[
             "JPMC34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "JPMC34.SA":162.1600036621
+        }
     },
     {
         "title":"B3 lança índice futuro de ouro",
@@ -249,7 +293,10 @@
         ],
         "tickers_citados":[
             "B3SA3.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "B3SA3.SA":null
+        }
     },
     {
         "title":"Estrangeiros retiram R$ 846,8 milhões na B3 em 17 de outubro",
@@ -266,7 +313,10 @@
         ],
         "tickers_citados":[
             "B3SA3.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "B3SA3.SA":null
+        }
     },
     {
         "title":"\n                Petrobras: o que esperar após “sonhado” aval do Ibama para perfurar Foz do Amazonas?            ",
@@ -282,7 +332,10 @@
         ],
         "tickers_citados":[
             "PETR4.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "PETR4.SA":null
+        }
     },
     {
         "title":"\n                Embraer (EMBR3) atinge recorde na carteira de pedidos do 3º tri – e ações sobem            ",
@@ -298,7 +351,10 @@
         ],
         "tickers_citados":[
             "EMBR3.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "EMBR3.SA":null
+        }
     },
     {
         "title":"\n                Vamos (VAMO3) tem alta de 25% na receita líquida no 3º tri; ação dispara até 10%            ",
@@ -314,7 +370,10 @@
         ],
         "tickers_citados":[
             "VAMO3.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "VAMO3.SA":null
+        }
     },
     {
         "title":"\n                WEG (WEGE3): Tarifaço e seus efeitos serão destaque no balanço do 3T, para analistas            ",
@@ -330,7 +389,10 @@
         ],
         "tickers_citados":[
             "WEGE3.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "WEGE3.SA":null
+        }
     },
     {
         "title":"\n                7 ações para ficar de olho na temporada de resultados do 3T, segundo o Itaú BBA            ",
@@ -347,7 +409,10 @@
         ],
         "tickers_citados":[
             "VALE3.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "VALE3.SA":null
+        }
     },
     {
         "title":"Onde Investir 2025: relatório do BTG Pactual aponta os ativos mais promissores do segundo semestre",
@@ -356,7 +421,7 @@
         "content":"Equipe de Research do BTG Pactual, reconhecida como a melhor da América Latina, apresenta análises estratégicas para proteger e multiplicar patrimônio",
         "source":"Exame",
         "texto_completo":"Onde Investir 2025: relatório do BTG Pactual aponta os ativos mais promissores do segundo semestre Equipe de Research do BTG Pactual, reconhecida como a melhor da América Latina, apresenta análises estratégicas para proteger e multiplicar patrimônio",
-        "data_normalizada":"2025-09-23T00:00:00",
+        "data_normalizada":"2025-09-23T00:00:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "BTG Pactual",
@@ -364,7 +429,10 @@
         ],
         "tickers_citados":[
             "BPAC11.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "BPAC11.SA":47.8100013733
+        }
     },
     {
         "title":"BTG Pactual e Manu Cit mostram que controlar o dinheiro pode ser simples",
@@ -373,14 +441,17 @@
         "content":"Ferramenta simples para acompanhar despesas, organizar metas e equilibrar seu orçamento",
         "source":"Exame",
         "texto_completo":"BTG Pactual e Manu Cit mostram que controlar o dinheiro pode ser simples Ferramenta simples para acompanhar despesas, organizar metas e equilibrar seu orçamento",
-        "data_normalizada":"2025-10-13T00:00:00",
+        "data_normalizada":"2025-10-13T00:00:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "BTG Pactual"
         ],
         "tickers_citados":[
             "BPAC11.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "BPAC11.SA":47.3100013733
+        }
     },
     {
         "title":"Você ainda investe só no Brasil? Veja por que é hora de olhar para fora com o guia do BTG Pactual",
@@ -389,14 +460,17 @@
         "content":"E-book gratuito do BTG Pactual explica como diversificar e proteger seu patrimônio fora do Brasil",
         "source":"Exame",
         "texto_completo":"Você ainda investe só no Brasil? Veja por que é hora de olhar para fora com o guia do BTG Pactual E-book gratuito do BTG Pactual explica como diversificar e proteger seu patrimônio fora do Brasil",
-        "data_normalizada":"2025-10-29T00:00:00",
+        "data_normalizada":"2025-10-29T00:00:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "BTG Pactual"
         ],
         "tickers_citados":[
             "BPAC11.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "BPAC11.SA":49.5600013733
+        }
     },
     {
         "title":"BTG Pactual zera IOF em compras internacionais com cartões de crédito e débito",
@@ -405,14 +479,17 @@
         "content":"Nova campanha do banco oferece economia imediata e benefícios exclusivos para clientes em viagens",
         "source":"Exame",
         "texto_completo":"BTG Pactual zera IOF em compras internacionais com cartões de crédito e débito Nova campanha do banco oferece economia imediata e benefícios exclusivos para clientes em viagens",
-        "data_normalizada":"2025-08-28T00:00:00",
+        "data_normalizada":"2025-08-28T00:00:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "BTG Pactual"
         ],
         "tickers_citados":[
             "BPAC11.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "BPAC11.SA":44.5
+        }
     },
     {
         "title":"Busca do brasileiro por investimento em ouro aumenta com preço recorde do metal",
@@ -421,14 +498,17 @@
         "content":"Na B3, volume financeiro de futuros do ouro ainda é baixo, mas disparou 700% de um mês para o outro",
         "source":"Exame",
         "texto_completo":"Busca do brasileiro por investimento em ouro aumenta com preço recorde do metal Na B3, volume financeiro de futuros do ouro ainda é baixo, mas disparou 700% de um mês para o outro",
-        "data_normalizada":"2025-10-10T00:00:00",
+        "data_normalizada":"2025-10-10T00:00:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "B3"
         ],
         "tickers_citados":[
             "B3SA3.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "B3SA3.SA":12.6000003815
+        }
     },
     {
         "title":"Brasileiro vai poder investir na Prosus, dona do iFood: saiba como",
@@ -437,7 +517,7 @@
         "content":"Holding, que também controla OLX e Decolar, vai lançar BDRs que poderão ser negociados via 'home broker'",
         "source":"Exame",
         "texto_completo":"Brasileiro vai poder investir na Prosus, dona do iFood: saiba como Holding, que também controla OLX e Decolar, vai lançar BDRs que poderão ser negociados via 'home broker'",
-        "data_normalizada":"2025-10-23T00:00:00",
+        "data_normalizada":"2025-10-23T00:00:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "Holding",
@@ -447,7 +527,10 @@
         ],
         "tickers_citados":[
             "DECO34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "DECO34.SA":null
+        }
     },
     {
         "title":"Para este CEO, a única forma de aprender sobre cripto é colocando seu dinheiro em jogo",
@@ -456,7 +539,7 @@
         "content":"CEO da Galaxy Digital defende exposição mínima a criptomoedas como forma prática de aprendizado financeiro",
         "source":"Exame",
         "texto_completo":"Para este CEO, a única forma de aprender sobre cripto é colocando seu dinheiro em jogo CEO da Galaxy Digital defende exposição mínima a criptomoedas como forma prática de aprendizado financeiro",
-        "data_normalizada":"2025-10-27T00:00:00",
+        "data_normalizada":"2025-10-27T00:00:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "CEO",
@@ -464,7 +547,10 @@
         ],
         "tickers_citados":[
             "GILD34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "GILD34.SA":330.3299865723
+        }
     },
     {
         "title":"Royal Caribbean eleva previsão de lucro e vê demanda forte por viagens",
@@ -473,7 +559,7 @@
         "content":"Empresa projeta ganhos maiores no ano, apesar de impactos climáticos e fechamento de destino no Haiti",
         "source":"Exame",
         "texto_completo":"Royal Caribbean eleva previsão de lucro e vê demanda forte por viagens Empresa projeta ganhos maiores no ano, apesar de impactos climáticos e fechamento de destino no Haiti",
-        "data_normalizada":"2025-10-28T00:00:00",
+        "data_normalizada":"2025-10-28T00:00:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "Empresa",
@@ -481,7 +567,10 @@
         ],
         "tickers_citados":[
             "R1CL34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "R1CL34.SA":780.8800048828
+        }
     },
     {
         "title":"Nvidia se aproxima de valor de mercado histórico de US$ 5 trilhões",
@@ -490,14 +579,17 @@
         "content":"CEO Jensen Huang revela chips encomendados em US$ 500 bilhões e parceria com Uber para 100 mil robotáxis até 2027",
         "source":"Exame",
         "texto_completo":"Nvidia se aproxima de valor de mercado histórico de US$ 5 trilhões CEO Jensen Huang revela chips encomendados em US$ 500 bilhões e parceria com Uber para 100 mil robotáxis até 2027",
-        "data_normalizada":"2025-10-29T00:00:00",
+        "data_normalizada":"2025-10-29T00:00:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "Nvidia"
         ],
         "tickers_citados":[
             "NVDC34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "NVDC34.SA":23.1499996185
+        }
     },
     {
         "title":"Fed deve cortar juros, Microsoft divulga balanço: o que move o mercado",
@@ -506,7 +598,7 @@
         "content":"Fed deve anunciar, às 15h, no horário de Brasília, um corte de 0,25 ponto percentual na taxa básica, levando os juros à faixa de 3,75% a 4,00%",
         "source":"Exame",
         "texto_completo":"Fed deve cortar juros, Microsoft divulga balanço: o que move o mercado Fed deve anunciar, às 15h, no horário de Brasília, um corte de 0,25 ponto percentual na taxa básica, levando os juros à faixa de 3,75% a 4,00%",
-        "data_normalizada":"2025-10-29T00:00:00",
+        "data_normalizada":"2025-10-29T00:00:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Microsoft",
@@ -514,7 +606,10 @@
         ],
         "tickers_citados":[
             "MSFT34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "MSFT34.SA":117.9899978638
+        }
     },
     {
         "title":"\n                Santander, Hypera, PRIO, Fleury, Axia e mais ações para acompanhar hoje            ",
@@ -530,7 +625,10 @@
         ],
         "tickers_citados":[
             "PRIO3.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "PRIO3.SA":null
+        }
     },
     {
         "title":"\n                Federal Reserve atua às cegas rumo a mais um corte de juros nos EUA            ",
@@ -546,7 +644,10 @@
         ],
         "tickers_citados":[
             "TRIL34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "TRIL34.SA":null
+        }
     },
     {
         "title":"Busca do brasileiro por investimento em ouro aumenta com preço recorde do metal",
@@ -555,14 +656,17 @@
         "content":"Na B3, volume financeiro de futuros do ouro ainda é baixo, mas disparou 700% de um mês para o outro",
         "source":"Exame",
         "texto_completo":"Busca do brasileiro por investimento em ouro aumenta com preço recorde do metal Na B3, volume financeiro de futuros do ouro ainda é baixo, mas disparou 700% de um mês para o outro",
-        "data_normalizada":"2025-10-10T00:00:00",
+        "data_normalizada":"2025-10-10T00:00:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "B3"
         ],
         "tickers_citados":[
             "B3SA3.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "B3SA3.SA":12.6000003815
+        }
     },
     {
         "title":"Brasileiro vai poder investir na Prosus, dona do iFood: saiba como",
@@ -571,7 +675,7 @@
         "content":"Holding, que também controla OLX e Decolar, vai lançar BDRs que poderão ser negociados via 'home broker'",
         "source":"Exame",
         "texto_completo":"Brasileiro vai poder investir na Prosus, dona do iFood: saiba como Holding, que também controla OLX e Decolar, vai lançar BDRs que poderão ser negociados via 'home broker'",
-        "data_normalizada":"2025-10-23T00:00:00",
+        "data_normalizada":"2025-10-23T00:00:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "Holding",
@@ -581,7 +685,10 @@
         ],
         "tickers_citados":[
             "DECO34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "DECO34.SA":null
+        }
     },
     {
         "title":"Para este CEO, a única forma de aprender sobre cripto é colocando seu dinheiro em jogo",
@@ -590,7 +697,7 @@
         "content":"CEO da Galaxy Digital defende exposição mínima a criptomoedas como forma prática de aprendizado financeiro",
         "source":"Exame",
         "texto_completo":"Para este CEO, a única forma de aprender sobre cripto é colocando seu dinheiro em jogo CEO da Galaxy Digital defende exposição mínima a criptomoedas como forma prática de aprendizado financeiro",
-        "data_normalizada":"2025-10-27T00:00:00",
+        "data_normalizada":"2025-10-27T00:00:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "CEO",
@@ -598,7 +705,10 @@
         ],
         "tickers_citados":[
             "GILD34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "GILD34.SA":330.3299865723
+        }
     },
     {
         "title":"BTG Pactual zera IOF em compras internacionais com cartões de crédito e débito",
@@ -607,14 +717,17 @@
         "content":"Nova campanha do banco oferece economia imediata e benefícios exclusivos para clientes em viagens",
         "source":"Exame",
         "texto_completo":"BTG Pactual zera IOF em compras internacionais com cartões de crédito e débito Nova campanha do banco oferece economia imediata e benefícios exclusivos para clientes em viagens",
-        "data_normalizada":"2025-08-28T00:00:00",
+        "data_normalizada":"2025-08-28T00:00:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "BTG Pactual"
         ],
         "tickers_citados":[
             "BPAC11.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "BPAC11.SA":44.5
+        }
     },
     {
         "title":"Onde Investir 2025: relatório do BTG Pactual aponta os ativos mais promissores do segundo semestre",
@@ -623,7 +736,7 @@
         "content":"Equipe de Research do BTG Pactual, reconhecida como a melhor da América Latina, apresenta análises estratégicas para proteger e multiplicar patrimônio",
         "source":"Exame",
         "texto_completo":"Onde Investir 2025: relatório do BTG Pactual aponta os ativos mais promissores do segundo semestre Equipe de Research do BTG Pactual, reconhecida como a melhor da América Latina, apresenta análises estratégicas para proteger e multiplicar patrimônio",
-        "data_normalizada":"2025-09-23T00:00:00",
+        "data_normalizada":"2025-09-23T00:00:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "BTG Pactual",
@@ -631,7 +744,10 @@
         ],
         "tickers_citados":[
             "BPAC11.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "BPAC11.SA":47.8100013733
+        }
     },
     {
         "title":"BTG Pactual e Manu Cit mostram que controlar o dinheiro pode ser simples",
@@ -640,14 +756,17 @@
         "content":"Ferramenta simples para acompanhar despesas, organizar metas e equilibrar seu orçamento",
         "source":"Exame",
         "texto_completo":"BTG Pactual e Manu Cit mostram que controlar o dinheiro pode ser simples Ferramenta simples para acompanhar despesas, organizar metas e equilibrar seu orçamento",
-        "data_normalizada":"2025-10-13T00:00:00",
+        "data_normalizada":"2025-10-13T00:00:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "BTG Pactual"
         ],
         "tickers_citados":[
             "BPAC11.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "BPAC11.SA":47.3100013733
+        }
     },
     {
         "title":"Você ainda investe só no Brasil? Veja por que é hora de olhar para fora com o guia do BTG Pactual",
@@ -656,14 +775,17 @@
         "content":"E-book gratuito do BTG Pactual explica como diversificar e proteger seu patrimônio fora do Brasil",
         "source":"Exame",
         "texto_completo":"Você ainda investe só no Brasil? Veja por que é hora de olhar para fora com o guia do BTG Pactual E-book gratuito do BTG Pactual explica como diversificar e proteger seu patrimônio fora do Brasil",
-        "data_normalizada":"2025-10-29T00:00:00",
+        "data_normalizada":"2025-10-29T00:00:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "BTG Pactual"
         ],
         "tickers_citados":[
             "BPAC11.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "BPAC11.SA":49.5600013733
+        }
     },
     {
         "title":"Royal Caribbean eleva previsão de lucro e vê demanda forte por viagens",
@@ -672,7 +794,7 @@
         "content":"Empresa projeta ganhos maiores no ano, apesar de impactos climáticos e fechamento de destino no Haiti",
         "source":"Exame",
         "texto_completo":"Royal Caribbean eleva previsão de lucro e vê demanda forte por viagens Empresa projeta ganhos maiores no ano, apesar de impactos climáticos e fechamento de destino no Haiti",
-        "data_normalizada":"2025-10-28T00:00:00",
+        "data_normalizada":"2025-10-28T00:00:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "Empresa",
@@ -680,7 +802,10 @@
         ],
         "tickers_citados":[
             "R1CL34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "R1CL34.SA":780.8800048828
+        }
     },
     {
         "title":"Fed deve cortar juros, Microsoft divulga balanço: o que move o mercado",
@@ -689,7 +814,7 @@
         "content":"Fed deve anunciar, às 15h, no horário de Brasília, um corte de 0,25 ponto percentual na taxa básica, levando os juros à faixa de 3,75% a 4,00%",
         "source":"Exame",
         "texto_completo":"Fed deve cortar juros, Microsoft divulga balanço: o que move o mercado Fed deve anunciar, às 15h, no horário de Brasília, um corte de 0,25 ponto percentual na taxa básica, levando os juros à faixa de 3,75% a 4,00%",
-        "data_normalizada":"2025-10-29T00:00:00",
+        "data_normalizada":"2025-10-29T00:00:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Microsoft",
@@ -697,7 +822,10 @@
         ],
         "tickers_citados":[
             "MSFT34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "MSFT34.SA":117.9899978638
+        }
     },
     {
         "title":"Nvidia se aproxima de valor de mercado histórico de US$ 5 trilhões",
@@ -706,14 +834,17 @@
         "content":"CEO Jensen Huang revela chips encomendados em US$ 500 bilhões e parceria com Uber para 100 mil robotáxis até 2027",
         "source":"Exame",
         "texto_completo":"Nvidia se aproxima de valor de mercado histórico de US$ 5 trilhões CEO Jensen Huang revela chips encomendados em US$ 500 bilhões e parceria com Uber para 100 mil robotáxis até 2027",
-        "data_normalizada":"2025-10-29T00:00:00",
+        "data_normalizada":"2025-10-29T00:00:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "Nvidia"
         ],
         "tickers_citados":[
             "NVDC34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "NVDC34.SA":23.1499996185
+        }
     },
     {
         "title":"\n                Federal Reserve atua às cegas rumo a mais um corte de juros nos EUA            ",
@@ -729,7 +860,10 @@
         ],
         "tickers_citados":[
             "TRIL34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "TRIL34.SA":null
+        }
     },
     {
         "title":"Ações na Europa sobem com rali tech e expectativa de corte de juros pelo Fed",
@@ -738,7 +872,7 @@
         "content":"Gigantes de tecnologia mantêm o rali enquanto investidores aguardam a decisão do Fed nesta quarta-feira; Nvidia avançava 2,6%",
         "source":"BloombergLinea",
         "texto_completo":"Ações na Europa sobem com rali tech e expectativa de corte de juros pelo Fed Gigantes de tecnologia mantêm o rali enquanto investidores aguardam a decisão do Fed nesta quarta-feira; Nvidia avançava 2,6%",
-        "data_normalizada":"2025-10-29T06:52:00",
+        "data_normalizada":"2025-10-29T06:52:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Nvidia",
@@ -746,7 +880,10 @@
         ],
         "tickers_citados":[
             "NVDC34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "NVDC34.SA":23.1499996185
+        }
     },
     {
         "title":"A ambição da BYD para sua fábrica na Bahia",
@@ -755,7 +892,7 @@
         "content":"Também no Breakfast: Senado dos EUA aprova projeto para acabar com tarifas sobre o Brasil | Criptomoedas e ouro crescem como ‘ativos do medo’, diz Larry Fink, da BlackRock | Nubank supera Petrobras como empresa mais valiosa do Brasil",
         "source":"BloombergLinea",
         "texto_completo":"A ambição da BYD para sua fábrica na Bahia Também no Breakfast: Senado dos EUA aprova projeto para acabar com tarifas sobre o Brasil | Criptomoedas e ouro crescem como ‘ativos do medo’, diz Larry Fink, da BlackRock | Nubank supera Petrobras como empresa mais valiosa do Brasil",
-        "data_normalizada":"2025-10-29T07:11:00",
+        "data_normalizada":"2025-10-29T07:11:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "BYD",
@@ -766,7 +903,12 @@
             "ROXO34.SA",
             "BYDD34.SA",
             "PETR4.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "ROXO34.SA":14.5500001907,
+            "BYDD34.SA":null,
+            "PETR4.SA":30.0200004578
+        }
     },
     {
         "title":"Banco global ganha força em empresas brasileiras em crise",
@@ -775,7 +917,7 @@
         "content":"Também no Breakfast: A visão do Citi sobre a retomada de IPOs no Brasil | O risco de o Fed adotar uma postura mais dovish do que Powell gostaria | Como o WhatsApp se tornou o novo canal de expansão do Pix",
         "source":"BloombergLinea",
         "texto_completo":"Banco global ganha força em empresas brasileiras em crise Também no Breakfast: A visão do Citi sobre a retomada de IPOs no Brasil | O risco de o Fed adotar uma postura mais dovish do que Powell gostaria | Como o WhatsApp se tornou o novo canal de expansão do Pix",
-        "data_normalizada":"2025-10-23T07:12:00",
+        "data_normalizada":"2025-10-23T07:12:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "Banco",
@@ -784,7 +926,10 @@
         ],
         "tickers_citados":[
             "CTGP34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "CTGP34.SA":85.9716339111
+        }
     },
     {
         "title":"Ibovespa sobe com impulso do petróleo após sanções dos EUA à Rússia; PETR4 avança 2%",
@@ -793,7 +938,7 @@
         "content":"Sanções de Trump à Rússia impulsionam a commodity no mercado: o Brent e o WTI dispararam 5%; ações da Petrobras sobem 2% no pregão",
         "source":"BloombergLinea",
         "texto_completo":"Ibovespa sobe com impulso do petróleo após sanções dos EUA à Rússia; PETR4 avança 2% Sanções de Trump à Rússia impulsionam a commodity no mercado: o Brent e o WTI dispararam 5%; ações da Petrobras sobem 2% no pregão",
-        "data_normalizada":"2025-10-23T11:24:00",
+        "data_normalizada":"2025-10-23T11:24:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "Brent",
@@ -802,7 +947,10 @@
         ],
         "tickers_citados":[
             "PETR4.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "PETR4.SA":30.1900005341
+        }
     },
     {
         "title":"Ibovespa hoje: Petrobras impulsiona alta da bolsa com avanço do petróleo; dólar recua",
@@ -811,7 +959,7 @@
         "content":"Sanções de Trump à Rússia levaram a uma alta de 5% do Brent e do WTI; ações da Petrobras subiram até 1,14%",
         "source":"BloombergLinea",
         "texto_completo":"Ibovespa hoje: Petrobras impulsiona alta da bolsa com avanço do petróleo; dólar recua Sanções de Trump à Rússia levaram a uma alta de 5% do Brent e do WTI; ações da Petrobras subiram até 1,14%",
-        "data_normalizada":"2025-10-23T18:20:00",
+        "data_normalizada":"2025-10-23T18:20:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Brent",
@@ -819,7 +967,10 @@
         ],
         "tickers_citados":[
             "PETR4.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "PETR4.SA":30.1900005341
+        }
     },
     {
         "title":"O avanço do vinho nacional no exterior ",
@@ -828,7 +979,7 @@
         "content":"Também no Breakfast: A expectativa de um bônus recorde em Wall Street | O risco da política fiscal de Lula para a perspectiva de queda da Selic | A adesão de Itaú e C6 ao novo cartão premium da Mastercard",
         "source":"BloombergLinea",
         "texto_completo":"O avanço do vinho nacional no exterior Também no Breakfast: A expectativa de um bônus recorde em Wall Street | O risco da política fiscal de Lula para a perspectiva de queda da Selic | A adesão de Itaú e C6 ao novo cartão premium da Mastercard",
-        "data_normalizada":"2025-10-24T07:19:00",
+        "data_normalizada":"2025-10-24T07:19:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "Mastercard",
@@ -838,7 +989,11 @@
         "tickers_citados":[
             "MSCD34.SA",
             "ITUB4.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "MSCD34.SA":99.5,
+            "ITUB4.SA":38.0129814148
+        }
     },
     {
         "title":"Morgan Stanley recomenda ações do setor financeiro ante corte de juros no Brasil",
@@ -847,7 +1002,7 @@
         "content":"Banco de Wall Street projeta início do ciclo de cortes em março de 2026 e indica ações de XP, BTG Pactual e B3 como apostas para capturar o movimento esperado de queda na curva longa de juros",
         "source":"BloombergLinea",
         "texto_completo":"Morgan Stanley recomenda ações do setor financeiro ante corte de juros no Brasil Banco de Wall Street projeta início do ciclo de cortes em março de 2026 e indica ações de XP, BTG Pactual e B3 como apostas para capturar o movimento esperado de queda na curva longa de juros",
-        "data_normalizada":"2025-10-24T10:54:00",
+        "data_normalizada":"2025-10-24T10:54:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "B3",
@@ -856,7 +1011,11 @@
         "tickers_citados":[
             "BPAC11.SA",
             "B3SA3.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "BPAC11.SA":47.6500015259,
+            "B3SA3.SA":12.5
+        }
     },
     {
         "title":"Ações globais operam em alta com sinais de trégua EUA-China; Kering sobe 4%",
@@ -865,7 +1024,7 @@
         "content":"Investidores reagiram a sinais de trégua comercial entre Washington e Pequim e à venda da divisão de beleza da Kering para a L’Oréal",
         "source":"BloombergLinea",
         "texto_completo":"Ações globais operam em alta com sinais de trégua EUA-China; Kering sobe 4% Investidores reagiram a sinais de trégua comercial entre Washington e Pequim e à venda da divisão de beleza da Kering para a L’Oréal",
-        "data_normalizada":"2025-10-20T06:49:00",
+        "data_normalizada":"2025-10-20T06:49:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "L’Oréal",
@@ -874,7 +1033,11 @@
         "tickers_citados":[
             "KERI34.SA",
             "LRLC34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "KERI34.SA":null,
+            "LRLC34.SA":null
+        }
     },
     {
         "title":"Ações globais caem com investidores atentos às tarifas e aos balanços corporativos",
@@ -883,7 +1046,7 @@
         "content":"Cautela prevalece nos mercados com temores sobre tarifas e expectativa por balanços de gigantes como Coca-Cola, GE e Netflix, que divulgarão os resultados nesta terça-feira (21)",
         "source":"BloombergLinea",
         "texto_completo":"Ações globais caem com investidores atentos às tarifas e aos balanços corporativos Cautela prevalece nos mercados com temores sobre tarifas e expectativa por balanços de gigantes como Coca-Cola, GE e Netflix, que divulgarão os resultados nesta terça-feira (21)",
-        "data_normalizada":"2025-10-21T06:42:00",
+        "data_normalizada":"2025-10-21T06:42:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Netflix",
@@ -894,7 +1057,12 @@
             "GEOC34.SA",
             "COCA34.SA",
             "NFLX34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "GEOC34.SA":null,
+            "COCA34.SA":63.7400016785,
+            "NFLX34.SA":128.0
+        }
     },
     {
         "title":"A ambição da 99 no Brasil",
@@ -903,7 +1071,7 @@
         "content":"Também no Breakfast: Ambipar pede recuperação judicial no Brasil e nos EUA com R$ 11 bi em dívidas | Mastercard aposta em novo cartão premium acima do Black | David Vélez diz que início de operação do Nubank nos EUA pode levar anos.",
         "source":"BloombergLinea",
         "texto_completo":"A ambição da 99 no Brasil Também no Breakfast: Ambipar pede recuperação judicial no Brasil e nos EUA com R$ 11 bi em dívidas | Mastercard aposta em novo cartão premium acima do Black | David Vélez diz que início de operação do Nubank nos EUA pode levar anos.",
-        "data_normalizada":"2025-10-21T07:11:00",
+        "data_normalizada":"2025-10-21T07:11:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Nubank",
@@ -913,7 +1081,11 @@
         "tickers_citados":[
             "ROXO34.SA",
             "MSCD34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "ROXO34.SA":13.8699998856,
+            "MSCD34.SA":96.9300003052
+        }
     },
     {
         "title":"Ibovespa cai e dólar sobe a R$ 5,40 com investidores de olho em tarifas e balanços",
@@ -922,7 +1094,7 @@
         "content":"Investidores aguardam relatório de produção e vendas da Vale (VALE3) e, no exterior, do balanço da Netflix; Weg (WEGE3) e Usiminas (USIM5) também divulgam resultados nesta semana",
         "source":"BloombergLinea",
         "texto_completo":"Ibovespa cai e dólar sobe a R$ 5,40 com investidores de olho em tarifas e balanços Investidores aguardam relatório de produção e vendas da Vale (VALE3) e, no exterior, do balanço da Netflix; Weg (WEGE3) e Usiminas (USIM5) também divulgam resultados nesta semana",
-        "data_normalizada":"2025-10-21T11:11:00",
+        "data_normalizada":"2025-10-21T11:11:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Vale",
@@ -936,7 +1108,13 @@
             "VALE3.SA",
             "NFLX34.SA",
             "USIM5.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "WEGE3.SA":39.6699981689,
+            "VALE3.SA":60.7999992371,
+            "NFLX34.SA":128.0,
+            "USIM5.SA":4.9600000381
+        }
     },
     {
         "title":"Ibovespa hoje: bolsa recua e dólar sobe a R$ 5,39; Ambipar desaba 29%",
@@ -945,7 +1123,7 @@
         "content":"Empresa de gestão de resíduos buscou proteção contra credores em meio à crise; Netflix culpa perda tributária no Brasil por resultado global abaixo do esperado",
         "source":"BloombergLinea",
         "texto_completo":"Ibovespa hoje: bolsa recua e dólar sobe a R$ 5,39; Ambipar desaba 29% Empresa de gestão de resíduos buscou proteção contra credores em meio à crise; Netflix culpa perda tributária no Brasil por resultado global abaixo do esperado",
-        "data_normalizada":"2025-10-21T18:20:00",
+        "data_normalizada":"2025-10-21T18:20:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Empresa",
@@ -953,7 +1131,10 @@
         ],
         "tickers_citados":[
             "NFLX34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "NFLX34.SA":128.0
+        }
     },
     {
         "title":"Além da IA: o avanço quântico nos negócios",
@@ -962,7 +1143,7 @@
         "content":"Também no Breakfast: A bilionária perda tributária no Brasil que derrubou o resultado da Netflix | A nova proposta do governo para elevar impostos a bancos, bets e fintechs | OpenAI lança navegador com IA em desafio ao Chrome, do Google",
         "source":"BloombergLinea",
         "texto_completo":"Além da IA: o avanço quântico nos negócios Também no Breakfast: A bilionária perda tributária no Brasil que derrubou o resultado da Netflix | A nova proposta do governo para elevar impostos a bancos, bets e fintechs | OpenAI lança navegador com IA em desafio ao Chrome, do Google",
-        "data_normalizada":"2025-10-22T07:09:00",
+        "data_normalizada":"2025-10-22T07:09:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Google",
@@ -971,7 +1152,11 @@
         "tickers_citados":[
             "GOGL34.SA",
             "NFLX34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "GOGL34.SA":113.3199996948,
+            "NFLX34.SA":120.4300003052
+        }
     },
     {
         "title":"Citi prevê retomada dos IPOs no Brasil a partir de 2026 após quatro anos de hiato",
@@ -980,7 +1165,7 @@
         "content":"Em entrevista à Bloomberg News, Nicolas Roca, chefe do banco de investimentos do Citi para a América Latina, disse que nem a eleição presidencial no Brasil deve mudar o cenário favorável para ofertas iniciais no próximo ano",
         "source":"BloombergLinea",
         "texto_completo":"Citi prevê retomada dos IPOs no Brasil a partir de 2026 após quatro anos de hiato Em entrevista à Bloomberg News, Nicolas Roca, chefe do banco de investimentos do Citi para a América Latina, disse que nem a eleição presidencial no Brasil deve mudar o cenário favorável para ofertas iniciais no próximo ano",
-        "data_normalizada":"2025-10-22T09:26:00",
+        "data_normalizada":"2025-10-22T09:26:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "Citi",
@@ -989,7 +1174,10 @@
         ],
         "tickers_citados":[
             "CTGP34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "CTGP34.SA":86.7184295654
+        }
     },
     {
         "title":"Pix pelo WhatsApp: Bancos transformam plataforma em canal de pagamento com ajuda de IA",
@@ -998,7 +1186,7 @@
         "content":"PicPay, Itaú e Nubank usam IA generativa para permitir transferências via WhatsApp e reforçam o protagonismo do Brasil em serviços financeiros digitais",
         "source":"BloombergLinea",
         "texto_completo":"Pix pelo WhatsApp: Bancos transformam plataforma em canal de pagamento com ajuda de IA PicPay, Itaú e Nubank usam IA generativa para permitir transferências via WhatsApp e reforçam o protagonismo do Brasil em serviços financeiros digitais",
-        "data_normalizada":"2025-10-22T10:07:00",
+        "data_normalizada":"2025-10-22T10:07:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "Nubank",
@@ -1008,7 +1196,11 @@
         "tickers_citados":[
             "ROXO34.SA",
             "ITUB4.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "ROXO34.SA":13.720000267,
+            "ITUB4.SA":38.0929450989
+        }
     },
     {
         "title":"Ibovespa hoje: bolsa sobe com Vale (VALE3) e Petrobras (PETR4); dólar avança a R$ 5,40",
@@ -1017,7 +1209,7 @@
         "content":"Ações da mineradora subiram 1,8%, após melhor resultado de produção em sete anos no terceiro trimestre, e ajudaram o Ibovespa a descolar do quadro exterior negativo",
         "source":"BloombergLinea",
         "texto_completo":"Ibovespa hoje: bolsa sobe com Vale (VALE3) e Petrobras (PETR4); dólar avança a R$ 5,40 Ações da mineradora subiram 1,8%, após melhor resultado de produção em sete anos no terceiro trimestre, e ajudaram o Ibovespa a descolar do quadro exterior negativo",
-        "data_normalizada":"2025-10-22T18:09:00",
+        "data_normalizada":"2025-10-22T18:09:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "PETR4",
@@ -1025,7 +1217,10 @@
         ],
         "tickers_citados":[
             "PETR4.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "PETR4.SA":29.8500003815
+        }
     },
     {
         "title":"Os desafios de Milei pós-eleições",
@@ -1034,14 +1229,17 @@
         "content":"Também no Breakfast: O alinhamento de Trump e Lula em reunião na Malásia| Revo antecipa investimento em helicópteros no país | A cautela da Embraer com os efeitos das tarifas",
         "source":"BloombergLinea",
         "texto_completo":"Os desafios de Milei pós-eleições Também no Breakfast: O alinhamento de Trump e Lula em reunião na Malásia| Revo antecipa investimento em helicópteros no país | A cautela da Embraer com os efeitos das tarifas",
-        "data_normalizada":"2025-10-27T06:06:00",
+        "data_normalizada":"2025-10-27T06:06:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "Embraer"
         ],
         "tickers_citados":[
             "EMBR3.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "EMBR3.SA":86.6800003052
+        }
     },
     {
         "title":"Crises de dívida corporativa são casos pontuais, avaliam BlackRock, Itaú e Patria",
@@ -1050,7 +1248,7 @@
         "content":"Em participação no Bloomberg Línea Summit 2025, Marina Tennenbaum, do Patria, Bruno Barino, da BlackRock, e Sylvio Castro, do Itaú, avaliam que o mercado de crédito continua saudável, apesar de situações de estresse recentes ",
         "source":"BloombergLinea",
         "texto_completo":"Crises de dívida corporativa são casos pontuais, avaliam BlackRock, Itaú e Patria Em participação no Bloomberg Línea Summit 2025, Marina Tennenbaum, do Patria, Bruno Barino, da BlackRock, e Sylvio Castro, do Itaú, avaliam que o mercado de crédito continua saudável, apesar de situações de estresse recentes",
-        "data_normalizada":"2025-10-27T15:55:00",
+        "data_normalizada":"2025-10-27T15:55:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Bloomberg Línea Summit",
@@ -1058,7 +1256,10 @@
         ],
         "tickers_citados":[
             "ITUB4.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "ITUB4.SA":38.3328361511
+        }
     },
     {
         "title":"Boom de IA ainda não é bolha, mas há sinais de excesso, segundo o Goldman Sachs",
@@ -1067,7 +1268,7 @@
         "content":"Peter Oppenheimer, estrategista-chefe global de ações da Goldman Sachs Research disse, em relatório, que vê fundamentos ainda sólidos por trás do rali das big techs, embora sinais iniciais de excesso já acendam alertas",
         "source":"BloombergLinea",
         "texto_completo":"Boom de IA ainda não é bolha, mas há sinais de excesso, segundo o Goldman Sachs Peter Oppenheimer, estrategista-chefe global de ações da Goldman Sachs Research disse, em relatório, que vê fundamentos ainda sólidos por trás do rali das big techs, embora sinais iniciais de excesso já acendam alertas",
-        "data_normalizada":"2025-10-27T17:26:00",
+        "data_normalizada":"2025-10-27T17:26:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Goldman Sachs Research",
@@ -1075,7 +1276,10 @@
         ],
         "tickers_citados":[
             "GSGI34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "GSGI34.SA":141.1000061035
+        }
     },
     {
         "title":"Ações globais caem à espera de decisão do Fed e balanços das big techs; ouro cai 2,5%",
@@ -1084,7 +1288,7 @@
         "content":"Investidores aguardam balanços de Meta, Microsoft, Apple, Amazon e Alphabet que serão divulgados nesta quarta-feira (28)",
         "source":"BloombergLinea",
         "texto_completo":"Ações globais caem à espera de decisão do Fed e balanços das big techs; ouro cai 2,5% Investidores aguardam balanços de Meta, Microsoft, Apple, Amazon e Alphabet que serão divulgados nesta quarta-feira (28)",
-        "data_normalizada":"2025-10-28T06:58:00",
+        "data_normalizada":"2025-10-28T06:58:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Amazon",
@@ -1098,7 +1302,13 @@
             "GOGL34.SA",
             "AMZO34.SA",
             "MSFT34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "AAPL34.SA":71.8809432983,
+            "GOGL34.SA":119.5699996948,
+            "AMZO34.SA":61.5900001526,
+            "MSFT34.SA":121.0
+        }
     },
     {
         "title":"O impacto crescente da IA nos negócios no Brasil",
@@ -1107,7 +1317,7 @@
         "content":"Também no Breakfast: Setor privado tem que ser protagonista na agenda de desenvolvimento, defende CEO da JBS | A visão de BlackRock, Patria e Itaú sobre empresas em crise de crédito | O significado da vitória do partido de Milei para a Argentina",
         "source":"BloombergLinea",
         "texto_completo":"O impacto crescente da IA nos negócios no Brasil Também no Breakfast: Setor privado tem que ser protagonista na agenda de desenvolvimento, defende CEO da JBS | A visão de BlackRock, Patria e Itaú sobre empresas em crise de crédito | O significado da vitória do partido de Milei para a Argentina",
-        "data_normalizada":"2025-10-28T07:16:00",
+        "data_normalizada":"2025-10-28T07:16:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "JBS",
@@ -1116,7 +1326,11 @@
         "tickers_citados":[
             "JBSS3.SA",
             "ITUB4.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "JBSS3.SA":null,
+            "ITUB4.SA":38.4627799988
+        }
     },
     {
         "title":"Nubank supera Petrobras como empresa mais valiosa do Brasil. E é segunda em LatAm",
@@ -1125,7 +1339,7 @@
         "content":"Banco digital comandado por David Vélez e Cristina Junqueira se valorizou mais de 50% neste ano, chegou a US$ 77 bilhões em market cap e agora só fica atrás do Mercado Livre; analistas avaliam as perspectivas de crescimento do negócio",
         "source":"BloombergLinea",
         "texto_completo":"Nubank supera Petrobras como empresa mais valiosa do Brasil. E é segunda em LatAm Banco digital comandado por David Vélez e Cristina Junqueira se valorizou mais de 50% neste ano, chegou a US$ 77 bilhões em market cap e agora só fica atrás do Mercado Livre; analistas avaliam as perspectivas de crescimento do negócio",
-        "data_normalizada":"2025-10-28T13:20:00",
+        "data_normalizada":"2025-10-28T13:20:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "Nubank",
@@ -1135,7 +1349,11 @@
         "tickers_citados":[
             "ROXO34.SA",
             "PETR4.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "ROXO34.SA":14.2399997711,
+            "PETR4.SA":29.9899997711
+        }
     },
     {
         "title":"Para este CEO, a única forma de aprender sobre cripto é colocando seu dinheiro em jogo",
@@ -1144,7 +1362,7 @@
         "content":"CEO da Galaxy Digital defende exposição mínima a criptomoedas como forma prática de aprendizado financeiro",
         "source":"Exame",
         "texto_completo":"Para este CEO, a única forma de aprender sobre cripto é colocando seu dinheiro em jogo CEO da Galaxy Digital defende exposição mínima a criptomoedas como forma prática de aprendizado financeiro",
-        "data_normalizada":"2025-10-27T00:00:00",
+        "data_normalizada":"2025-10-27T00:00:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "CEO",
@@ -1152,7 +1370,10 @@
         ],
         "tickers_citados":[
             "GILD34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "GILD34.SA":330.3299865723
+        }
     },
     {
         "title":"Royal Caribbean eleva previsão de lucro e vê demanda forte por viagens",
@@ -1161,7 +1382,7 @@
         "content":"Empresa projeta ganhos maiores no ano, apesar de impactos climáticos e fechamento de destino no Haiti",
         "source":"Exame",
         "texto_completo":"Royal Caribbean eleva previsão de lucro e vê demanda forte por viagens Empresa projeta ganhos maiores no ano, apesar de impactos climáticos e fechamento de destino no Haiti",
-        "data_normalizada":"2025-10-28T00:00:00",
+        "data_normalizada":"2025-10-28T00:00:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "Empresa",
@@ -1169,7 +1390,10 @@
         ],
         "tickers_citados":[
             "R1CL34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "R1CL34.SA":780.8800048828
+        }
     },
     {
         "title":"Nvidia se aproxima de valor de mercado histórico de US$ 5 trilhões",
@@ -1178,14 +1402,17 @@
         "content":"CEO Jensen Huang revela chips encomendados em US$ 500 bilhões e parceria com Uber para 100 mil robotáxis até 2027",
         "source":"Exame",
         "texto_completo":"Nvidia se aproxima de valor de mercado histórico de US$ 5 trilhões CEO Jensen Huang revela chips encomendados em US$ 500 bilhões e parceria com Uber para 100 mil robotáxis até 2027",
-        "data_normalizada":"2025-10-29T00:00:00",
+        "data_normalizada":"2025-10-29T00:00:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "Nvidia"
         ],
         "tickers_citados":[
             "NVDC34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "NVDC34.SA":23.1499996185
+        }
     },
     {
         "title":"Fed deve cortar juros, Microsoft divulga balanço: o que move o mercado",
@@ -1194,7 +1421,7 @@
         "content":"Fed deve anunciar, às 15h, no horário de Brasília, um corte de 0,25 ponto percentual na taxa básica, levando os juros à faixa de 3,75% a 4,00%",
         "source":"Exame",
         "texto_completo":"Fed deve cortar juros, Microsoft divulga balanço: o que move o mercado Fed deve anunciar, às 15h, no horário de Brasília, um corte de 0,25 ponto percentual na taxa básica, levando os juros à faixa de 3,75% a 4,00%",
-        "data_normalizada":"2025-10-29T00:00:00",
+        "data_normalizada":"2025-10-29T00:00:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Microsoft",
@@ -1202,7 +1429,10 @@
         ],
         "tickers_citados":[
             "MSFT34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "MSFT34.SA":117.9899978638
+        }
     },
     {
         "title":"Nvidia é a 1ª empresa a atingir US$ 5 trilhões em valor de mercado",
@@ -1211,14 +1441,17 @@
         "content":"Huang revelou na terça-feira, 28, que a Nvidia recebeu encomendas de chips de IA no valor de US$ 500 bilhões e que a empresa planeja construir sete supercomputadores para governo dos EUA",
         "source":"Exame",
         "texto_completo":"Nvidia é a 1ª empresa a atingir US$ 5 trilhões em valor de mercado Huang revelou na terça-feira, 28, que a Nvidia recebeu encomendas de chips de IA no valor de US$ 500 bilhões e que a empresa planeja construir sete supercomputadores para governo dos EUA",
-        "data_normalizada":"2025-10-29T00:00:00",
+        "data_normalizada":"2025-10-29T00:00:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "Nvidia"
         ],
         "tickers_citados":[
             "NVDC34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "NVDC34.SA":23.1499996185
+        }
     },
     {
         "title":"BTG Pactual zera IOF em compras internacionais com cartões de crédito e débito",
@@ -1227,14 +1460,17 @@
         "content":"Nova campanha do banco oferece economia imediata e benefícios exclusivos para clientes em viagens",
         "source":"Exame",
         "texto_completo":"BTG Pactual zera IOF em compras internacionais com cartões de crédito e débito Nova campanha do banco oferece economia imediata e benefícios exclusivos para clientes em viagens",
-        "data_normalizada":"2025-08-28T00:00:00",
+        "data_normalizada":"2025-08-28T00:00:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "BTG Pactual"
         ],
         "tickers_citados":[
             "BPAC11.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "BPAC11.SA":44.5
+        }
     },
     {
         "title":"Onde Investir 2025: relatório do BTG Pactual aponta os ativos mais promissores do segundo semestre",
@@ -1243,7 +1479,7 @@
         "content":"Equipe de Research do BTG Pactual, reconhecida como a melhor da América Latina, apresenta análises estratégicas para proteger e multiplicar patrimônio",
         "source":"Exame",
         "texto_completo":"Onde Investir 2025: relatório do BTG Pactual aponta os ativos mais promissores do segundo semestre Equipe de Research do BTG Pactual, reconhecida como a melhor da América Latina, apresenta análises estratégicas para proteger e multiplicar patrimônio",
-        "data_normalizada":"2025-09-23T00:00:00",
+        "data_normalizada":"2025-09-23T00:00:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "BTG Pactual",
@@ -1251,7 +1487,10 @@
         ],
         "tickers_citados":[
             "BPAC11.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "BPAC11.SA":47.8100013733
+        }
     },
     {
         "title":"BTG Pactual e Manu Cit mostram que controlar o dinheiro pode ser simples",
@@ -1260,14 +1499,17 @@
         "content":"Ferramenta simples para acompanhar despesas, organizar metas e equilibrar seu orçamento",
         "source":"Exame",
         "texto_completo":"BTG Pactual e Manu Cit mostram que controlar o dinheiro pode ser simples Ferramenta simples para acompanhar despesas, organizar metas e equilibrar seu orçamento",
-        "data_normalizada":"2025-10-13T00:00:00",
+        "data_normalizada":"2025-10-13T00:00:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "BTG Pactual"
         ],
         "tickers_citados":[
             "BPAC11.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "BPAC11.SA":47.3100013733
+        }
     },
     {
         "title":"Você ainda investe só no Brasil? Veja por que é hora de olhar para fora com o guia do BTG Pactual",
@@ -1276,14 +1518,17 @@
         "content":"E-book gratuito do BTG Pactual explica como diversificar e proteger seu patrimônio fora do Brasil",
         "source":"Exame",
         "texto_completo":"Você ainda investe só no Brasil? Veja por que é hora de olhar para fora com o guia do BTG Pactual E-book gratuito do BTG Pactual explica como diversificar e proteger seu patrimônio fora do Brasil",
-        "data_normalizada":"2025-10-29T00:00:00",
+        "data_normalizada":"2025-10-29T00:00:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "BTG Pactual"
         ],
         "tickers_citados":[
             "BPAC11.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "BPAC11.SA":49.5600013733
+        }
     },
     {
         "title":"Busca do brasileiro por investimento em ouro aumenta com preço recorde do metal",
@@ -1292,14 +1537,17 @@
         "content":"Na B3, volume financeiro de futuros do ouro ainda é baixo, mas disparou 700% de um mês para o outro",
         "source":"Exame",
         "texto_completo":"Busca do brasileiro por investimento em ouro aumenta com preço recorde do metal Na B3, volume financeiro de futuros do ouro ainda é baixo, mas disparou 700% de um mês para o outro",
-        "data_normalizada":"2025-10-10T00:00:00",
+        "data_normalizada":"2025-10-10T00:00:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "B3"
         ],
         "tickers_citados":[
             "B3SA3.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "B3SA3.SA":12.6000003815
+        }
     },
     {
         "title":"Brasileiro vai poder investir na Prosus, dona do iFood: saiba como",
@@ -1308,7 +1556,7 @@
         "content":"Holding, que também controla OLX e Decolar, vai lançar BDRs que poderão ser negociados via 'home broker'",
         "source":"Exame",
         "texto_completo":"Brasileiro vai poder investir na Prosus, dona do iFood: saiba como Holding, que também controla OLX e Decolar, vai lançar BDRs que poderão ser negociados via 'home broker'",
-        "data_normalizada":"2025-10-23T00:00:00",
+        "data_normalizada":"2025-10-23T00:00:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "Holding",
@@ -1318,7 +1566,10 @@
         ],
         "tickers_citados":[
             "DECO34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "DECO34.SA":null
+        }
     },
     {
         "title":"\n                Federal Reserve atua às cegas rumo a mais um corte de juros nos EUA            ",
@@ -1334,7 +1585,10 @@
         ],
         "tickers_citados":[
             "TRIL34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "TRIL34.SA":null
+        }
     },
     {
         "title":"O impacto crescente da IA nos negócios no Brasil",
@@ -1343,7 +1597,7 @@
         "content":"Também no Breakfast: Setor privado tem que ser protagonista na agenda de desenvolvimento, defende CEO da JBS | A visão de BlackRock, Patria e Itaú sobre empresas em crise de crédito | O significado da vitória do partido de Milei para a Argentina",
         "source":"BloombergLinea",
         "texto_completo":"O impacto crescente da IA nos negócios no Brasil Também no Breakfast: Setor privado tem que ser protagonista na agenda de desenvolvimento, defende CEO da JBS | A visão de BlackRock, Patria e Itaú sobre empresas em crise de crédito | O significado da vitória do partido de Milei para a Argentina",
-        "data_normalizada":"2025-10-28T07:16:00",
+        "data_normalizada":"2025-10-28T07:16:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "JBS",
@@ -1352,7 +1606,11 @@
         "tickers_citados":[
             "JBSS3.SA",
             "ITUB4.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "JBSS3.SA":null,
+            "ITUB4.SA":38.4627799988
+        }
     },
     {
         "title":"Nubank supera Petrobras como empresa mais valiosa do Brasil. E é segunda em LatAm",
@@ -1361,7 +1619,7 @@
         "content":"Banco digital comandado por David Vélez e Cristina Junqueira se valorizou mais de 50% neste ano, chegou a US$ 77 bilhões em market cap e agora só fica atrás do Mercado Livre; analistas avaliam as perspectivas de crescimento do negócio",
         "source":"BloombergLinea",
         "texto_completo":"Nubank supera Petrobras como empresa mais valiosa do Brasil. E é segunda em LatAm Banco digital comandado por David Vélez e Cristina Junqueira se valorizou mais de 50% neste ano, chegou a US$ 77 bilhões em market cap e agora só fica atrás do Mercado Livre; analistas avaliam as perspectivas de crescimento do negócio",
-        "data_normalizada":"2025-10-28T13:20:00",
+        "data_normalizada":"2025-10-28T13:20:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "Nubank",
@@ -1371,7 +1629,11 @@
         "tickers_citados":[
             "ROXO34.SA",
             "PETR4.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "ROXO34.SA":14.2399997711,
+            "PETR4.SA":29.9899997711
+        }
     },
     {
         "title":"Ações na Europa sobem com rali tech e expectativa de corte de juros pelo Fed",
@@ -1380,7 +1642,7 @@
         "content":"Gigantes de tecnologia mantêm o rali enquanto investidores aguardam a decisão do Fed nesta quarta-feira; Nvidia avançava 2,6%",
         "source":"BloombergLinea",
         "texto_completo":"Ações na Europa sobem com rali tech e expectativa de corte de juros pelo Fed Gigantes de tecnologia mantêm o rali enquanto investidores aguardam a decisão do Fed nesta quarta-feira; Nvidia avançava 2,6%",
-        "data_normalizada":"2025-10-29T06:52:00",
+        "data_normalizada":"2025-10-29T06:52:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Nvidia",
@@ -1388,7 +1650,10 @@
         ],
         "tickers_citados":[
             "NVDC34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "NVDC34.SA":23.1499996185
+        }
     },
     {
         "title":"A ambição da BYD para sua fábrica na Bahia",
@@ -1397,7 +1662,7 @@
         "content":"Também no Breakfast: Senado dos EUA aprova projeto para acabar com tarifas sobre o Brasil | Criptomoedas e ouro crescem como ‘ativos do medo’, diz Larry Fink, da BlackRock | Nubank supera Petrobras como empresa mais valiosa do Brasil",
         "source":"BloombergLinea",
         "texto_completo":"A ambição da BYD para sua fábrica na Bahia Também no Breakfast: Senado dos EUA aprova projeto para acabar com tarifas sobre o Brasil | Criptomoedas e ouro crescem como ‘ativos do medo’, diz Larry Fink, da BlackRock | Nubank supera Petrobras como empresa mais valiosa do Brasil",
-        "data_normalizada":"2025-10-29T07:11:00",
+        "data_normalizada":"2025-10-29T07:11:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "BYD",
@@ -1408,7 +1673,12 @@
             "ROXO34.SA",
             "BYDD34.SA",
             "PETR4.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "ROXO34.SA":14.5500001907,
+            "BYDD34.SA":null,
+            "PETR4.SA":30.0200004578
+        }
     },
     {
         "title":"Ações globais operam em alta com sinais de trégua EUA-China; Kering sobe 4%",
@@ -1417,7 +1687,7 @@
         "content":"Investidores reagiram a sinais de trégua comercial entre Washington e Pequim e à venda da divisão de beleza da Kering para a L’Oréal",
         "source":"BloombergLinea",
         "texto_completo":"Ações globais operam em alta com sinais de trégua EUA-China; Kering sobe 4% Investidores reagiram a sinais de trégua comercial entre Washington e Pequim e à venda da divisão de beleza da Kering para a L’Oréal",
-        "data_normalizada":"2025-10-20T06:49:00",
+        "data_normalizada":"2025-10-20T06:49:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "L’Oréal",
@@ -1426,7 +1696,11 @@
         "tickers_citados":[
             "KERI34.SA",
             "LRLC34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "KERI34.SA":null,
+            "LRLC34.SA":null
+        }
     },
     {
         "title":"Ações globais caem com investidores atentos às tarifas e aos balanços corporativos",
@@ -1435,7 +1709,7 @@
         "content":"Cautela prevalece nos mercados com temores sobre tarifas e expectativa por balanços de gigantes como Coca-Cola, GE e Netflix, que divulgarão os resultados nesta terça-feira (21)",
         "source":"BloombergLinea",
         "texto_completo":"Ações globais caem com investidores atentos às tarifas e aos balanços corporativos Cautela prevalece nos mercados com temores sobre tarifas e expectativa por balanços de gigantes como Coca-Cola, GE e Netflix, que divulgarão os resultados nesta terça-feira (21)",
-        "data_normalizada":"2025-10-21T06:42:00",
+        "data_normalizada":"2025-10-21T06:42:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Netflix",
@@ -1446,7 +1720,12 @@
             "GEOC34.SA",
             "COCA34.SA",
             "NFLX34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "GEOC34.SA":null,
+            "COCA34.SA":63.7400016785,
+            "NFLX34.SA":128.0
+        }
     },
     {
         "title":"A ambição da 99 no Brasil",
@@ -1455,7 +1734,7 @@
         "content":"Também no Breakfast: Ambipar pede recuperação judicial no Brasil e nos EUA com R$ 11 bi em dívidas | Mastercard aposta em novo cartão premium acima do Black | David Vélez diz que início de operação do Nubank nos EUA pode levar anos.",
         "source":"BloombergLinea",
         "texto_completo":"A ambição da 99 no Brasil Também no Breakfast: Ambipar pede recuperação judicial no Brasil e nos EUA com R$ 11 bi em dívidas | Mastercard aposta em novo cartão premium acima do Black | David Vélez diz que início de operação do Nubank nos EUA pode levar anos.",
-        "data_normalizada":"2025-10-21T07:11:00",
+        "data_normalizada":"2025-10-21T07:11:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Nubank",
@@ -1465,7 +1744,11 @@
         "tickers_citados":[
             "ROXO34.SA",
             "MSCD34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "ROXO34.SA":13.8699998856,
+            "MSCD34.SA":96.9300003052
+        }
     },
     {
         "title":"Ibovespa cai e dólar sobe a R$ 5,40 com investidores de olho em tarifas e balanços",
@@ -1474,7 +1757,7 @@
         "content":"Investidores aguardam relatório de produção e vendas da Vale (VALE3) e, no exterior, do balanço da Netflix; Weg (WEGE3) e Usiminas (USIM5) também divulgam resultados nesta semana",
         "source":"BloombergLinea",
         "texto_completo":"Ibovespa cai e dólar sobe a R$ 5,40 com investidores de olho em tarifas e balanços Investidores aguardam relatório de produção e vendas da Vale (VALE3) e, no exterior, do balanço da Netflix; Weg (WEGE3) e Usiminas (USIM5) também divulgam resultados nesta semana",
-        "data_normalizada":"2025-10-21T11:11:00",
+        "data_normalizada":"2025-10-21T11:11:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Vale",
@@ -1488,7 +1771,13 @@
             "VALE3.SA",
             "NFLX34.SA",
             "USIM5.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "WEGE3.SA":39.6699981689,
+            "VALE3.SA":60.7999992371,
+            "NFLX34.SA":128.0,
+            "USIM5.SA":4.9600000381
+        }
     },
     {
         "title":"Ibovespa hoje: bolsa recua e dólar sobe a R$ 5,39; Ambipar desaba 29%",
@@ -1497,7 +1786,7 @@
         "content":"Empresa de gestão de resíduos buscou proteção contra credores em meio à crise; Netflix culpa perda tributária no Brasil por resultado global abaixo do esperado",
         "source":"BloombergLinea",
         "texto_completo":"Ibovespa hoje: bolsa recua e dólar sobe a R$ 5,39; Ambipar desaba 29% Empresa de gestão de resíduos buscou proteção contra credores em meio à crise; Netflix culpa perda tributária no Brasil por resultado global abaixo do esperado",
-        "data_normalizada":"2025-10-21T18:20:00",
+        "data_normalizada":"2025-10-21T18:20:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Empresa",
@@ -1505,7 +1794,10 @@
         ],
         "tickers_citados":[
             "NFLX34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "NFLX34.SA":128.0
+        }
     },
     {
         "title":"Além da IA: o avanço quântico nos negócios",
@@ -1514,7 +1806,7 @@
         "content":"Também no Breakfast: A bilionária perda tributária no Brasil que derrubou o resultado da Netflix | A nova proposta do governo para elevar impostos a bancos, bets e fintechs | OpenAI lança navegador com IA em desafio ao Chrome, do Google",
         "source":"BloombergLinea",
         "texto_completo":"Além da IA: o avanço quântico nos negócios Também no Breakfast: A bilionária perda tributária no Brasil que derrubou o resultado da Netflix | A nova proposta do governo para elevar impostos a bancos, bets e fintechs | OpenAI lança navegador com IA em desafio ao Chrome, do Google",
-        "data_normalizada":"2025-10-22T07:09:00",
+        "data_normalizada":"2025-10-22T07:09:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Google",
@@ -1523,7 +1815,11 @@
         "tickers_citados":[
             "GOGL34.SA",
             "NFLX34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "GOGL34.SA":113.3199996948,
+            "NFLX34.SA":120.4300003052
+        }
     },
     {
         "title":"Citi prevê retomada dos IPOs no Brasil a partir de 2026 após quatro anos de hiato",
@@ -1532,7 +1828,7 @@
         "content":"Em entrevista à Bloomberg News, Nicolas Roca, chefe do banco de investimentos do Citi para a América Latina, disse que nem a eleição presidencial no Brasil deve mudar o cenário favorável para ofertas iniciais no próximo ano",
         "source":"BloombergLinea",
         "texto_completo":"Citi prevê retomada dos IPOs no Brasil a partir de 2026 após quatro anos de hiato Em entrevista à Bloomberg News, Nicolas Roca, chefe do banco de investimentos do Citi para a América Latina, disse que nem a eleição presidencial no Brasil deve mudar o cenário favorável para ofertas iniciais no próximo ano",
-        "data_normalizada":"2025-10-22T09:26:00",
+        "data_normalizada":"2025-10-22T09:26:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "Citi",
@@ -1541,7 +1837,10 @@
         ],
         "tickers_citados":[
             "CTGP34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "CTGP34.SA":86.7184295654
+        }
     },
     {
         "title":"Pix pelo WhatsApp: Bancos transformam plataforma em canal de pagamento com ajuda de IA",
@@ -1550,7 +1849,7 @@
         "content":"PicPay, Itaú e Nubank usam IA generativa para permitir transferências via WhatsApp e reforçam o protagonismo do Brasil em serviços financeiros digitais",
         "source":"BloombergLinea",
         "texto_completo":"Pix pelo WhatsApp: Bancos transformam plataforma em canal de pagamento com ajuda de IA PicPay, Itaú e Nubank usam IA generativa para permitir transferências via WhatsApp e reforçam o protagonismo do Brasil em serviços financeiros digitais",
-        "data_normalizada":"2025-10-22T10:07:00",
+        "data_normalizada":"2025-10-22T10:07:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "Nubank",
@@ -1560,7 +1859,11 @@
         "tickers_citados":[
             "ROXO34.SA",
             "ITUB4.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "ROXO34.SA":13.720000267,
+            "ITUB4.SA":38.0929450989
+        }
     },
     {
         "title":"Ibovespa hoje: bolsa sobe com Vale (VALE3) e Petrobras (PETR4); dólar avança a R$ 5,40",
@@ -1569,7 +1872,7 @@
         "content":"Ações da mineradora subiram 1,8%, após melhor resultado de produção em sete anos no terceiro trimestre, e ajudaram o Ibovespa a descolar do quadro exterior negativo",
         "source":"BloombergLinea",
         "texto_completo":"Ibovespa hoje: bolsa sobe com Vale (VALE3) e Petrobras (PETR4); dólar avança a R$ 5,40 Ações da mineradora subiram 1,8%, após melhor resultado de produção em sete anos no terceiro trimestre, e ajudaram o Ibovespa a descolar do quadro exterior negativo",
-        "data_normalizada":"2025-10-22T18:09:00",
+        "data_normalizada":"2025-10-22T18:09:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "PETR4",
@@ -1577,7 +1880,10 @@
         ],
         "tickers_citados":[
             "PETR4.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "PETR4.SA":29.8500003815
+        }
     },
     {
         "title":"Banco global ganha força em empresas brasileiras em crise",
@@ -1586,7 +1892,7 @@
         "content":"Também no Breakfast: A visão do Citi sobre a retomada de IPOs no Brasil | O risco de o Fed adotar uma postura mais dovish do que Powell gostaria | Como o WhatsApp se tornou o novo canal de expansão do Pix",
         "source":"BloombergLinea",
         "texto_completo":"Banco global ganha força em empresas brasileiras em crise Também no Breakfast: A visão do Citi sobre a retomada de IPOs no Brasil | O risco de o Fed adotar uma postura mais dovish do que Powell gostaria | Como o WhatsApp se tornou o novo canal de expansão do Pix",
-        "data_normalizada":"2025-10-23T07:12:00",
+        "data_normalizada":"2025-10-23T07:12:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "Banco",
@@ -1595,7 +1901,10 @@
         ],
         "tickers_citados":[
             "CTGP34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "CTGP34.SA":85.9716339111
+        }
     },
     {
         "title":"Ibovespa sobe com impulso do petróleo após sanções dos EUA à Rússia; PETR4 avança 2%",
@@ -1604,7 +1913,7 @@
         "content":"Sanções de Trump à Rússia impulsionam a commodity no mercado: o Brent e o WTI dispararam 5%; ações da Petrobras sobem 2% no pregão",
         "source":"BloombergLinea",
         "texto_completo":"Ibovespa sobe com impulso do petróleo após sanções dos EUA à Rússia; PETR4 avança 2% Sanções de Trump à Rússia impulsionam a commodity no mercado: o Brent e o WTI dispararam 5%; ações da Petrobras sobem 2% no pregão",
-        "data_normalizada":"2025-10-23T11:24:00",
+        "data_normalizada":"2025-10-23T11:24:00.000",
         "sentimento_previsto":"POSITIVE",
         "empresas_citadas":[
             "Brent",
@@ -1613,7 +1922,10 @@
         ],
         "tickers_citados":[
             "PETR4.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "PETR4.SA":30.1900005341
+        }
     },
     {
         "title":"Ibovespa hoje: Petrobras impulsiona alta da bolsa com avanço do petróleo; dólar recua",
@@ -1622,7 +1934,7 @@
         "content":"Sanções de Trump à Rússia levaram a uma alta de 5% do Brent e do WTI; ações da Petrobras subiram até 1,14%",
         "source":"BloombergLinea",
         "texto_completo":"Ibovespa hoje: Petrobras impulsiona alta da bolsa com avanço do petróleo; dólar recua Sanções de Trump à Rússia levaram a uma alta de 5% do Brent e do WTI; ações da Petrobras subiram até 1,14%",
-        "data_normalizada":"2025-10-23T18:20:00",
+        "data_normalizada":"2025-10-23T18:20:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Brent",
@@ -1630,7 +1942,10 @@
         ],
         "tickers_citados":[
             "PETR4.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "PETR4.SA":30.1900005341
+        }
     },
     {
         "title":"O avanço do vinho nacional no exterior ",
@@ -1639,7 +1954,7 @@
         "content":"Também no Breakfast: A expectativa de um bônus recorde em Wall Street | O risco da política fiscal de Lula para a perspectiva de queda da Selic | A adesão de Itaú e C6 ao novo cartão premium da Mastercard",
         "source":"BloombergLinea",
         "texto_completo":"O avanço do vinho nacional no exterior Também no Breakfast: A expectativa de um bônus recorde em Wall Street | O risco da política fiscal de Lula para a perspectiva de queda da Selic | A adesão de Itaú e C6 ao novo cartão premium da Mastercard",
-        "data_normalizada":"2025-10-24T07:19:00",
+        "data_normalizada":"2025-10-24T07:19:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "Mastercard",
@@ -1649,7 +1964,11 @@
         "tickers_citados":[
             "MSCD34.SA",
             "ITUB4.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "MSCD34.SA":99.5,
+            "ITUB4.SA":38.0129814148
+        }
     },
     {
         "title":"Morgan Stanley recomenda ações do setor financeiro ante corte de juros no Brasil",
@@ -1658,7 +1977,7 @@
         "content":"Banco de Wall Street projeta início do ciclo de cortes em março de 2026 e indica ações de XP, BTG Pactual e B3 como apostas para capturar o movimento esperado de queda na curva longa de juros",
         "source":"BloombergLinea",
         "texto_completo":"Morgan Stanley recomenda ações do setor financeiro ante corte de juros no Brasil Banco de Wall Street projeta início do ciclo de cortes em março de 2026 e indica ações de XP, BTG Pactual e B3 como apostas para capturar o movimento esperado de queda na curva longa de juros",
-        "data_normalizada":"2025-10-24T10:54:00",
+        "data_normalizada":"2025-10-24T10:54:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "B3",
@@ -1667,7 +1986,11 @@
         "tickers_citados":[
             "BPAC11.SA",
             "B3SA3.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "BPAC11.SA":47.6500015259,
+            "B3SA3.SA":12.5
+        }
     },
     {
         "title":"Os desafios de Milei pós-eleições",
@@ -1676,14 +1999,17 @@
         "content":"Também no Breakfast: O alinhamento de Trump e Lula em reunião na Malásia| Revo antecipa investimento em helicópteros no país | A cautela da Embraer com os efeitos das tarifas",
         "source":"BloombergLinea",
         "texto_completo":"Os desafios de Milei pós-eleições Também no Breakfast: O alinhamento de Trump e Lula em reunião na Malásia| Revo antecipa investimento em helicópteros no país | A cautela da Embraer com os efeitos das tarifas",
-        "data_normalizada":"2025-10-27T06:06:00",
+        "data_normalizada":"2025-10-27T06:06:00.000",
         "sentimento_previsto":"NEUTRAL",
         "empresas_citadas":[
             "Embraer"
         ],
         "tickers_citados":[
             "EMBR3.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "EMBR3.SA":86.6800003052
+        }
     },
     {
         "title":"Crises de dívida corporativa são casos pontuais, avaliam BlackRock, Itaú e Patria",
@@ -1692,7 +2018,7 @@
         "content":"Em participação no Bloomberg Línea Summit 2025, Marina Tennenbaum, do Patria, Bruno Barino, da BlackRock, e Sylvio Castro, do Itaú, avaliam que o mercado de crédito continua saudável, apesar de situações de estresse recentes ",
         "source":"BloombergLinea",
         "texto_completo":"Crises de dívida corporativa são casos pontuais, avaliam BlackRock, Itaú e Patria Em participação no Bloomberg Línea Summit 2025, Marina Tennenbaum, do Patria, Bruno Barino, da BlackRock, e Sylvio Castro, do Itaú, avaliam que o mercado de crédito continua saudável, apesar de situações de estresse recentes",
-        "data_normalizada":"2025-10-27T15:55:00",
+        "data_normalizada":"2025-10-27T15:55:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Bloomberg Línea Summit",
@@ -1700,7 +2026,10 @@
         ],
         "tickers_citados":[
             "ITUB4.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "ITUB4.SA":38.3328361511
+        }
     },
     {
         "title":"Boom de IA ainda não é bolha, mas há sinais de excesso, segundo o Goldman Sachs",
@@ -1709,7 +2038,7 @@
         "content":"Peter Oppenheimer, estrategista-chefe global de ações da Goldman Sachs Research disse, em relatório, que vê fundamentos ainda sólidos por trás do rali das big techs, embora sinais iniciais de excesso já acendam alertas",
         "source":"BloombergLinea",
         "texto_completo":"Boom de IA ainda não é bolha, mas há sinais de excesso, segundo o Goldman Sachs Peter Oppenheimer, estrategista-chefe global de ações da Goldman Sachs Research disse, em relatório, que vê fundamentos ainda sólidos por trás do rali das big techs, embora sinais iniciais de excesso já acendam alertas",
-        "data_normalizada":"2025-10-27T17:26:00",
+        "data_normalizada":"2025-10-27T17:26:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Goldman Sachs Research",
@@ -1717,7 +2046,10 @@
         ],
         "tickers_citados":[
             "GSGI34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "GSGI34.SA":141.1000061035
+        }
     },
     {
         "title":"Ações globais caem à espera de decisão do Fed e balanços das big techs; ouro cai 2,5%",
@@ -1726,7 +2058,7 @@
         "content":"Investidores aguardam balanços de Meta, Microsoft, Apple, Amazon e Alphabet que serão divulgados nesta quarta-feira (28)",
         "source":"BloombergLinea",
         "texto_completo":"Ações globais caem à espera de decisão do Fed e balanços das big techs; ouro cai 2,5% Investidores aguardam balanços de Meta, Microsoft, Apple, Amazon e Alphabet que serão divulgados nesta quarta-feira (28)",
-        "data_normalizada":"2025-10-28T06:58:00",
+        "data_normalizada":"2025-10-28T06:58:00.000",
         "sentimento_previsto":"NEGATIVE",
         "empresas_citadas":[
             "Amazon",
@@ -1740,6 +2072,12 @@
             "GOGL34.SA",
             "AMZO34.SA",
             "MSFT34.SA"
-        ]
+        ],
+        "precos_no_dia":{
+            "AAPL34.SA":71.8809432983,
+            "GOGL34.SA":119.5699996948,
+            "AMZO34.SA":61.5900001526,
+            "MSFT34.SA":121.0
+        }
     }
 ]

@@ -48,6 +48,8 @@ Halloween
 Holding
 IA PicPay
 Ibovespa
+Dólar
+Bitcoin
 Itaú
 Itaú BBA Bradesco
 JBS

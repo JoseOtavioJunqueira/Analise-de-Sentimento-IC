@@ -36,7 +36,7 @@ def extrair_empresas(texto, nlp_model):
     doc = nlp_model(texto)
     empresas = []
     for ent in doc.ents:
-        if ent.label_ == "ORG":
+        if ent.label_ == "ORG" or ent.label_ == "MISC":
             # Adiciona o nome da empresa, limpando espaços
             empresas.append(ent.text.strip())
             
