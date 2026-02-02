@@ -1,0 +1,64 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Cython
+*.so
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env
+.env.local
+.env.*.local
+
+# IDE and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project-specific: large or generated data (optional – uncomment if you don’t want to commit)
+# financial_scraper/financial_news.json
+# noticias_com_sentimento.json
+# noticias_mapeadas.json
+# dados_historicos_acoes.json
+# *.json
+
+# Scrapy
+.scrapy/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Logs
+*.log
+logs/
+
+# MongoDB (local data if any)
+data/db/
+
+# Model weights / caches (Hugging Face, etc.)
+.cache/
+*.bin
+*.pt
+*.pth
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# mypy
+.mypy_cache/
+
+# Ruff / Black
+.ruff_cache/

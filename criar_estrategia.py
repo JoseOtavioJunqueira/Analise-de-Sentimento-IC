@@ -1,30 +1,46 @@
-import pandas as pd
-import yfinance as yf
-import vectorbt as vbt
+"""
+Backtest da estratégia de day trade baseada em sentimento.
+Gera sinais de compra/venda a partir de notícias mapeadas e simula portfólio com VectorBT.
+Salva métricas em JSON para a interface Streamlit.
+"""
+import json
+import logging
+import os
 import warnings
+from datetime import datetime
 
-# Ignora alguns avisos comuns do yfinance
-warnings.simplefilter(action='ignore', category=FutureWarning)
+import pandas as pd
+import vectorbt as vbt
+import yfinance as yf
 
-# --- 1. CONFIGURAÇÕES ---
-ARQUIVO_NOTICIAS = "noticias_mapeadas.json"
-ARQUIVO_RESULTADOS = "resultados_backtest_v1.html"
+from config import (
+    ARQUIVO_JSON_MAPEADAS,
+    ARQUIVO_RESULTADOS_BACKTEST,
+    ARQUIVO_ULTIMO_BACKTEST_JSON,
+    ARQUIVO_STATUS,
+)
 
-# Define os limites da sua estratégia
-# Vamos começar com regras simples:
-LIMITE_COMPRA = 1  # Comprar se score agregado do dia for > 1
-LIMITE_VENDA = -1 # Vender (fechar posição) se score agregado for < -1
+warnings.simplefilter(action="ignore", category=FutureWarning)
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+logger = logging.getLogger(__name__)
+
+ARQUIVO_NOTICIAS = ARQUIVO_JSON_MAPEADAS
+ARQUIVO_RESULTADOS = ARQUIVO_RESULTADOS_BACKTEST
+
+# Limites da estratégia: compra se score agregado > LIMITE_COMPRA; venda se < LIMITE_VENDA
+LIMITE_COMPRA = 1
+LIMITE_VENDA = -1
 
 # --- 2. CARREGAR E PROCESSAR DADOS DE SENTIMENTO ---
 
-print(f"Carregando notícias de '{ARQUIVO_NOTICIAS}'...")
+logger.info("Carregando notícias de '%s'...", ARQUIVO_NOTICIAS)
 try:
     df_noticias = pd.read_json(ARQUIVO_NOTICIAS)
 except Exception as e:
-    print(f"ERRO ao ler '{ARQUIVO_NOTICIAS}': {e}")
-    exit()
+    logger.exception("Erro ao ler '%s': %s", ARQUIVO_NOTICIAS, e)
+    raise SystemExit(1)
 
-print("Processando e agregando sinais de sentimento...")
+logger.info("Processando e agregando sinais de sentimento...")
 
 # 2.1. Mapear sentimento (texto) para score (número)
 sentimento_map = {'POSITIVE': 1, 'NEGATIVE': -1, 'NEUTRAL': 0}
@@ -66,8 +82,7 @@ tickers_unicos = list(df_sentimento_pivot.columns)
 start_date = df_sentimento_pivot.index.min()
 end_date = df_sentimento_pivot.index.max() 
 
-print(f"Baixando dados de preço para {len(tickers_unicos)} tickers...")
-print(f"Período: {start_date.date()} até {end_date.date()}")
+logger.info("Baixando dados de preço para %d tickers. Período: %s até %s", len(tickers_unicos), start_date.date(), end_date.date())
 
 # Baixa os preços de FECHAMENTO ('Close') para todos os tickers
 # O 'yf.download' já nos dá o formato "Wide" que precisamos
@@ -75,7 +90,7 @@ precos = yf.download(tickers_unicos, start=start_date, end=end_date, repair=True
 
 # --- 4. ALINHAR DADOS E DEFINIR ESTRATÉGIA ---
 
-print("Alinhando preços e sinais...")
+logger.info("Alinhando preços e sinais...")
 
 # 4.1. Alinhar os dois DataFrames
 # 'join='inner'': Só vamos operar em dias que temos AMBOS (preço e sentimento)
@@ -95,11 +110,11 @@ sinais_atrasados = sinais.shift(1).fillna(0)
 entries = (sinais_atrasados > LIMITE_COMPRA)
 exits = (sinais_atrasados < LIMITE_VENDA)
 
-print("Sinais de Compra/Venda gerados.")
+logger.info("Sinais de compra/venda gerados.")
 
 # --- 5. RODAR O BACKTEST (SIMULAÇÃO) ---
 
-print("Iniciando simulação do portfólio (Backtest)...")
+logger.info("Iniciando simulação do portfólio (Backtest)...")
 
 # 'from_signals' é a função mágica do vectorbt.
 # Ele simula a compra e venda baseado nos nossos sinais (entries/exits)
@@ -114,11 +129,11 @@ pf = vbt.Portfolio.from_signals(
     slippage=0.001 # Simula "derrapagem" de 0.1%
 )
 
-print("Simulação concluída!")
+logger.info("Simulação concluída.")
 
 # --- 6. ANALISAR RESULTADOS (LUCRO/PERCA) ---
 
-print("Gerando relatório de resultados...")
+logger.info("Gerando relatório de resultados...")
 
 # Pega as estatísticas completas
 stats = pf.stats()
@@ -130,17 +145,37 @@ pf.plot(
     )
 ).save(ARQUIVO_RESULTADOS)
 
-print("\n" + "="*50)
-print("     RESULTADOS DO BACKTEST (ESTRATÉGIA V1)     ")
-print("="*50)
+logger.info(
+    "RESULTADOS: Período %s a %s | Retorno %.2f%% | Win Rate %.2f%% | Max DD %.2f%% | Sharpe %.2f | Trades %s",
+    stats["Start"], stats["End"],
+    stats["Total Return [%]"], stats["Win Rate [%]"],
+    stats["Max Drawdown [%]"], stats["Sharpe Ratio"],
+    stats["Total Trades"],
+)
+logger.info("Relatório completo salvo em: %s", ARQUIVO_RESULTADOS)
 
-# Imprime as métricas mais importantes
-print(f"Período Analisado:    {stats['Start']} até {stats['End']}")
-print(f"Retorno Total (%):    {stats['Total Return [%]']:.2f}%")
-print(f"Taxa de Acerto (%):   {stats['Win Rate [%]']:.2f}%")
-print(f"Pior Queda (Max DD %): {stats['Max Drawdown [%]']:.2f}%")
-print(f"Sharpe Ratio:         {stats['Sharpe Ratio']:.2f}")
-print(f"Total de Trades:      {stats['Total Trades']}")
+# Salvar métricas em JSON para a interface Streamlit
+backtest_json = {
+    "data_geracao": datetime.now().isoformat(),
+    "inicio": str(stats.get("Start", "")),
+    "fim": str(stats.get("End", "")),
+    "retorno_total_pct": float(stats.get("Total Return [%]", 0)),
+    "win_rate_pct": float(stats.get("Win Rate [%]", 0)),
+    "max_drawdown_pct": float(stats.get("Max Drawdown [%]", 0)),
+    "sharpe_ratio": float(stats.get("Sharpe Ratio", 0)),
+    "total_trades": int(stats.get("Total Trades", 0)),
+    "arquivo_html": ARQUIVO_RESULTADOS,
+}
+with open(ARQUIVO_ULTIMO_BACKTEST_JSON, "w", encoding="utf-8") as f:
+    json.dump(backtest_json, f, ensure_ascii=False, indent=2)
+logger.info("Métricas do backtest salvas em: %s", ARQUIVO_ULTIMO_BACKTEST_JSON)
 
-print("\n🚀 Relatório completo salvo em:")
-print(f"{ARQUIVO_RESULTADOS}")
+# Atualizar status
+if os.path.exists(ARQUIVO_STATUS):
+    with open(ARQUIVO_STATUS, "r", encoding="utf-8") as f:
+        status = json.load(f)
+else:
+    status = {}
+status["ultimo_backtest"] = backtest_json["data_geracao"]
+with open(ARQUIVO_STATUS, "w", encoding="utf-8") as f:
+    json.dump(status, f, ensure_ascii=False, indent=2)

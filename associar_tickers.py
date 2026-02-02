@@ -1,34 +1,53 @@
-import spacy
-import pandas as pd
+"""
+Associa notícias classificadas a tickers de ações/ETFs via NER (spaCy) e mapeamento.
+"""
 import json
+import logging
 import os
+from typing import Any, List, Optional
 
-# --- 1. CONFIGURAÇÃO ---
-ARQUIVO_ENTRADA = "noticias_com_sentimento.json"
-MAPA_TICKERS_ARQ = "mapeamento_tickers.json"
-ARQUIVO_SAIDA = "noticias_mapeadas.json"
+import pandas as pd
+import spacy
+
+from config import (
+    ARQUIVO_JSON_MAPEADAS,
+    ARQUIVO_JSON_SENTIMENTO,
+    ARQUIVO_MAPEAMENTO_TICKERS,
+)
+
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+logger = logging.getLogger(__name__)
+
+ARQUIVO_ENTRADA = ARQUIVO_JSON_SENTIMENTO
+MAPA_TICKERS_ARQ = ARQUIVO_MAPEAMENTO_TICKERS
+ARQUIVO_SAIDA = ARQUIVO_JSON_MAPEADAS
 
 # --- 2. FUNÇÕES DE PROCESSAMENTO ---
 
-def carregar_modelo_spacy():
-    """Carrega o modelo 'pt_core_news_lg' do spaCy."""
-    print("Carregando modelo spaCy 'pt_core_news_lg'...")
+def carregar_modelo_spacy() -> Any:
+    """Carrega o modelo 'pt_core_news_lg' do spaCy para NER em português."""
+    logger.info("Carregando modelo spaCy 'pt_core_news_lg'...")
     try:
-        # Tenta carregar o modelo
         nlp = spacy.load("pt_core_news_lg")
-        print("Modelo spaCy carregado com sucesso.")
+        logger.info("Modelo spaCy carregado com sucesso.")
         return nlp
     except OSError:
-        print("\n--- ERRO ---")
-        print("Modelo 'pt_core_news_lg' do spaCy não encontrado.")
-        print("Execute o comando abaixo no seu terminal para instalá-lo:")
-        print("pip install https://github.com/explosion/spacy-models/releases/download/pt_core_news_lg-v3.7.0/pt_core_news_lg-3.7.0.tar.gz")
-        print("------------\n")
-        exit() # Encerra o script se o modelo não estiver instalado
+        logger.error(
+            "Modelo 'pt_core_news_lg' não encontrado. Instale com: "
+            "pip install https://github.com/explosion/spacy-models/releases/download/pt_core_news_lg-v3.7.0/pt_core_news_lg-3.7.0.tar.gz"
+        )
+        raise SystemExit(1)
 
-def extrair_empresas(texto, nlp_model):
+def extrair_empresas(texto: Optional[str], nlp_model: Any) -> List[str]:
     """
-    Usa o modelo spaCy (NER) para extrair entidades 'ORG' (Organização) do texto.
+    Extrai entidades ORG/MISC do texto usando NER do spaCy.
+
+    Args:
+        texto: Texto a processar.
+        nlp_model: Modelo spaCy carregado.
+
+    Returns:
+        Lista de nomes de empresas/organizações únicos.
     """
     if not isinstance(texto, str) or not texto:
         return []
@@ -43,25 +62,31 @@ def extrair_empresas(texto, nlp_model):
     # Remove duplicatas e retorna a lista
     return list(set(empresas))
 
-def carregar_mapa_tickers(arquivo_mapa):
+def carregar_mapa_tickers(arquivo_mapa: str) -> dict:
     """
-    Carrega o arquivo JSON de mapeamento de Nomes para Tickers.
+    Carrega o arquivo JSON de mapeamento nome de empresa -> ticker.
+
+    Args:
+        arquivo_mapa: Caminho do arquivo mapeamento_tickers.json.
+
+    Returns:
+        Dicionário {nome_empresa: ticker}.
+
+    Raises:
+        SystemExit: Se o arquivo não existir.
     """
     if not os.path.exists(arquivo_mapa):
-        print(f"ERRO: Arquivo de mapeamento '{arquivo_mapa}' não encontrado.")
-        print("Certifique-se de que ele está na mesma pasta que este script.")
-        exit()
-        
-    print(f"Carregando mapa de tickers de '{arquivo_mapa}'...")
-    with open(arquivo_mapa, 'r', encoding='utf-8') as f:
+        logger.error("Arquivo de mapeamento '%s' não encontrado.", arquivo_mapa)
+        raise SystemExit(1)
+    logger.info("Carregando mapa de tickers de '%s'...", arquivo_mapa)
+    with open(arquivo_mapa, "r", encoding="utf-8") as f:
         mapa_tickers = json.load(f)
-    print("Mapa carregado.")
+    logger.info("Mapa carregado.")
     return mapa_tickers
 
-def mapear_tickers(lista_empresas, mapa_tickers):
+def mapear_tickers(lista_empresas: List[str], mapa_tickers: dict) -> List[str]:
     """
-    Converte uma lista de nomes de empresas em uma lista de tickers,
-    usando o mapa. Ignora valores 'null'.
+    Converte nomes de empresas em tickers usando o mapa. Ignora entradas null.
     """
     tickers = []
     for empresa in lista_empresas:
@@ -84,53 +109,31 @@ if __name__ == "__main__":
     nlp = carregar_modelo_spacy()
     mapa_tickers = carregar_mapa_tickers(MAPA_TICKERS_ARQ)
     
-    print(f"Lendo notícias de entrada: '{ARQUIVO_ENTRADA}'...")
+    logger.info("Lendo notícias de entrada: '%s'...", ARQUIVO_ENTRADA)
     try:
         df = pd.read_json(ARQUIVO_ENTRADA)
     except Exception as e:
-        print(f"ERRO ao ler o arquivo '{ARQUIVO_ENTRADA}': {e}")
-        exit()
-        
-    if 'texto_completo' not in df.columns:
-        print("ERRO: O arquivo de entrada não contém a coluna 'texto_completo'.")
-        exit()
+        logger.exception("Erro ao ler '%s': %s", ARQUIVO_ENTRADA, e)
+        raise SystemExit(1)
+    if "texto_completo" not in df.columns:
+        logger.error("Arquivo de entrada não contém a coluna 'texto_completo'.")
+        raise SystemExit(1)
+    logger.info("Encontradas %d notícias para processar.", len(df))
 
-    print(f"Encontradas {len(df)} notícias para processar.")
+    logger.info("Iniciando extração de entidades (NER) com spaCy...")
+    df["empresas_citadas"] = df["texto_completo"].apply(lambda t: extrair_empresas(t, nlp))
+    logger.info("Extração de entidades concluída.")
 
-    # --- PASSO 2: EXTRAIR ENTIDADES (NER) ---
-    print("Iniciando extração de entidades (NER) com spaCy...")
-    print("(Isso pode demorar alguns minutos se o arquivo for grande...)")
-    df['empresas_citadas'] = df['texto_completo'].apply(lambda texto: extrair_empresas(texto, nlp))
-    print("Extração de entidades concluída.")
+    logger.info("Iniciando mapeamento de tickers...")
+    df["tickers_citados"] = df["empresas_citadas"].apply(lambda l: mapear_tickers(l, mapa_tickers))
+    logger.info("Mapeamento concluído.")
 
-    # --- PASSO 3: MAPEAMENTO EMPRESA -> TICKER ---
-    print("Iniciando mapeamento de tickers...")
-    df['tickers_citados'] = df['empresas_citadas'].apply(lambda lista: mapear_tickers(lista, mapa_tickers))
-    print("Mapeamento concluído.")
-
-    # --- PASSO 4: FILTRAR E SALVAR ---
-    
-    # Filtra o DataFrame, mantendo APENAS notícias que
-    # resultaram em pelo menos UM ticker mapeado.
-    df_mapeado = df[df['tickers_citados'].apply(len) > 0].copy()
-
-    # Reinicia o índice para um arquivo limpo (opcional)
+    df_mapeado = df[df["tickers_citados"].apply(len) > 0].copy()
     df_mapeado.reset_index(drop=True, inplace=True)
 
-    print("-" * 50)
-    print(f"Processo finalizado.")
-    print(f"Notícias originais: {len(df)}")
-    print(f"Notícias acionáveis (mapeadas): {len(df_mapeado)}")
-    print(f"Notícias filtradas (sem ticker): {len(df) - len(df_mapeado)}")
-    
-    # Salva o resultado final
-    print(f"\nSalvando notícias mapeadas em '{ARQUIVO_SAIDA}'...")
-    df_mapeado.to_json(
-        ARQUIVO_SAIDA,
-        orient='records',
-        indent=4,
-        force_ascii=False # Mantém acentos
+    logger.info(
+        "Processo finalizado. Originais: %d | Mapeadas: %d | Filtradas: %d",
+        len(df), len(df_mapeado), len(df) - len(df_mapeado),
     )
-
-    print("\n🚀 Sucesso! O arquivo 'noticias_mapeadas.json' está pronto.")
-    print("Próximo passo: 'criar_estrategia.py' (Backtesting).")
+    df_mapeado.to_json(ARQUIVO_SAIDA, orient="records", indent=4, force_ascii=False)
+    logger.info("Notícias mapeadas salvas em '%s'. Próximo passo: criar_estrategia.py", ARQUIVO_SAIDA)

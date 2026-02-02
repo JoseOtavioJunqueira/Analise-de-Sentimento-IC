@@ -1,16 +1,28 @@
+# Análise de Sentimento e NLP
 transformers>=4.30.0
 torch>=1.13.0
+
+# Dados e numérico
 numpy>=1.22.0
 pandas>=1.3.0
+
+# Web scraping
 scrapy>=2.5.0
+
+# Mercado financeiro e datas
 yfinance>=0.2.0
-dateparser
+dateparser>=1.0.0
 
-pip install spacy
-python -m spacy download pt_core_news_lg
+# Opcional: spaCy para PLN em português
+# pip install spacy && python -m spacy download pt_core_news_lg
+# spacy>=3.5.0
 
+# Testes
+pytest>=7.0.0
 
-pip install -U yfinance certifi requests
+# Interface (dashboard)
+streamlit>=1.28.0
 
-
-pip install yfinance vectorbt
+# Treino do modelo de decisão (sentimento → compra/venda/segurar)
+scikit-learn>=1.0.0
+joblib>=1.0.0

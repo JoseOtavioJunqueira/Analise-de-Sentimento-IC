@@ -1,24 +1,45 @@
-import pandas as pd
+"""
+Pipeline de classificação de sentimento em notícias financeiras com FinBERT-PT-BR.
+Carrega notícias brutas, normaliza datas, aplica o modelo e salva resultado com sentimento.
+"""
+import io
+import logging
+import os
+import re
+from datetime import datetime
+from typing import Optional, Tuple
+
+import dateparser
 import numpy as np
+import pandas as pd
 import torch
 from transformers import AutoTokenizer, BertForSequenceClassification
-import io
-import re  # Módulo de expressões regulares
-import os  # Para verificar se o arquivo existe
-import dateparser # Nova biblioteca para normalizar datas
-from datetime import datetime
 
-# --- 1. CONFIGURAÇÃO DOS ARQUIVOS ---
-arquivo_json_entrada = r'C:\Users\José Otávio\Documents\GitHub\Analise-de-Sentimento-IC\financial_scraper\financial_news.json'
-arquivo_json_saida = 'noticias_com_sentimento.json'
+from config import (
+    ARQUIVO_JSON_NOTICIAS,
+    ARQUIVO_JSON_SENTIMENTO,
+    FINBERT_MODEL_NAME,
+    RANDOM_SEED,
+)
+
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+logger = logging.getLogger(__name__)
+
+# Seeds para reprodutibilidade (Santos 2022 — FinBERT; classificações consistentes)
+np.random.seed(RANDOM_SEED)
+torch.manual_seed(RANDOM_SEED)
+if torch.cuda.is_available():
+    torch.cuda.manual_seed_all(RANDOM_SEED)
+
+arquivo_json_entrada = ARQUIVO_JSON_NOTICIAS
+arquivo_json_saida = ARQUIVO_JSON_SENTIMENTO
 
 # --- 2. NOVAS FUNÇÕES DE AJUDA ---
 
-def normalizar_data(data_str):
+def normalizar_data(data_str: Optional[str]) -> Optional[str]:
     """
-    Tenta converter vários formatos de string OU NÚMERO de data para um 
-    formato padronizado (ISO 8601).
-    Agora trata timestamps de 10 (segundos) e 13 (milissegundos) dígitos.
+    Converte string ou número de data para formato ISO 8601.
+    Aceita timestamps Unix (10 ou 13 dígitos) e strings em português (dateparser).
     """
     if not data_str:
         return None
@@ -70,167 +91,114 @@ def normalizar_data(data_str):
         # Falha final, não foi possível converter
         return None
     
-def carregar_noticias_existentes(arquivo_saida):
+def carregar_noticias_existentes(arquivo_saida: str) -> Tuple[pd.DataFrame, set]:
     """
-    Carrega as notícias já processadas do arquivo de saída.
-    Retorna um DataFrame com os dados e um set() com os títulos para deduplicação.
+    Carrega notícias já processadas para deduplicação.
+    Retorna (DataFrame existente, set de títulos).
     """
     if not os.path.exists(arquivo_saida):
-        print(f"Arquivo '{arquivo_saida}' não encontrado. Um novo será criado.")
+        logger.info("Arquivo '%s' não encontrado. Um novo será criado.", arquivo_saida)
         return pd.DataFrame(), set()
-        
     try:
-        df_existente = pd.read_json(arquivo_saida, orient='records')
-        # Cria um conjunto de títulos para verificação rápida de duplicatas
-        titulos_existentes = set(df_existente['title'].dropna())
-        print(f"Encontradas {len(df_existente)} notícias já processadas.")
+        df_existente = pd.read_json(arquivo_saida, orient="records")
+        titulos_existentes = set(df_existente["title"].dropna())
+        logger.info("Encontradas %d notícias já processadas.", len(df_existente))
         return df_existente, titulos_existentes
     except Exception as e:
-        print(f"AVISO: Não foi possível ler o arquivo '{arquivo_saida}'. Ele pode estar vazio ou corrompido. Começando do zero. Erro: {e}")
+        logger.warning("Não foi possível ler '%s'. Começando do zero. Erro: %s", arquivo_saida, e)
         return pd.DataFrame(), set()
 
-def ler_novas_noticias(arquivo_entrada):
-    """
-    Lê o arquivo de entrada bruto, tratando múltiplos blocos JSON.
-    """
-    print(f"Lendo e extraindo blocos do arquivo '{arquivo_entrada}'...")
+def ler_novas_noticias(arquivo_entrada: str) -> Optional[pd.DataFrame]:
+    """Lê o arquivo de entrada bruto, extraindo blocos JSON (suporta múltiplos arrays)."""
+    logger.info("Lendo e extraindo blocos do arquivo '%s'...", arquivo_entrada)
     try:
         with open(arquivo_entrada, 'r', encoding='utf-8') as f:
             conteudo_bruto = f.read()
 
         if not conteudo_bruto.strip():
-            print("Arquivo de entrada está vazio. Nada a processar.")
+            logger.info("Arquivo de entrada está vazio. Nada a processar.")
             return None
-
-        # Encontra todas as ocorrências de texto que começam com '[' e terminam com ']'
-        blocos_json_encontrados = re.findall(r'(\[.*?\])', conteudo_bruto, re.DOTALL)
-        
+        blocos_json_encontrados = re.findall(r"(\[.*?\])", conteudo_bruto, re.DOTALL)
         if not blocos_json_encontrados:
-            print("Nenhum bloco de dados JSON válido (começando com '[' e terminando com ']') foi encontrado no arquivo de entrada.")
+            logger.warning("Nenhum bloco JSON válido encontrado no arquivo de entrada.")
             return None
-
-        lista_de_dfs = []
-        for i, bloco in enumerate(blocos_json_encontrados):
-            df_bloco = pd.read_json(io.StringIO(bloco))
-            lista_de_dfs.append(df_bloco)
-        
+        lista_de_dfs = [pd.read_json(io.StringIO(bloco)) for bloco in blocos_json_encontrados]
         df_novas = pd.concat(lista_de_dfs, ignore_index=True)
-        print(f"Arquivo de entrada consolidado com sucesso ({len(df_novas)} notícias brutas).")
+        logger.info("Arquivo de entrada consolidado: %d notícias brutas.", len(df_novas))
         return df_novas
-
     except FileNotFoundError:
-        print(f"ERRO: Arquivo '{arquivo_entrada}' não encontrado.")
+        logger.error("Arquivo '%s' não encontrado.", arquivo_entrada)
         return None
     except Exception as e:
-        print(f"ERRO ao processar o arquivo de entrada JSON: {e}")
+        logger.exception("Erro ao processar JSON de entrada: %s", e)
         return None
 
-def limpar_arquivo_entrada(arquivo_entrada):
-    """
-    Limpa o arquivo de entrada após o processamento bem-sucedido.
-    """
+def limpar_arquivo_entrada(arquivo_entrada: str) -> None:
+    """Limpa o arquivo de entrada (escreve []) após processamento bem-sucedido."""
     try:
-        # Escreve uma lista vazia para manter o arquivo como um JSON válido (opcional)
-        with open(arquivo_entrada, 'w', encoding='utf-8') as f:
-            f.write("[]") 
-        print(f"Arquivo de entrada '{arquivo_entrada}' foi limpo.")
+        with open(arquivo_entrada, "w", encoding="utf-8") as f:
+            f.write("[]")
+        logger.info("Arquivo de entrada '%s' foi limpo.", arquivo_entrada)
     except Exception as e:
-        print(f"ERRO ao limpar o arquivo de entrada '{arquivo_entrada}': {e}")
+        logger.error("Erro ao limpar '%s': %s", arquivo_entrada, e)
 
 
-# --- 3. INÍCIO DO PIPELINE DE PROCESSAMENTO ---
+def run_pipeline() -> None:
+    """Executa o pipeline completo: carrega notícias, classifica sentimento e salva."""
+    df_existente, titulos_existentes = carregar_noticias_existentes(arquivo_json_saida)
+    df_novas_noticias = ler_novas_noticias(arquivo_json_entrada)
 
-# 3.1. Carregar dados existentes para evitar duplicatas
-df_existente, titulos_existentes = carregar_noticias_existentes(arquivo_json_saida)
+    if df_novas_noticias is None or df_novas_noticias.empty:
+        logger.info("Nenhuma notícia nova para processar. Encerrando.")
+        return
 
-# 3.2. Ler as novas notícias do arquivo de entrada
-df_novas_noticias = ler_novas_noticias(arquivo_json_entrada)
+    df_para_processar = df_novas_noticias[~df_novas_noticias["title"].isin(titulos_existentes)].reset_index(drop=True)
+    if df_para_processar.empty:
+        logger.info("Todas as notícias já foram processadas. Limpando entrada e encerrando.")
+        limpar_arquivo_entrada(arquivo_json_entrada)
+        return
 
-# Se não houver novas notícias, encerra o script
-if df_novas_noticias is None or df_novas_noticias.empty:
-    print("Nenhuma notícia nova encontrada para processar. Encerrando.")
-    exit()
+    logger.info("Notícias novas para processar: %d.", len(df_para_processar))
+    logger.info("Limpando e preparando os textos...")
+    df_para_processar["title"] = df_para_processar["title"].fillna("")
+    df_para_processar["content"] = df_para_processar["content"].fillna("")
+    df_para_processar["texto_completo"] = (df_para_processar["title"].str.strip() + " " + df_para_processar["content"].str.strip()).str.strip()
+    linhas_antes = len(df_para_processar)
+    df_para_processar = df_para_processar[df_para_processar["texto_completo"] != ""].reset_index(drop=True)
+    logger.info("%d linhas vazias removidas.", linhas_antes - len(df_para_processar))
 
-# 3.3. **NOVO: Deduplicação**
-# Filtra o DataFrame de novas notícias, mantendo apenas aquelas
-# cujo 'title' NÃO ESTÁ no conjunto de 'titulos_existentes'.
-df_para_processar = df_novas_noticias[~df_novas_noticias['title'].isin(titulos_existentes)].reset_index(drop=True)
+    if "date" in df_para_processar.columns:
+        logger.info("Normalizando datas...")
+        df_para_processar["data_normalizada"] = df_para_processar["date"].apply(normalizar_data)
+    else:
+        logger.warning("Coluna 'date' não encontrada. Pulando normalização de data.")
 
-if df_para_processar.empty:
-    print("Todas as notícias do arquivo de entrada já foram processadas anteriormente.")
-    # Limpamos o arquivo de entrada mesmo assim, pois já foram processadas
-    limpar_arquivo_entrada(arquivo_json_entrada)
-    print("Encerrando.")
-    exit()
+    pred_mapper = {0: "POSITIVE", 1: "NEGATIVE", 2: "NEUTRAL"}
+    logger.info("Carregando o modelo %s (pode demorar na primeira vez)...", FINBERT_MODEL_NAME)
+    tokenizer = AutoTokenizer.from_pretrained(FINBERT_MODEL_NAME)
+    model = BertForSequenceClassification.from_pretrained(FINBERT_MODEL_NAME)
+    model.eval()
 
-print(f"Encontradas {len(df_para_processar)} notícias realmente novas para processar.")
+    def prever_sentimento(texto: str) -> str:
+        if not isinstance(texto, str) or not texto:
+            return "TEXTO_INVALIDO"
+        inputs = tokenizer(texto, return_tensors="pt", padding=True, truncation=True, max_length=512)
+        with torch.no_grad():
+            outputs = model(**inputs)
+        prediction = int(np.argmax(outputs.logits.numpy()))
+        return pred_mapper.get(prediction, "NEUTRAL")
 
-# --- 4. LIMPEZA E PREPARAÇÃO DOS DADOS (Agora em 'df_para_processar') ---
-print("Limpando e preparando os textos...")
-df_para_processar['title'] = df_para_processar['title'].fillna('')
-df_para_processar['content'] = df_para_processar['content'].fillna('')
-df_para_processar['texto_completo'] = (df_para_processar['title'].str.strip() + ' ' + df_para_processar['content'].str.strip()).str.strip()
+    logger.info("Classificando sentimento em %d notícias...", len(df_para_processar))
+    df_processado = df_para_processar.copy()
+    df_processado["sentimento_previsto"] = df_processado["texto_completo"].apply(prever_sentimento)
 
-linhas_antes = len(df_para_processar)
-df_para_processar = df_para_processar[df_para_processar['texto_completo'] != ''].reset_index(drop=True)
-linhas_depois = len(df_para_processar)
-print(f"{linhas_antes - linhas_depois} linhas vazias foram removidas.")
-
-# 4.1. **NOVO: Normalização da Data**
-# Vamos supor que sua coluna de data se chama 'date'. 
-# Se o nome for outro (ex: 'data', 'timestamp'), apenas troque 'date' abaixo.
-if 'date' in df_para_processar.columns:
-    print("Normalizando datas...")
-    df_para_processar['data_normalizada'] = df_para_processar['date'].apply(normalizar_data)
-else:
-    print("AVISO: Coluna 'date' não encontrada. Pulando normalização de data.")
-
-
-# --- 5. LÓGICA DO MODELO DE SENTIMENTO ---
-pred_mapper = {0: "POSITIVE", 1: "NEGATIVE", 2: "NEUTRAL"}
-
-print("Carregando o modelo FinBERT... (Isso pode demorar um pouco)")
-tokenizer = AutoTokenizer.from_pretrained("lucas-leme/FinBERT-PT-BR")
-model = BertForSequenceClassification.from_pretrained("lucas-leme/FinBERT-PT-BR")
-
-def prever_sentimento(texto):
-    if not isinstance(texto, str) or not texto:
-        return "TEXTO_INVALIDO"
-    inputs = tokenizer(texto, return_tensors="pt", padding=True, truncation=True, max_length=512)
-    with torch.no_grad():
-        outputs = model(**inputs)
-    logits = outputs.logits
-    prediction = np.argmax(logits.numpy())
-    return pred_mapper[prediction]
-
-# --- 6. APLICAÇÃO DO MODELO ---
-print(f"Iniciando a classificação de sentimento em {len(df_para_processar)} notícias...")
-# Usamos .copy() para evitar o SettingWithCopyWarning
-df_processado = df_para_processar.copy()
-df_processado['sentimento_previsto'] = df_processado['texto_completo'].apply(prever_sentimento)
-
-
-# --- 7. **NOVO: COMBINAR E SALVAR O RESULTADO FINAL** ---
-print("Combinando notícias existentes com as novas processadas...")
-# Concatena o DataFrame antigo com o novo DataFrame já processado
-df_final_completo = pd.concat([df_existente, df_processado], ignore_index=True)
-
-print(f"Salvando {len(df_final_completo)} notícias no total em '{arquivo_json_saida}'...")
-try:
-    df_final_completo.to_json(
-        arquivo_json_saida,
-        orient='records',
-        indent=4,
-        force_ascii=False
-    )
-    
-    print("\n🚀 Processo concluído com sucesso!")
-    print(f"✅ O arquivo '{arquivo_json_saida}' foi atualizado.")
-
-    # 7.1. **NOVO: Limpar arquivo de entrada**
-    # Somente limpa o arquivo de entrada se o salvamento foi bem-sucedido
+    logger.info("Combinando notícias existentes com as novas processadas...")
+    df_final_completo = pd.concat([df_existente, df_processado], ignore_index=True)
+    logger.info("Salvando %d notícias em '%s'...", len(df_final_completo), arquivo_json_saida)
+    df_final_completo.to_json(arquivo_json_saida, orient="records", indent=4, force_ascii=False)
+    logger.info("Processo concluído. Arquivo atualizado: %s", arquivo_json_saida)
     limpar_arquivo_entrada(arquivo_json_entrada)
 
-except Exception as e:
-    print(f"\nERRO CRÍTICO ao salvar o arquivo final: {e}")
-    print("ATENÇÃO: O arquivo de entrada NÃO foi limpo para evitar perda de dados.")
+
+if __name__ == "__main__":
+    run_pipeline()
