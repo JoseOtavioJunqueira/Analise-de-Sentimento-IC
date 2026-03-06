@@ -1,0 +1,172 @@
+{
+  "data_recomendacao": "2026-03-06T14:40:03.397067",
+  "quando": "2025-10-29",
+  "por_quanto_tempo": "1 dia (day trade)",
+  "investir": [
+    {
+      "ticker": "BPAC11.SA",
+      "acao": "segurar",
+      "score": 0.0,
+      "quantidade_noticias": 3,
+      "usou_modelo_treinado": false
+    },
+    {
+      "ticker": "BYDD34.SA",
+      "acao": "segurar",
+      "score": 0.0,
+      "quantidade_noticias": 2,
+      "usou_modelo_treinado": false
+    },
+    {
+      "ticker": "MSFT34.SA",
+      "acao": "venda",
+      "score": -3.0,
+      "quantidade_noticias": 3,
+      "usou_modelo_treinado": false
+    },
+    {
+      "ticker": "NVDC34.SA",
+      "acao": "compra",
+      "score": 2.0,
+      "quantidade_noticias": 6,
+      "usou_modelo_treinado": false
+    },
+    {
+      "ticker": "PETR4.SA",
+      "acao": "segurar",
+      "score": 0.0,
+      "quantidade_noticias": 2,
+      "usou_modelo_treinado": false
+    },
+    {
+      "ticker": "ROXO34.SA",
+      "acao": "segurar",
+      "score": 0.0,
+      "quantidade_noticias": 2,
+      "usou_modelo_treinado": false
+    }
+  ],
+  "onde": [
+    "NVDC34.SA",
+    "MSFT34.SA"
+  ],
+  "por_que": {
+    "BPAC11.SA": [
+      {
+        "titulo": "Você ainda investe só no Brasil? Veja por que é hora de olhar para fora com o guia do BTG Pactual",
+        "url": "https://exame.com/invest/btg-insights/voce-ainda-investe-so-no-brasil-veja-por-que-e-hora-de-olhar-para-fora-com-o-guia-do-btg-pactual/",
+        "sentimento": "NEUTRAL"
+      },
+      {
+        "titulo": "Você ainda investe só no Brasil? Veja por que é hora de olhar para fora com o guia do BTG Pactual",
+        "url": "https://exame.com/invest/btg-insights/voce-ainda-investe-so-no-brasil-veja-por-que-e-hora-de-olhar-para-fora-com-o-guia-do-btg-pactual/",
+        "sentimento": "NEUTRAL"
+      },
+      {
+        "titulo": "Você ainda investe só no Brasil? Veja por que é hora de olhar para fora com o guia do BTG Pactual",
+        "url": "https://exame.com/invest/btg-insights/voce-ainda-investe-so-no-brasil-veja-por-que-e-hora-de-olhar-para-fora-com-o-guia-do-btg-pactual/",
+        "sentimento": "NEUTRAL"
+      }
+    ],
+    "BYDD34.SA": [
+      {
+        "titulo": "A ambição da BYD para sua fábrica na Bahia",
+        "url": "https://www.bloomberglinea.com.br/mercados/a-ambicao-da-byd-para-sua-fabrica-na-bahia/",
+        "sentimento": "NEUTRAL"
+      },
+      {
+        "titulo": "A ambição da BYD para sua fábrica na Bahia",
+        "url": "https://www.bloomberglinea.com.br/mercados/a-ambicao-da-byd-para-sua-fabrica-na-bahia/",
+        "sentimento": "NEUTRAL"
+      }
+    ],
+    "MSFT34.SA": [
+      {
+        "titulo": "Fed deve cortar juros, Microsoft divulga balanço: o que move o mercado",
+        "url": "https://exame.com/invest/mercados/fed-deve-cortar-juros-microsoft-divulga-balanco-o-que-move-o-mercado/",
+        "sentimento": "NEGATIVE"
+      },
+      {
+        "titulo": "Fed deve cortar juros, Microsoft divulga balanço: o que move o mercado",
+        "url": "https://exame.com/invest/mercados/fed-deve-cortar-juros-microsoft-divulga-balanco-o-que-move-o-mercado/",
+        "sentimento": "NEGATIVE"
+      },
+      {
+        "titulo": "Fed deve cortar juros, Microsoft divulga balanço: o que move o mercado",
+        "url": "https://exame.com/invest/mercados/fed-deve-cortar-juros-microsoft-divulga-balanco-o-que-move-o-mercado/",
+        "sentimento": "NEGATIVE"
+      }
+    ],
+    "NVDC34.SA": [
+      {
+        "titulo": "Nvidia se aproxima de valor de mercado histórico de US$ 5 trilhões",
+        "url": "https://exame.com/invest/mercados/nvidia-se-aproxima-de-valor-de-mercado-historico-de-us-5-trilhoes/",
+        "sentimento": "POSITIVE"
+      },
+      {
+        "titulo": "Nvidia se aproxima de valor de mercado histórico de US$ 5 trilhões",
+        "url": "https://exame.com/invest/mercados/nvidia-se-aproxima-de-valor-de-mercado-historico-de-us-5-trilhoes/",
+        "sentimento": "POSITIVE"
+      },
+      {
+        "titulo": "Ações na Europa sobem com rali tech e expectativa de corte de juros pelo Fed",
+        "url": "https://www.bloomberglinea.com.br/mercados/acoes-na-europa-sobem-com-rali-tech-e-expectativa-de-corte-de-juros-pelo-fed/",
+        "sentimento": "NEGATIVE"
+      },
+      {
+        "titulo": "Nvidia se aproxima de valor de mercado histórico de US$ 5 trilhões",
+        "url": "https://exame.com/invest/mercados/nvidia-se-aproxima-de-valor-de-mercado-historico-de-us-5-trilhoes/",
+        "sentimento": "POSITIVE"
+      },
+      {
+        "titulo": "Nvidia é a 1ª empresa a atingir US$ 5 trilhões em valor de mercado",
+        "url": "https://exame.com/invest/mercados/nvidia-e-a-1a-empresa-a-atingir-us-5-trilhoes-em-valor-de-mercado/",
+        "sentimento": "POSITIVE"
+      },
+      {
+        "titulo": "Ações na Europa sobem com rali tech e expectativa de corte de juros pelo Fed",
+        "url": "https://www.bloomberglinea.com.br/mercados/acoes-na-europa-sobem-com-rali-tech-e-expectativa-de-corte-de-juros-pelo-fed/",
+        "sentimento": "NEGATIVE"
+      }
+    ],
+    "PETR4.SA": [
+      {
+        "titulo": "A ambição da BYD para sua fábrica na Bahia",
+        "url": "https://www.bloomberglinea.com.br/mercados/a-ambicao-da-byd-para-sua-fabrica-na-bahia/",
+        "sentimento": "NEUTRAL"
+      },
+      {
+        "titulo": "A ambição da BYD para sua fábrica na Bahia",
+        "url": "https://www.bloomberglinea.com.br/mercados/a-ambicao-da-byd-para-sua-fabrica-na-bahia/",
+        "sentimento": "NEUTRAL"
+      }
+    ],
+    "ROXO34.SA": [
+      {
+        "titulo": "A ambição da BYD para sua fábrica na Bahia",
+        "url": "https://www.bloomberglinea.com.br/mercados/a-ambicao-da-byd-para-sua-fabrica-na-bahia/",
+        "sentimento": "NEUTRAL"
+      },
+      {
+        "titulo": "A ambição da BYD para sua fábrica na Bahia",
+        "url": "https://www.bloomberglinea.com.br/mercados/a-ambicao-da-byd-para-sua-fabrica-na-bahia/",
+        "sentimento": "NEUTRAL"
+      }
+    ]
+  },
+  "resumo": "Recomendação para 2025-10-29 (regra fixa (score > 1 compra, < -1 venda)): 1 compra(s), 1 venda(s), 4 segurar.",
+  "erro": false,
+  "usou_modelo_treinado": false,
+  "datas_disponiveis": [
+    "2025-10-10",
+    "2025-10-13",
+    "2025-10-20",
+    "2025-10-21",
+    "2025-10-22",
+    "2025-10-23",
+    "2025-10-24",
+    "2025-10-27",
+    "2025-10-28",
+    "2025-10-29"
+  ]
+}
