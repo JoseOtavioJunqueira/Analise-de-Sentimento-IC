@@ -69,9 +69,9 @@ Isso vai: rodar os spiders (coleta), depois analisar sentimento (FinBERT). Se de
 
 ## Parte 2: Deixar rodando no lab
 
-### 2.1 O que deve rodar sozinho (coleta + análise)
+### 2.1 O que deve rodar sozinho (coleta + análise + recomendação)
 
-A ideia é **agendar** a execução de `main.py` para rodar **todo dia** (ex.: às 8h), assim o sistema acumula notícias + datas + sentimentos sem você precisar ligar o PC manualmente.
+A ideia é **agendar** a execução de **`rodar_todo_dia.py`** para rodar **todo dia** (ex.: às 8h). Esse arquivo único faz: coleta → filtra hoje/ontem → classificação de sentimento → associar tickers → recomendação (compra/venda/segurar por IA).
 
 **Windows (Agendador de Tarefas):**
 
@@ -80,9 +80,9 @@ A ideia é **agendar** a execução de `main.py` para rodar **todo dia** (ex.: �
 3. **Gatilho:** Diariamente, às 8:00 (ou o horário que quiser).
 4. **Ação:** Iniciar um programa.
    - **Programa/script:** caminho do `python.exe` do venv (ex.: `D:\IC\Analise-de-Sentimento-IC\venv\Scripts\python.exe`).
-   - **Argumentos:** `main.py`
+   - **Argumentos:** `rodar_todo_dia.py`
    - **Iniciar em:** a pasta do projeto (ex.: `D:\IC\Analise-de-Sentimento-IC`).
-5. Salvar. A partir daí, todo dia o sistema vai rodar coleta + análise.
+5. Salvar. Todo dia o sistema roda coleta, análise e recomendação.
 
 **Linux (cron):**
 
@@ -90,10 +90,10 @@ A ideia é **agendar** a execução de `main.py` para rodar **todo dia** (ex.: �
 crontab -e
 ```
 
-Adicione uma linha (ex.: todo dia às 8h):
+Adicione (ex.: todo dia às 8h):
 
 ```
-0 8 * * * cd /caminho/para/Analise-de-Sentimento-IC && /caminho/para/venv/bin/python main.py
+0 8 * * * cd /caminho/para/Analise-de-Sentimento-IC && /caminho/para/venv/bin/python rodar_todo_dia.py
 ```
 
 (Substitua os caminhos pelos reais.)
@@ -210,8 +210,8 @@ python criar_estrategia.py
 
 | Quando | O que fazer |
 |--------|-------------|
-| **Dia 1** | Instalar projeto, criar venv, instalar `requirements.txt`, testar `python main.py`. |
-| **Dia 1** | Configurar agendamento (Task Scheduler ou cron) para `main.py` rodar todo dia (ex.: 8h). |
+| **Dia 1** | Instalar projeto, criar venv, instalar `requirements.txt`, testar `python rodar_todo_dia.py`. |
+| **Dia 1** | Configurar agendamento (Task Scheduler ou cron) para **`rodar_todo_dia.py`** rodar todo dia (ex.: 8h). |
 | **Dia 1 (opcional)** | Subir a interface: `streamlit run app_streamlit.py --server.address 0.0.0.0 --server.port 8501`. |
 | **Semana 1–4+** | Deixar só a coleta rodando; conferir na interface se `noticias_com_sentimento.json` está crescendo. |
 | **Quando tiver volume de notícias** | Rodar `associar_tickers.py` (1x por semana ou quando quiser). Verificar `noticias_mapeadas.json`. |
@@ -231,8 +231,11 @@ python criar_estrategia.py
 | Recomendações (compra/venda/segurar) | `recomendacao.py` (usa modelo treinado ou regra fixa). |
 | Backtest (lucro passado) | `criar_estrategia.py`. |
 | Interface (ver tudo) | `app_streamlit.py` (Streamlit). |
-| Orquestração (coleta + análise + recomendação) | `main.py`. |
-| **Coleta “para agora” (últimos 3 meses)** | `coletar_ultimos_3_meses.py` (spiders com paginação + filtro por data + análise + tickers). |
+| **Rotina diária (agendar)** | **`rodar_todo_dia.py`** — coleta hoje/ontem + classificação + tickers + recomendação (IA). |
+| Orquestração alternativa | `main.py` (coleta + análise + recomendação; não filtra hoje/ontem nem roda associar_tickers). |
+| **Coleta “para agora” (últimos 3 meses)** | `coletar_ultimos_3_meses.py` (spiders + filtro 3 meses + análise + tickers + treino RF + RL). |
+| **Treino da IA de decisão (Random Forest)** | `treinar_modelo_decisao.py` — decisão compra/venda por modelo, não regra fixa. |
+| **Treino do agente RL (Q-Learning)** | `rl_agente.py` — decisão compra/venda por aprendizado por reforço. |
 
 ---
 

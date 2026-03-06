@@ -1,60 +1,65 @@
 # Como o sistema decide compra / venda / segurar?
 
-Você perguntou: a IA que sugere compra/venda/hold deveria ter um **histórico** do tipo “notícia positiva → ação subiu”, “notícia negativa → ação caiu”, etc. **Como ela decide hoje?**
+O sistema **não usa regra fixa**. A decisão é sempre por **IA**: modelo treinado (Random Forest ou Regressão Logística) ou agente de **Aprendizado por Reforço (Q-Learning)**.
 
 ---
 
-## 1. Como decide **hoje** (regra fixa, sem aprender com o passado)
+## 1. Entrada: score de sentimento do dia
 
-Hoje a decisão **não** usa nenhum histórico “notícia → movimento do preço”. É uma **regra fixa** no código:
+Para cada **dia** e cada **ticker**, o sistema agrega o sentimento das notícias daquele dia:
 
-1. Para cada **dia** e cada **ticker**, somamos o sentimento das notícias daquele dia:
-   - Notícia **positiva** → +1  
-   - Notícia **negativa** → -1  
-   - Notícia **neutra** → 0  
-   - **Score do dia** = soma desses valores (ex.: 2 positivas e 1 negativa → score +1).
+- Notícia **positiva** → +1  
+- Notícia **negativa** → -1  
+- Notícia **neutra** → 0  
+- **Score do dia** = soma (ex.: 2 positivas e 1 negativa → score +1).
 
-2. A decisão é **só em cima desse score**:
-   - **Score > 1** → **compra**
-   - **Score < -1** → **venda**
-   - Entre -1 e 1 → **segurar**
-
-Ou seja: **não há nenhum “aprendizado”** do tipo “no passado, quando o sentimento foi positivo, a ação subiu”. A “IA” que classifica a notícia (positivo/negativo/neutro) é o FinBERT; já a **decisão** compra/venda/segurar é só essa regra numérica fixa.
+Esse score é a **entrada** para a IA (modelo ou RL).
 
 ---
 
-## 2. O que você descreveu (e que faz sentido)
+## 2. Opção A: Modelo treinado (Random Forest ou Regressão Logística)
 
-O que você descreveu é um sistema que **aprende com o histórico**:
+- **Histórico:** para cada (data, ticker): sentimento agregado do dia e **retorno no dia seguinte** (preço amanhã vs hoje) → “subiu (1)” ou “caiu (0)”.
+- **Treino:** `treinar_modelo_decisao.py` treina um **Random Forest** (padrão) ou Regressão Logística nesse histórico e salva em `modelo_decisao.joblib`.
+- **Decisão:** dado o score de hoje, o modelo devolve a probabilidade de “subir”.  
+  - Prob(subir) ≥ 0,6 → **compra**  
+  - Prob(subir) ≤ 0,4 → **venda**  
+  - Entre 0,4 e 0,6 → **segurar**
 
-- **Histórico:** em muitos dias no passado, para cada dia/ticker: “sentimento agregado naquele dia” e “o que aconteceu com o preço depois” (subiu, caiu, ficou estável).
-- **Aprendizado:** um modelo que usa esse histórico para aprender padrões do tipo:
-  - “Quando o sentimento foi muito positivo, a ação tendeu a subir no dia seguinte.”
-  - “Quando foi muito negativo, tendeu a cair.”
-- **Decisão:** com base nesse modelo aprendido, **hoje** o sistema decide compra/venda/hold usando o sentimento atual e o que o histórico “ensinou”.
-
-Isso **não está implementado** no projeto atual. O que existe é só a regra fixa acima.
-
----
-
-## 3. O que foi adicionado no projeto (aprender com histórico)
-
-Foi implementado um fluxo que **aprende** com esse histórico:
-
-1. **Montar o histórico:** para cada (data, ticker):
-   - **Entrada:** sentimento agregado do dia (soma de +1/-1/0 das notícias).
-   - **Saída (alvo):** retorno no **dia seguinte** (preço amanhã vs hoje). Convertido em “subiu (1)” ou “caiu (0)” para treinar um classificador.
-
-2. **Treinar um modelo:** o script **`treinar_modelo_decisao.py`** usa muitos (data, ticker) nesse formato e treina um modelo (Regressão Logística ou Random Forest) que **prevê** “o preço tende a subir ou cair no dia seguinte?” a partir do sentimento do dia. O modelo e o scaler são salvos em `modelo_decisao.joblib` e a config em `config_modelo_decisao.json`.
-
-3. **Decisão:** o **`recomendacao.py`** verifica se existe `modelo_decisao.joblib`. Se existir, usa o modelo para decidir compra/venda/segurar (ex.: probabilidade de subir > 0,6 → compra; < 0,4 → venda; entre 0,4 e 0,6 → segurar). Se não existir, continua com a **regra fixa** (score > 1 → compra, score < -1 → venda).
-
-**Como usar:** depois de ter **muitos meses** de dados (notícias mapeadas + preços), rode uma vez:
+**Como usar:** com dados suficientes (notícias mapeadas + preços), rode:
 ```bash
 python treinar_modelo_decisao.py
 ```
-A partir daí, as recomendações passam a usar o modelo treinado (histórico “notícia positiva → ação subiu”, etc.) em vez da regra fixa.
+O padrão é **Random Forest**; para Regressão Logística, altere `MODELO_TIPO` em `treinar_modelo_decisao.py`.
 
-Resumo:
-- **Regra fixa (sem modelo):** score > 1 → compra, score < -1 → venda, senão segurar. Não usa histórico de preço.
-- **Com modelo treinado:** decisão baseada no que o modelo aprendeu com o histórico (sentimento do dia → retorno no dia seguinte). Exige **dados de muitos meses** para treinar (`treinar_modelo_decisao.py`).
+---
+
+## 3. Opção B: Agente RL (Q-Learning)
+
+- **Estado:** score de sentimento **discretizado** em buckets.
+- **Ações:** 0 = segurar, 1 = compra, 2 = venda.
+- **Recompensa:** retorno do dia seguinte (comprou e subiu = ganho; vendeu e caiu = ganho; etc.).
+- **Treino:** `rl_agente.py` treina um agente **Q-Learning** no histórico (sentimento → retorno) e salva a política em `politica_rl_qlearning.json`.
+- **Decisão:** dado o score de hoje, o agente escolhe a ação com maior valor Q(estado, ação).
+
+**Como usar:**
+```bash
+python rl_agente.py
+```
+
+---
+
+## 4. Ordem de uso na recomendação
+
+1. Se existir **política RL** e `PREFERIR_RL = True` em `recomendacao.py` → usa **Q-Learning**.
+2. Senão, se existir **modelo treinado** (`modelo_decisao.joblib`) → usa **Random Forest** (ou Logistic).
+3. Se não houver nenhum dos dois, o sistema **tenta treinar** (primeiro o modelo, depois o RL) com os dados disponíveis.
+4. Se ainda assim não houver modelo nem RL → todas as recomendações ficam em **segurar** e é exibida mensagem para rodar `treinar_modelo_decisao.py` e/ou `rl_agente.py`.
+
+**Não há regra fixa** (ex.: “score > 1 → compra”). A decisão é sempre baseada em IA (modelo ou RL).
+
+---
+
+## 5. Backtest
+
+O script `criar_estrategia.py` (backtest) também usa **modelo ou RL** quando existirem para gerar os sinais de entrada/saída. Se não houver modelo nem RL, usa limiares apenas como **fallback** para o backtest rodar (a recomendação em si nunca usa esse fallback).

@@ -33,7 +33,7 @@ logger = logging.getLogger(__name__)
 THRESHOLD_RETORNO: float = 0.0  # >0 = subiu, <0 = caiu (ou use 0.001 para filtrar ruído)
 MIN_AMOSTRAS_POR_TICKER: int = 5  # Mínimo de dias com dados para incluir o ticker
 TEST_SIZE: float = 0.2
-MODELO_TIPO: str = "logistic"  # "logistic" ou "random_forest"
+MODELO_TIPO: str = "random_forest"  # "random_forest" (padrão) ou "logistic"
 
 
 def carregar_sentimento_por_dia_ticker(caminho: str) -> Optional[pd.DataFrame]:

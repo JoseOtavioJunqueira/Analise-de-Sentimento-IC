@@ -18,6 +18,8 @@ from config import (
     ARQUIVO_RESULTADOS_BACKTEST,
     ARQUIVO_ULTIMO_BACKTEST_JSON,
     ARQUIVO_STATUS,
+    ARQUIVO_MODELO_DECISAO,
+    ARQUIVO_POLITICA_RL,
 )
 
 warnings.simplefilter(action="ignore", category=FutureWarning)
@@ -27,9 +29,11 @@ logger = logging.getLogger(__name__)
 ARQUIVO_NOTICIAS = ARQUIVO_JSON_MAPEADAS
 ARQUIVO_RESULTADOS = ARQUIVO_RESULTADOS_BACKTEST
 
-# Limites da estratégia: compra se score agregado > LIMITE_COMPRA; venda se < LIMITE_VENDA
+# Fallback só para backtest se não houver modelo/RL (recomendação nunca usa regra fixa)
 LIMITE_COMPRA = 1
 LIMITE_VENDA = -1
+UMBRAL_PROB_COMPRA = 0.6
+UMBRAL_PROB_VENDA = 0.4
 
 # --- 2. CARREGAR E PROCESSAR DADOS DE SENTIMENTO ---
 
@@ -100,16 +104,77 @@ sinais, precos_alinhados = df_sentimento_pivot.align(precos, join='inner', axis=
 sinais = sinais.ffill() # Preenche "buracos" no sentimento (fins de semana)
 
 # 4.2. **A ESTRATÉGIA**
-# IMPORTANTE: Usamos .shift(1)
-# Nós usamos o sentimento de ONTEM (D-1) para tomar a decisão de hoje (D).
-# Não podemos usar o sentimento de hoje, pois isso seria "olhar o futuro".
+# Usamos sentimento de ONTEM (D-1) para decisão de hoje (D).
 sinais_atrasados = sinais.shift(1).fillna(0)
 
-# 4.3. Gerar ordens de Compra (Entries) e Venda (Exits)
-# Nossa regra (definida no passo 1):
-entries = (sinais_atrasados > LIMITE_COMPRA)
-exits = (sinais_atrasados < LIMITE_VENDA)
+# 4.3. Gerar ordens (Entries/Exits) por IA (modelo ou RL) quando disponível
+def _sinais_por_ia(sinais_df: pd.DataFrame) -> tuple:
+    """Se houver modelo ou RL, gera entries/exits por IA; senão fallback por limiares."""
+    import numpy as np
+    # Tentar RL primeiro
+    if os.path.exists(ARQUIVO_POLITICA_RL):
+        try:
+            from rl_agente import carregar_politica, acao_rl, ACAO_COMPRAR, ACAO_VENDER
+            pol = carregar_politica()
+            if pol:
+                entries = pd.DataFrame(False, index=sinais_df.index, columns=sinais_df.columns)
+                exits = pd.DataFrame(False, index=sinais_df.index, columns=sinais_df.columns)
+                for i in range(len(sinais_df.index)):
+                    for c in sinais_df.columns:
+                        sc = sinais_df.iloc[i][c]
+                        if pd.isna(sc):
+                            continue
+                        a = acao_rl(float(sc), pol)
+                        idx = sinais_df.index[i]
+                        if a == ACAO_COMPRAR:
+                            entries.loc[idx, c] = True
+                        elif a == ACAO_VENDER:
+                            exits.loc[idx, c] = True
+                entries = entries.astype(bool)
+                exits = exits.astype(bool)
+                logger.info("Backtest usando agente RL (Q-Learning).")
+                return entries, exits
+        except Exception as e:
+            logger.debug("RL não usado no backtest: %s", e)
+    # Tentar modelo (Random Forest / Logistic)
+    if os.path.exists(ARQUIVO_MODELO_DECISAO):
+        try:
+            import joblib
+            obj = joblib.load(ARQUIVO_MODELO_DECISAO)
+            model, scaler = obj["model"], obj["scaler"]
+            entries = pd.DataFrame(False, index=sinais_df.index, columns=sinais_df.columns)
+            exits = pd.DataFrame(False, index=sinais_df.index, columns=sinais_df.columns)
+            for i in range(len(sinais_df.index)):
+                for c in sinais_df.columns:
+                    sc = sinais_df.iloc[i][c]
+                    if pd.isna(sc):
+                        continue
+                    X = np.array([[float(sc)]], dtype=np.float64)
+                    X_s = scaler.transform(X)
+                    idx = sinais_df.index[i]
+                    if hasattr(model, "predict_proba"):
+                        prob = model.predict_proba(X_s)[0, 1]
+                        if prob >= UMBRAL_PROB_COMPRA:
+                            entries.loc[idx, c] = True
+                        elif prob <= UMBRAL_PROB_VENDA:
+                            exits.loc[idx, c] = True
+                    else:
+                        pred = model.predict(X_s)[0]
+                        if pred == 1:
+                            entries.loc[idx, c] = True
+                        else:
+                            exits.loc[idx, c] = True
+            logger.info("Backtest usando modelo treinado (Random Forest/Logistic).")
+            return entries, exits
+        except Exception as e:
+            logger.debug("Modelo não usado no backtest: %s", e)
+    # Fallback: limiares (apenas para o backtest rodar sem modelo/RL)
+    entries = (sinais_atrasados > LIMITE_COMPRA)
+    exits = (sinais_atrasados < LIMITE_VENDA)
+    logger.info("Backtest usando limiares (fallback; rode treinar_modelo_decisao.py ou rl_agente.py para IA).")
+    return entries, exits
 
+entries, exits = _sinais_por_ia(sinais_atrasados)
 logger.info("Sinais de compra/venda gerados.")
 
 # --- 5. RODAR O BACKTEST (SIMULAÇÃO) ---

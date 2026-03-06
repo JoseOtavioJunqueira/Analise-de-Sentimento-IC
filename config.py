@@ -31,6 +31,8 @@ ARQUIVO_STATUS: str = os.path.join(BASE_DIR, "status.json")
 # Modelo treinado para decisão compra/venda/segurar (histórico: sentimento → retorno)
 ARQUIVO_MODELO_DECISAO: str = os.path.join(BASE_DIR, "modelo_decisao.joblib")
 ARQUIVO_CONFIG_MODELO_DECISAO: str = os.path.join(BASE_DIR, "config_modelo_decisao.json")
+# Política de RL (Q-Learning): tabela Q ou parâmetros do agente
+ARQUIVO_POLITICA_RL: str = os.path.join(BASE_DIR, "politica_rl_qlearning.json")
 
 # Modelo de sentimento (FinBERT-PT-BR) — versionamento para reprodutibilidade
 # Ref: Santos (2022) — docs/CITACAO.md

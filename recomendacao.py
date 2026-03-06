@@ -1,7 +1,8 @@
 """
 Módulo de recomendação: gera saída estruturada (investir? onde? quando? por quê?).
-Se existir modelo treinado (histórico sentimento → retorno), usa esse modelo para decidir
-compra/venda/segurar; senão usa regra fixa (score > 1 → compra, score < -1 → venda).
+Decisão compra/venda/segurar é sempre por IA: modelo treinado (Random Forest ou Regressão Logística)
+ou agente de RL (Q-Learning). Não usa regra fixa.
+Se não houver modelo/RL, tenta treinar com os dados disponíveis; se falhar, retorna mensagem clara.
 """
 import json
 import logging
@@ -23,12 +24,12 @@ from config import (
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)
 
-LIMITE_COMPRA = 1   # Regra fixa: score > 1 → compra
-LIMITE_VENDA = -1   # Regra fixa: score < -1 → venda
 POR_QUANTO_TEMPO = "1 dia (day trade)"
-# Quando usar modelo treinado: prob(subiu) > UMBRAL_COMPRA → compra, < UMBRAL_VENDA → venda, senão segurar
+# Modelo treinado: prob(subiu) > UMBRAL_COMPRA → compra, < UMBRAL_VENDA → venda, senão segurar
 UMBRAL_PROB_COMPRA = 0.6
 UMBRAL_PROB_VENDA = 0.4
+# Ordem de preferência: 1) agente RL, 2) modelo (Random Forest/Logistic), nunca regra fixa
+PREFERIR_RL = True  # Se True e existir política RL, usa RL; senão usa modelo.
 
 
 def _carregar_modelo_decisao() -> Optional[Tuple[Any, Any]]:
@@ -59,13 +60,21 @@ def _decisao_com_modelo(score: float, model: Any, scaler: Any) -> str:
     return "compra" if pred == 1 else "venda"
 
 
-def _decisao_regra_fixa(score: float) -> str:
-    """Regra fixa: score > 1 → compra, score < -1 → venda, senão segurar."""
-    if score > LIMITE_COMPRA:
-        return "compra"
-    if score < LIMITE_VENDA:
-        return "venda"
-    return "segurar"
+def _carregar_politica_rl() -> Optional[Any]:
+    """Carrega política RL (Q-Learning) se existir. Retorna dict da política ou None."""
+    try:
+        from rl_agente import carregar_politica
+        return carregar_politica()
+    except Exception as e:
+        logger.debug("Política RL não disponível: %s", e)
+        return None
+
+
+def _decisao_rl(score: float, policy: Any) -> str:
+    """Usa agente RL (Q-Learning) para decidir compra/venda/segurar."""
+    from rl_agente import acao_rl, acao_para_str
+    acao = acao_rl(score, policy)
+    return acao_para_str(acao)
 
 
 def carregar_noticias_mapeadas(caminho: str) -> Optional[pd.DataFrame]:
@@ -160,12 +169,36 @@ def gerar_recomendacao(
     data_uso = data_alvo if data_alvo and data_alvo in datas_disponiveis else datas_disponiveis[-1]
     linha = df_sent[df_sent["data"].dt.strftime("%Y-%m-%d") == data_uso]
 
-    modelo_dec = _carregar_modelo_decisao()
-    usar_modelo = modelo_dec is not None
-    if usar_modelo:
-        logger.info("Usando modelo treinado (histórico sentimento → retorno) para decidir compra/venda/segurar.")
+    # Decisão sempre por IA: RL (Q-Learning) ou modelo (Random Forest). Nunca regra fixa.
+    politica_rl = _carregar_politica_rl() if PREFERIR_RL else None
+    modelo_dec = _carregar_modelo_decisao() if not politica_rl else None
+
+    # Se não tem nem RL nem modelo, tenta treinar uma vez
+    if not politica_rl and not modelo_dec:
+        logger.info("Nenhum modelo nem política RL. Tentando treinar modelo (Random Forest)...")
+        try:
+            from treinar_modelo_decisao import run as run_treino
+            if run_treino():
+                modelo_dec = _carregar_modelo_decisao()
+        except Exception as e:
+            logger.warning("Falha ao treinar modelo: %s", e)
+        if not modelo_dec:
+            logger.info("Tentando treinar agente RL (Q-Learning)...")
+            try:
+                from rl_agente import run_treino as run_rl
+                if run_rl():
+                    politica_rl = _carregar_politica_rl()
+            except Exception as e:
+                logger.warning("Falha ao treinar RL: %s", e)
+
+    usar_rl = politica_rl is not None
+    usar_modelo = modelo_dec is not None and not usar_rl
+    if usar_rl:
+        logger.info("Usando agente RL (Q-Learning) para decidir compra/venda/segurar.")
+    elif usar_modelo:
+        logger.info("Usando modelo treinado (Random Forest / histórico sentimento → retorno) para decidir.")
     else:
-        logger.info("Modelo de decisão não encontrado. Usando regra fixa (score > 1 → compra, < -1 → venda).")
+        logger.warning("Sem modelo nem RL. Recomendações serão 'segurar' até rodar treinar_modelo_decisao.py e/ou rl_agente.py.")
 
     investir: List[Dict[str, Any]] = []
     onde: List[str] = []
@@ -174,11 +207,13 @@ def gerar_recomendacao(
     for _, row in linha.iterrows():
         ticker = row["tickers_citados"]
         score = float(row["score"])
-        if usar_modelo and modelo_dec:
+        if usar_rl and politica_rl:
+            acao = _decisao_rl(score, politica_rl)
+        elif usar_modelo and modelo_dec:
             model, scaler = modelo_dec
             acao = _decisao_com_modelo(score, model, scaler)
         else:
-            acao = _decisao_regra_fixa(score)
+            acao = "segurar"
 
         noticias_ticker = noticias_por_dt.get(data_uso, {}).get(ticker, [])
         investir.append({
@@ -187,12 +222,18 @@ def gerar_recomendacao(
             "score": score,
             "quantidade_noticias": len(noticias_ticker),
             "usou_modelo_treinado": usar_modelo,
+            "usou_rl": usar_rl,
         })
         if acao != "segurar":
             onde.append(ticker)
         por_que[ticker] = noticias_ticker
 
-    metodo = "modelo treinado (histórico sentimento → retorno)" if usar_modelo else "regra fixa (score > 1 compra, < -1 venda)"
+    if usar_rl:
+        metodo = "agente RL (Q-Learning)"
+    elif usar_modelo:
+        metodo = "modelo treinado (Random Forest / histórico sentimento → retorno)"
+    else:
+        metodo = "nenhum (segurar até treinar modelo ou RL)"
     resumo = (
         f"Recomendação para {data_uso} ({metodo}): "
         f"{len([x for x in investir if x['acao'] == 'compra'])} compra(s), "
@@ -210,6 +251,7 @@ def gerar_recomendacao(
         "resumo": resumo,
         "erro": False,
         "usou_modelo_treinado": usar_modelo,
+        "usou_rl": usar_rl,
         "datas_disponiveis": datas_disponiveis[-10:],
     }
 

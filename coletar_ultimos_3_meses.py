@@ -184,11 +184,17 @@ def main() -> None:
     if not run_script("associar_tickers.py"):
         logger.warning("Falha ao associar tickers. Verifique mapeamento_tickers.json.")
 
-    # 5) Recomendação (opcional)
+    # 5) Treinar IA: Random Forest e RL (Q-Learning) para decisão compra/venda (não regra fixa)
+    logger.info("Treinando modelo de decisão (Random Forest)...")
+    run_script("treinar_modelo_decisao.py")
+    logger.info("Treinando agente RL (Q-Learning)...")
+    run_script("rl_agente.py")
+
+    # 6) Recomendação (usa modelo ou RL, nunca regra fixa)
     try:
         from recomendacao import run_recomendacao
         run_recomendacao()
-        logger.info("Recomendação atualizada.")
+        logger.info("Recomendação atualizada (IA: Random Forest ou RL).")
     except Exception as e:
         logger.warning("Recomendação não executada: %s", e)
 

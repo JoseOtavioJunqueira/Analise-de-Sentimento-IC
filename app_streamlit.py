@@ -62,7 +62,7 @@ with st.sidebar:
     st.metric("Última recomendação", ultima_recomendacao[:19] if isinstance(ultima_recomendacao, str) and len(ultima_recomendacao) > 19 else ultima_recomendacao)
     st.metric("Último backtest", ultimo_backtest[:19] if isinstance(ultimo_backtest, str) and len(ultimo_backtest) > 19 else ultimo_backtest)
     st.divider()
-    st.caption("Execute a rotina: `python main.py` (na raiz do projeto)")
+    st.caption("Rotina diária: `python rodar_todo_dia.py` (na raiz do projeto)")
 
 # --- Abas principais ---
 tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
@@ -81,8 +81,8 @@ with tab1:
     1. **Scrapy** — Puxa notícias dos portais (Infomoney, Valor, Exame, Bloomberg) e salva em `financial_news.json`.
     2. **IA (FinBERT-PT-BR)** — Classifica cada notícia em **positivo**, **negativo** ou **neutro** (análise de sentimento).
     3. **Associar tickers** — Identifica quais ativos (PETR4, VALE3, etc.) são citados em cada notícia → `noticias_mapeadas.json`.
-    4. **Recomendação** — Gera sinais: compra / venda / segurar por ativo, com **quando**, **onde** e **por quê** (notícias que motivaram).
-    5. **Backtest** — Simula se a estratégia teria dado lucro no passado (retorno %, Sharpe ratio, drawdown).
+    4. **Recomendação** — Gera sinais compra/venda/segurar por ativo (**IA**: Random Forest ou agente RL Q-Learning, nunca regra fixa), com **quando**, **onde** e **por quê** (notícias que motivaram).
+    5. **Backtest** — Simula se a estratégia teria dado lucro no passado (retorno %, Sharpe ratio, drawdown), usando o mesmo modelo ou RL quando disponível.
     """)
     st.subheader("Fluxo de dados")
     st.code("""
