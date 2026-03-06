@@ -4,7 +4,11 @@ from financial_scraper.items import FinancialNewsItem
 class ExameSpider(scrapy.Spider):
     name = "exame"
     allowed_domains = ["exame.com"]
-    start_urls = ["https://exame.com/invest/"]
+    # Paginação: /invest/ultimas-noticias/N/ (2 a 50 para cobrir ~3 meses)
+    start_urls = ["https://exame.com/invest/"] + [
+        f"https://exame.com/invest/ultimas-noticias/{n}/"
+        for n in range(2, 51)
+    ]
 
     custom_settings = {
         'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'

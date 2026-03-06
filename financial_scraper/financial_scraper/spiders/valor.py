@@ -4,7 +4,11 @@ from financial_scraper.items import FinancialNewsItem
 class ValorSpider(scrapy.Spider):
     name = "valor"
     allowed_domains = ["valor.globo.com"]
-    start_urls = ["https://valor.globo.com/financas/"]
+    # Página 1 é /financas/; demais são /financas/index/feed/pagina-N (até ~50 para cobrir ~3 meses)
+    start_urls = ["https://valor.globo.com/financas/"] + [
+        f"https://valor.globo.com/financas/index/feed/pagina-{n}/"
+        for n in range(2, 51)
+    ]
 
     custom_settings = {
         'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'

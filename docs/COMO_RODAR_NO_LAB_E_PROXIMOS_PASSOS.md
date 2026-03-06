@@ -4,6 +4,25 @@ Este documento explica **como deixar o projeto rodando no lab** e **quando fazer
 
 ---
 
+## Para AGORA: não deixei rodando por meses — quero dados dos últimos 3 meses
+
+Se você **não** deixou a coleta rodando e precisa de **dados dos últimos 3 meses de uma vez**:
+
+1. Na **raiz** do projeto, com o venv ativado:
+   ```bash
+   python coletar_ultimos_3_meses.py
+   ```
+2. O script vai:
+   - Rodar todos os spiders (Valor e Exame com **paginação** para várias páginas).
+   - Filtrar as notícias coletadas para manter só as dos **últimos 3 meses**.
+   - Rodar **análise de sentimento** (FinBERT) e gerar `noticias_com_sentimento.json`.
+   - Rodar **associar_tickers.py** e gerar `noticias_mapeadas.json`.
+   - Atualizar a **recomendação** (se houver notícias mapeadas).
+
+Assim você enche a base **agora** sem precisar ter deixado o sistema rodando por meses. Depois pode continuar com a rotina diária (`main.py` agendado) ou rodar `coletar_ultimos_3_meses.py` de tempos em tempos para repor histórico.
+
+---
+
 ## Parte 1: Preparar a máquina do lab (uma vez)
 
 ### 1.1 Clonar o repositório e criar o ambiente
@@ -213,6 +232,7 @@ python criar_estrategia.py
 | Backtest (lucro passado) | `criar_estrategia.py`. |
 | Interface (ver tudo) | `app_streamlit.py` (Streamlit). |
 | Orquestração (coleta + análise + recomendação) | `main.py`. |
+| **Coleta “para agora” (últimos 3 meses)** | `coletar_ultimos_3_meses.py` (spiders com paginação + filtro por data + análise + tickers). |
 
 ---
 
