@@ -25,9 +25,17 @@ def fetch_stock_data(tickers, start_date, end_date):
     print(f"Buscando dados para {len(tickers)} tickers de {start_date} até {end_date}...")
     
     try:
-        # Baixa os dados
         # group_by='ticker' é útil se um ticker falhar, os outros continuam
-        data = yf.download(tickers_str, start=start_date, end=end_date, interval="1d", group_by='ticker')
+        # progress=False reduz ruido no log
+        data = yf.download(
+            tickers_str,
+            start=start_date,
+            end=end_date,
+            interval="1d",
+            group_by="ticker",
+            progress=False,
+            threads=True,
+        )
         return data
     except Exception as e:
         print(f"Erro ao baixar dados: {e}")
@@ -140,10 +148,21 @@ if __name__ == "__main__":
 
     # --- 3. DETERMINAR O PERÍODO (DATAS) ---
     try:
-        # Converte a coluna de data para objetos datetime
-        df_noticias['data_normalizada'] = pd.to_datetime(df_noticias['data_normalizada'])
+        # Converte a coluna de data para objetos datetime.
+        # Algumas datas podem vir com frações de segundo + fuso (ex: ".364000-03:00").
+        # Usamos parsing tolerante e normalizamos para datetime "naive" local.
+        df_noticias["data_normalizada"] = pd.to_datetime(
+            df_noticias["data_normalizada"],
+            errors="coerce",
+            utc=True,
+            format="mixed",
+        )
+        df_noticias["data_normalizada"] = df_noticias["data_normalizada"].dt.tz_convert(None)
+
         # Encontra a data da notícia mais antiga
-        data_mais_antiga = df_noticias['data_normalizada'].min()
+        data_mais_antiga = df_noticias["data_normalizada"].min()
+        if pd.isna(data_mais_antiga):
+            raise ValueError("Todas as datas em 'data_normalizada' falharam no parsing.")
     except Exception as e:
         print(f"Erro ao processar 'data_normalizada': {e}")
         print("Usando um período padrão de 1 ano.")
@@ -176,36 +195,76 @@ if __name__ == "__main__":
     
     dados_fechamento = None
     
+    def _baixar_close_individual(ticker: str) -> pd.Series | None:
+        """
+        Baixa apenas o 'Close' para um ticker, para fallback quando o lote falha.
+        Retorna uma Series com índice datetime e nome = ticker.
+        """
+        try:
+            df_retry = yf.download(
+                ticker,
+                start=start_str,
+                end=end_str,
+                interval="1d",
+                group_by="ticker",
+                progress=False,
+                threads=False,
+            )
+            if df_retry is None or df_retry.empty:
+                return None
+
+            if isinstance(df_retry.columns, pd.MultiIndex):
+                # MultiIndex => (ticker, campo). Extrai o Close.
+                close_df = df_retry.xs("Close", level=1, axis=1)
+                if close_df.shape[1] == 1:
+                    s = close_df.iloc[:, 0]
+                    s.name = ticker
+                    return s
+                return None
+
+            if "Close" not in df_retry.columns:
+                return None
+            s = df_retry["Close"]
+            s.name = ticker
+            return s
+        except Exception:
+            return None
+
     try:
         if isinstance(dados_historicos_raw.columns, pd.MultiIndex):
             # Caso 1: Múltiplos tickers baixados com sucesso. Colunas = MultiIndex (e.g., ('PETR4.SA', 'Close'))
             # O group_by='ticker' faz o Ticker ser o level 0.
             print("Múltiplos tickers detectados (MultiIndex). Extraindo 'Close' (Nível 1)...")
-            # Pega todas as sub-colunas 'Close' de todos os tickers (level=1)
-            dados_fechamento = dados_historicos_raw.xs('Close', level=1, axis=1)
-            
+            dados_fechamento = dados_historicos_raw.xs("Close", level=1, axis=1)
+
+            # --- RETRY: tickers ausentes no lote ---
+            tickers_encontrados = set(dados_fechamento.columns)
+            tickers_falharam = sorted(list(set(tickers_unicos) - tickers_encontrados))
+            if tickers_falharam:
+                print(f"Retry para {len(tickers_falharam)} tickers que falharam no lote...")
+                for t in tickers_falharam:
+                    s = _baixar_close_individual(t)
+                    if s is None or s.empty:
+                        continue
+                    # Junta no DF final (alinha pelos índices de datas)
+                    dados_fechamento[t] = s
+
         else:
             # Caso 2: Apenas um ticker baixado com sucesso. Colunas = ['Open', 'High', 'Low', 'Close']
             print("Ticker único detectado (SingleIndex). Extraindo 'Close'.")
-            if 'Close' in dados_historicos_raw.columns:
-                 dados_fechamento = dados_historicos_raw[['Close']] # Pega como DataFrame
-                 
-                 # Tenta nomear a coluna
-                 # Lista de falhas do SEU LOG
-                 failed_downloads = ['KERI34.SA', 'BYDD34.SA', 'LRLC34.SA', 'UNIL34.SA', 'DECO34.SA', 'WBDC34.SA', 'JBSS3.SA', 'GEOC34.SA', 'TRIL34.SA']
-                 successful_set = tickers_unicos - set(failed_downloads)
-                 if len(successful_set) == 1:
-                    ticker_name = list(successful_set)[0]
+            if "Close" in dados_historicos_raw.columns:
+                dados_fechamento = dados_historicos_raw[["Close"]] # DataFrame
+                # Se vier um único ticker, tenta nomear.
+                if len(tickers_unicos) == 1:
+                    ticker_name = list(tickers_unicos)[0]
                     dados_fechamento.columns = [ticker_name]
                     print(f"Ticker único nomeado como: {ticker_name}")
-                 else:
-                    # Isso pode acontecer se o único ticker de sucesso não estava na lista de falhas?
-                    # Ou se o yfinance retornou SingleIndex mesmo com >1 sucesso
-                    print("Aviso: Não foi possível determinar o nome do ticker único. Usando 'Close'.")
+                else:
+                    print("Aviso: SingleIndex com múltiplos tickers esperados. Mantendo coluna 'Close'.")
             else:
                 print("Erro: SingleIndex retornado, mas sem coluna 'Close'.")
                 dados_fechamento = pd.DataFrame() # Vazio
-                
+
     except Exception as e:
         print(f"ERRO CRÍTICO ao processar estrutura de dados do yfinance: {e}")
         print("É provável que a estrutura de dados tenha mudado.")
@@ -233,11 +292,11 @@ if __name__ == "__main__":
     print(f"Salvando dados de preços em '{ARQUIVO_SAIDA_PRECOS}'...")
     dados_fechamento.to_json(ARQUIVO_SAIDA_PRECOS, orient='index', indent=4, date_format='iso')
 
-    print(f"\n✅ Arquivo '{ARQUIVO_SAIDA_PRECOS}' foi criado na pasta principal.")
+    print(f"\nOK: Arquivo '{ARQUIVO_SAIDA_PRECOS}' foi criado na pasta principal.")
     
     
     # --- 6. NOVO: ENRIQUECER 'noticias_mapeadas.json' COM PREÇOS ---
-    print("\n--- 6. ENRIQUECENDO 'noticias_mapeadas.json' COM PREÇOS ---")
+    print("\n--- 6. ENRIQUECENDO 'noticias_mapeadas.json' COM PRECOS ---")
     print("Adicionando preços do dia da notícia...")
 
     # Certifica que a coluna de data está em datetime para strftime funcionar
@@ -268,6 +327,6 @@ if __name__ == "__main__":
         date_format='iso' 
     )
 
-    print("\n🚀 Sucesso!")
-    print(f"✅ O arquivo '{ARQUIVO_NOTICIAS}' foi ATUALIZADO com os preços do dia.")
+    print("\nSucesso!")
+    print(f"OK: O arquivo '{ARQUIVO_NOTICIAS}' foi ATUALIZADO com os precos do dia.")
     # print("Próximo passo: Executar 'criar_estrategia.py'.") # Removido da linha de cima

@@ -1,0 +1,324 @@
+{
+    "ultima_execucao": "20/03/2026 15:15:01",
+    "total_noticias_processadas": 563,
+    "estatisticas": [
+        {
+            "ticker": "PETR4.SA",
+            "empresa": "Petrobras",
+            "vezes_que_apareceu": 84,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "B3SA3.SA",
+            "empresa": "B3",
+            "vezes_que_apareceu": 73,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "VALE3.SA",
+            "empresa": "Vale",
+            "vezes_que_apareceu": 56,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "BPAC11.SA",
+            "empresa": "BTG Pactual",
+            "vezes_que_apareceu": 37,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "NFLX34.SA",
+            "empresa": "GE",
+            "vezes_que_apareceu": 33,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "W1BD34.SA",
+            "empresa": "Warner",
+            "vezes_que_apareceu": 30,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "NVDC34.SA",
+            "empresa": "Nvidia",
+            "vezes_que_apareceu": 30,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "BOVA11.SA",
+            "empresa": "Ibovespa",
+            "vezes_que_apareceu": 26,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "NCDI11.SA",
+            "empresa": "Selic",
+            "vezes_que_apareceu": 25,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "BBDC4.SA",
+            "empresa": "Odontoprev",
+            "vezes_que_apareceu": 25,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "BSLI3.SA",
+            "empresa": "Liminar",
+            "vezes_que_apareceu": 24,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "ITUB4.SA",
+            "empresa": "Breakfast",
+            "vezes_que_apareceu": 20,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "C1BS34.SA",
+            "empresa": "Conselho da Warner",
+            "vezes_que_apareceu": 19,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "EMBR3.SA",
+            "empresa": "Embraer",
+            "vezes_que_apareceu": 16,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "ROXO34.SA",
+            "empresa": "Petrobras",
+            "vezes_que_apareceu": 15,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "M1TA34.SA",
+            "empresa": "Pix",
+            "vezes_que_apareceu": 13,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "AMZO34.SA",
+            "empresa": "Alphabet",
+            "vezes_que_apareceu": 13,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "GOGL34.SA",
+            "empresa": "Google",
+            "vezes_que_apareceu": 12,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "NASD11.SA",
+            "empresa": "S&P",
+            "vezes_que_apareceu": 12,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "IMAB11.SA",
+            "empresa": "IPCA",
+            "vezes_que_apareceu": 12,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "AAPL34.SA",
+            "empresa": "Microsoft",
+            "vezes_que_apareceu": 11,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "BLAK34.SA",
+            "empresa": "Magnatas",
+            "vezes_que_apareceu": 11,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "CTGP34.SA",
+            "empresa": "WhatsApp",
+            "vezes_que_apareceu": 11,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "BBAS3.SA",
+            "empresa": "Banco do Brasil",
+            "vezes_que_apareceu": 11,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "IVVB11.SA",
+            "empresa": "Nasdaq",
+            "vezes_que_apareceu": 10,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "CEAB3.SA",
+            "empresa": "C&A",
+            "vezes_que_apareceu": 10,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "BIEI39.SA",
+            "empresa": "guerra do Irã",
+            "vezes_que_apareceu": 10,
+            "nivel_informacao": "ALTO"
+        },
+        {
+            "ticker": "MSFT34.SA",
+            "empresa": "Apple",
+            "vezes_que_apareceu": 8,
+            "nivel_informacao": "MEDIO"
+        },
+        {
+            "ticker": "PCAR3.SA",
+            "empresa": "GPA",
+            "vezes_que_apareceu": 8,
+            "nivel_informacao": "MEDIO"
+        },
+        {
+            "ticker": "BITH11.SA",
+            "empresa": "Bitcoin",
+            "vezes_que_apareceu": 8,
+            "nivel_informacao": "MEDIO"
+        },
+        {
+            "ticker": "BYDD34.SA",
+            "empresa": "Breakfast:",
+            "vezes_que_apareceu": 7,
+            "nivel_informacao": "MEDIO"
+        },
+        {
+            "ticker": "AMBP3.SA",
+            "empresa": "Ambipar",
+            "vezes_que_apareceu": 6,
+            "nivel_informacao": "MEDIO"
+        },
+        {
+            "ticker": "GSGI34.SA",
+            "empresa": "Bolha de IA?",
+            "vezes_que_apareceu": 6,
+            "nivel_informacao": "MEDIO"
+        },
+        {
+            "ticker": "WEGE3.SA",
+            "empresa": "WEG",
+            "vezes_que_apareceu": 6,
+            "nivel_informacao": "MEDIO"
+        },
+        {
+            "ticker": "HASH11.SA",
+            "empresa": "BlackRock",
+            "vezes_que_apareceu": 6,
+            "nivel_informacao": "MEDIO"
+        },
+        {
+            "ticker": "NTCO3.SA",
+            "empresa": "Natura",
+            "vezes_que_apareceu": 6,
+            "nivel_informacao": "MEDIO"
+        },
+        {
+            "ticker": "GMCO34.SA",
+            "empresa": "GM",
+            "vezes_que_apareceu": 5,
+            "nivel_informacao": "MEDIO"
+        },
+        {
+            "ticker": "PRIO3.SA",
+            "empresa": "PRIO",
+            "vezes_que_apareceu": 4,
+            "nivel_informacao": "BAIXO"
+        },
+        {
+            "ticker": "TRIL34.SA",
+            "empresa": "Reuters",
+            "vezes_que_apareceu": 4,
+            "nivel_informacao": "BAIXO"
+        },
+        {
+            "ticker": "MSCD34.SA",
+            "empresa": "Wall Street",
+            "vezes_que_apareceu": 4,
+            "nivel_informacao": "BAIXO"
+        },
+        {
+            "ticker": "COCA34.SA",
+            "empresa": "Netflix",
+            "vezes_que_apareceu": 4,
+            "nivel_informacao": "BAIXO"
+        },
+        {
+            "ticker": "CPLE3.SA",
+            "empresa": "BTG Banco",
+            "vezes_que_apareceu": 3,
+            "nivel_informacao": "BAIXO"
+        },
+        {
+            "ticker": "DECO34.SA",
+            "empresa": "BDRs",
+            "vezes_que_apareceu": 3,
+            "nivel_informacao": "BAIXO"
+        },
+        {
+            "ticker": "GILD34.SA",
+            "empresa": "Galaxy Digital",
+            "vezes_que_apareceu": 3,
+            "nivel_informacao": "BAIXO"
+        },
+        {
+            "ticker": "R1CL34.SA",
+            "empresa": "Royal Caribbean",
+            "vezes_que_apareceu": 3,
+            "nivel_informacao": "BAIXO"
+        },
+        {
+            "ticker": "LRLC34.SA",
+            "empresa": "L’Oréal",
+            "vezes_que_apareceu": 2,
+            "nivel_informacao": "BAIXO"
+        },
+        {
+            "ticker": "KERI34.SA",
+            "empresa": "Kering",
+            "vezes_que_apareceu": 2,
+            "nivel_informacao": "BAIXO"
+        },
+        {
+            "ticker": "GEOO34.SA",
+            "empresa": "Coca-Cola",
+            "vezes_que_apareceu": 2,
+            "nivel_informacao": "BAIXO"
+        },
+        {
+            "ticker": "USIM5.SA",
+            "empresa": "Investidores",
+            "vezes_que_apareceu": 2,
+            "nivel_informacao": "BAIXO"
+        },
+        {
+            "ticker": "JBSS3.SA",
+            "empresa": "Breakfast:",
+            "vezes_que_apareceu": 2,
+            "nivel_informacao": "BAIXO"
+        },
+        {
+            "ticker": "ULEV34.SA",
+            "empresa": "Unilever",
+            "vezes_que_apareceu": 1,
+            "nivel_informacao": "BAIXO"
+        },
+        {
+            "ticker": "JPMC34.SA",
+            "empresa": "JPMorgan Banco",
+            "vezes_que_apareceu": 1,
+            "nivel_informacao": "BAIXO"
+        },
+        {
+            "ticker": "VAMO3.SA",
+            "empresa": "VAMO3",
+            "vezes_que_apareceu": 1,
+            "nivel_informacao": "BAIXO"
+        }
+    ]
+}

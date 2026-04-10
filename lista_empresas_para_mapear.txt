@@ -48,6 +48,8 @@ Halloween
 Holding
 IA PicPay
 Ibovespa
+IPCA 
+Selic
 Dólar
 Bitcoin
 Itaú
