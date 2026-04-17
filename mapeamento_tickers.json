@@ -147,5 +147,163 @@
   "Warner": "W1BD34.SA",
   "Warner Bros": "W1BD34.SA",
   "Weg": "WEGE3.SA",
-  "iFood": null
+  "iFood": null,
+  "--- NOVAS EMPRESAS B3 (AÇÕES E BDRS) ---": null,
+  
+  "Ambev": "ABEV3.SA",
+  "ABEV3": "ABEV3.SA",
+  "Fabricante de bebidas": "ABEV3.SA",
+
+  "Gerdau": "GGBR4.SA",
+  "GGBR4": "GGBR4.SA",
+  "Metalúrgica Gerdau": "GGBR4.SA",
+
+  "Suzano": "SUZB3.SA",
+  "SUZB3": "SUZB3.SA",
+  "Suzano Papel e Celulose": "SUZB3.SA",
+
+  "Eletrobras": "ELET3.SA",
+  "Eletrobrás": "ELET3.SA",
+  "ELET3": "ELET3.SA",
+  "Ex-estatal de energia": "ELET3.SA",
+
+  "Mercado Livre": "MELI34.SA",
+  "Meli": "MELI34.SA",
+  "MELI34": "MELI34.SA",
+  "Gigante do e-commerce": "MELI34.SA",
+
+  "Santander": "SANB11.SA",
+  "Banco Santander": "SANB11.SA",
+  "SANB11": "SANB11.SA",
+
+  "Banco Inter": "INBR32.SA",
+  "Inter": "INBR32.SA",
+  "INBR32": "INBR32.SA",
+
+  "Sabesp": "SBSP3.SA",
+  "Companhia de Saneamento Básico do Estado de São Paulo": "SBSP3.SA",
+  "SBSP3": "SBSP3.SA",
+
+  "Azul": "AZUL4.SA",
+  "Azul Linhas Aéreas": "AZUL4.SA",
+  "AZUL4": "AZUL4.SA",
+
+  "Gol": "GOLL4.SA",
+  "Gol Linhas Aéreas": "GOLL4.SA",
+  "GOLL4": "GOLL4.SA",
+
+  "Assaí": "ASAI3.SA",
+  "Assaí Atacadista": "ASAI3.SA",
+  "ASAI3": "ASAI3.SA",
+
+  "Carrefour": "CRFB3.SA",
+  "Carrefour Brasil": "CRFB3.SA",
+  "CRFB3": "CRFB3.SA",
+
+  "Localiza": "RENT3.SA",
+  "RENT3": "RENT3.SA",
+  "Localiza Rent a Car": "RENT3.SA",
+
+  "--- NOVOS TERMOS MACROECONÔMICOS (ETFS E ÍNDICES) ---": null,
+
+  "IFIX": "FIX11.SA",
+  "Fundos Imobiliários": "FIX11.SA",
+  "FIIs": "FIX11.SA",
+  "Índice de Fundos Imobiliários": "FIX11.SA",
+
+  "Small Caps": "SMAL11.SA",
+  "Índice Small Cap": "SMAL11.SA",
+  "Empresas de menor valor": "SMAL11.SA",
+
+  "Ouro": "GOLD11.SA",
+  "Cotação do Ouro": "GOLD11.SA",
+  "Metal precioso": "GOLD11.SA",
+
+  "Euro": "EURB11.SA",
+  "Moeda europeia": "EURB11.SA",
+
+  "China": "XINA11.SA",
+  "Bolsa chinesa": "XINA11.SA",
+  "Economia chinesa": "XINA11.SA",
+  "Mercado chinês": "XINA11.SA",
+
+  "Agronegócio": "AGRX11.SA",
+  "Agro": "AGRX11.SA",
+  "Fiagro": "AGRX11.SA",
+  
+  "--- NOVOS SINÓNIMOS E APELIDOS (IA) ---": null,
+
+  "Dona do Google": "GOGL34.SA",
+  "YouTube": "GOGL34.SA",
+  "AWS": "AMZO34.SA",
+  "Fabricante do iPhone": "AAPL34.SA",
+  
+  "B3SA3": "B3SA3.SA",
+  "Bolsa de Valores": "B3SA3.SA",
+  
+  "Banco BTG": "BPAC11.SA",
+  "BTG": "BPAC11.SA",
+  
+  "Banco Bradesco": "BBDC4.SA",
+  "BBDC4": "BBDC4.SA",
+  
+  "BBAS3": "BBAS3.SA",
+  "Fabricante de aviões": "EMBR3.SA",
+  
+  "Bolsa brasileira": "BOVA11.SA",
+  "Índice Bovespa": "BOVA11.SA",
+  
+  "Moeda americana": "USDB11.SA",
+  "Dólar comercial": "USDB11.SA",
+  
+  "Criptoativos": "HASH11.SA",
+  
+  "Inflação": "IMAB11.SA",
+  "inflação": "IMAB11.SA",
+  "Inflação oficial": "IMAB11.SA",
+  "Índice de preços": "IMAB11.SA",
+  
+  "Taxa Selic": "NCDI11.SA",
+  "Copom": "NCDI11.SA",
+  "COPOM": "NCDI11.SA",
+  "Comitê de Política Monetária": "NCDI11.SA",
+  "Taxa básica de juros": "NCDI11.SA",
+  "Juros básicos": "NCDI11.SA",
+  "CDI": "NCDI11.SA",
+  
+  "Banco Itaú": "ITUB4.SA",
+  "ITUB4": "ITUB4.SA",
+  
+  "JBSS3": "JBSS3.SA",
+  "Frigorífico JBS": "JBSS3.SA",
+  
+  "Magazine Luiza": "MGLU3.SA",
+  "Magalu": "MGLU3.SA",
+  "Grupo Magalu": "MGLU3.SA",
+  "MGLU3": "MGLU3.SA",
+  
+  "Lojas Renner": "LREN3.SA",
+  "Renner": "LREN3.SA",
+  
+  "JPMorgan": "JPMC34.SA",
+  
+  "Dona do Windows": "MSFT34.SA",
+  
+  "Nu Holdings": "ROXO34.SA",
+  "Nu": "ROXO34.SA",
+  "Banco digital": "ROXO34.SA",
+  
+  "PETR3": "PETR4.SA",
+  "Estatal": "PETR4.SA",
+  "Petroleira": "PETR4.SA",
+  
+  "PetroRio": "PRIO3.SA",
+  
+  "Bolsa de tecnologia": "NASD11.SA",
+  "Títulos americanos": "BIEI39.SA",
+  
+  "VALE3": "VALE3.SA",
+  "Mineradora": "VALE3.SA",
+  
+  "WEGE3": "WEGE3.SA"
 }

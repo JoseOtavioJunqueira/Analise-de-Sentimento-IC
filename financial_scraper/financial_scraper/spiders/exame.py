@@ -7,7 +7,8 @@ class ExameSpider(scrapy.Spider):
     # Paginação: /invest/ultimas-noticias/N/ (2 a 50 para cobrir ~3 meses)
     start_urls = ["https://exame.com/invest/"] + [
         f"https://exame.com/invest/ultimas-noticias/{n}/"
-        for n in range(2, 51)
+        for n in range(2, 400)
+        #for n in range(2, 51)
     ]
 
     custom_settings = {

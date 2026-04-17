@@ -6,9 +6,15 @@ import os
 import numpy as np # Importado para checar tipos
 
 # --- ARQUIVOS ---
-# O script está em 'financial_scraper/', então usamos '../' para voltar para a raiz
+'''# O script está em 'financial_scraper/', então usamos '../' para voltar para a raiz
 ARQUIVO_NOTICIAS = "../noticias_mapeadas.json"
 ARQUIVO_SAIDA_PRECOS = "../dados_historicos_acoes.json"
+'''
+# Pega o caminho absoluto da pasta raiz do projeto de forma automática
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+ARQUIVO_NOTICIAS = os.path.join(BASE_DIR, "noticias_mapeadas.json")
+ARQUIVO_SAIDA_PRECOS = os.path.join(BASE_DIR, "dados_historicos_acoes.json")
 
 def fetch_stock_data(tickers, start_date, end_date):
     """

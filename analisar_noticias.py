@@ -36,6 +36,7 @@ arquivo_json_saida = ARQUIVO_JSON_SENTIMENTO
 
 # --- 2. NOVAS FUNÇÕES DE AJUDA ---
 
+'''
 def normalizar_data(data_str: Optional[str]) -> Optional[str]:
     """
     Converte string ou número de data para formato ISO 8601.
@@ -90,6 +91,52 @@ def normalizar_data(data_str: Optional[str]) -> Optional[str]:
     except Exception:
         # Falha final, não foi possível converter
         return None
+'''
+    
+# NOVA FUNÇÃO PARA TRATAR DATA 
+def normalizar_data(data_str: Optional[str], source: Optional[str] = "") -> Optional[str]:
+    """
+    Converte string para ISO 8601 aplicando regras específicas por site (source).
+    """
+    if not data_str:
+        return None
+
+    data_como_str = str(data_str).strip()
+    source_lower = str(source).lower() if source else ""
+
+    try:
+        # REGRA 1: Valor Econômico e InfoMoney (Formato ISO exato com fuso horário)
+        # Ex: "2026-04-01T05:03:35.388-03:00"
+        if "valor" in source_lower or "infomoney" in source_lower:
+            return datetime.fromisoformat(data_como_str).isoformat()
+        
+        # REGRA 2: Bloomberg Linea (Tem o caractere "|" e usa AM/PM)
+        # Ex: "02 de Março, 2026 | 06:53 AM"
+        elif "bloomberg" in source_lower:
+            texto_limpo = data_como_str.replace("|", " ").strip()
+            data_obj = dateparser.parse(texto_limpo, languages=['pt', 'en'])
+            return data_obj.isoformat() if data_obj else None
+            
+        # REGRA 3: Exame (Texto simples em português ou Timestamp numérico)
+        # Ex: "21 de outubro de 2025" ou "1712750000"
+        elif "exame" in source_lower:
+            if data_como_str.isdigit() and len(data_como_str) == 13:
+                return datetime.fromtimestamp(int(data_como_str) / 1000.0).isoformat()
+            
+            data_obj = dateparser.parse(data_como_str, languages=['pt'])
+            return data_obj.isoformat() if data_obj else None
+
+        # FALLBACK: Se for um site novo não mapeado
+        else:
+            try:
+                return datetime.fromisoformat(data_como_str).isoformat()
+            except ValueError:
+                data_obj = dateparser.parse(data_como_str, languages=['pt'])
+                return data_obj.isoformat() if data_obj else None
+
+    except Exception as e:
+        logger.warning(f"Falha na data '{data_str}' do site '{source}': {e}")
+        return None
     
 def carregar_noticias_existentes(arquivo_saida: str) -> Tuple[pd.DataFrame, set]:
     """
@@ -100,10 +147,14 @@ def carregar_noticias_existentes(arquivo_saida: str) -> Tuple[pd.DataFrame, set]
         logger.info("Arquivo '%s' não encontrado. Um novo será criado.", arquivo_saida)
         return pd.DataFrame(), set()
     try:
-        df_existente = pd.read_json(arquivo_saida, orient="records")
+        '''df_existente = pd.read_json(arquivo_saida, orient="records")
         titulos_existentes = set(df_existente["title"].dropna())
         logger.info("Encontradas %d notícias já processadas.", len(df_existente))
-        return df_existente, titulos_existentes
+        return df_existente, titulos_existentes'''
+        df_existente = pd.read_json(arquivo_saida, orient="records")
+        urls_existentes = set(df_existente["url"].dropna())
+        logger.info("Encontradas %d notícias já processadas.", len(df_existente))
+        return df_existente, urls_existentes
     except Exception as e:
         logger.warning("Não foi possível ler '%s'. Começando do zero. Erro: %s", arquivo_saida, e)
         return pd.DataFrame(), set()
@@ -145,14 +196,24 @@ def limpar_arquivo_entrada(arquivo_entrada: str) -> None:
 
 def run_pipeline() -> None:
     """Executa o pipeline completo: carrega notícias, classifica sentimento e salva."""
-    df_existente, titulos_existentes = carregar_noticias_existentes(arquivo_json_saida)
+    '''df_existente, titulos_existentes = carregar_noticias_existentes(arquivo_json_saida)
     df_novas_noticias = ler_novas_noticias(arquivo_json_entrada)
 
     if df_novas_noticias is None or df_novas_noticias.empty:
         logger.info("Nenhuma notícia nova para processar. Encerrando.")
         return
 
+    
     df_para_processar = df_novas_noticias[~df_novas_noticias["title"].isin(titulos_existentes)].reset_index(drop=True)
+    if df_para_processar.empty:'''
+    df_existente, urls_existentes = carregar_noticias_existentes(arquivo_json_saida)
+    df_novas_noticias = ler_novas_noticias(arquivo_json_entrada)
+
+    if df_novas_noticias is None or df_novas_noticias.empty:
+        logger.info("Nenhuma notícia nova para processar. Encerrando.")
+        return
+
+    df_para_processar = df_novas_noticias[~df_novas_noticias["url"].isin(urls_existentes)].reset_index(drop=True)
     if df_para_processar.empty:
         logger.info("Todas as notícias já foram processadas. Limpando entrada e encerrando.")
         limpar_arquivo_entrada(arquivo_json_entrada)
@@ -169,7 +230,8 @@ def run_pipeline() -> None:
 
     if "date" in df_para_processar.columns:
         logger.info("Normalizando datas...")
-        df_para_processar["data_normalizada"] = df_para_processar["date"].apply(normalizar_data)
+        ##df_para_processar["data_normalizada"] = df_para_processar["date"].apply(normalizar_data)
+        df_para_processar["data_normalizada"] = df_para_processar.apply(lambda row: normalizar_data(row.get("date"), row.get("source")), axis=1)
     else:
         logger.warning("Coluna 'date' não encontrada. Pulando normalização de data.")
 

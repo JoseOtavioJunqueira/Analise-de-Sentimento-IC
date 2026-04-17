@@ -5,7 +5,11 @@ class InfoMoneySpider(scrapy.Spider):
     name = "infomoney"
     allowed_domains = ["infomoney.com.br"]
     #start_urls = ["https://www.infomoney.com.br/ultimas-noticias/"]
-    start_urls = ["https://www.infomoney.com.br/mercados/"]
+    #start_urls = ["https://www.infomoney.com.br/mercados/"]
+    start_urls = ["https://www.infomoney.com.br/mercados/"] + [
+        f"https://www.infomoney.com.br/mercados/page/{n}/"
+        for n in range(2, 400)
+    ]
 
     def parse(self, response):
         for card in response.css('h2.font-im-sans a'):
