@@ -8,7 +8,7 @@ class InfoMoneySpider(scrapy.Spider):
     #start_urls = ["https://www.infomoney.com.br/mercados/"]
     start_urls = ["https://www.infomoney.com.br/mercados/"] + [
         f"https://www.infomoney.com.br/mercados/page/{n}/"
-        for n in range(2, 400)
+        for n in range(2, 80)
     ]
 
     def parse(self, response):

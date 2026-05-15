@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 # 🕒 CONFIGURE AQUI O LOTE QUE VOCÊ QUER COLETAR AGORA (Formato: YYYY-MM-DD)
 # =====================================================================
 DATA_INICIO = "2026-02-01" # Ex: 1º de Fevereiro de 2026
-DATA_FIM    = "2026-04-17" # Ex: 17 de Abril de 2026
+DATA_FIM    = "2026-02-01" # Ex: 17 de Abril de 2026
 # =====================================================================
 
 def normalizar_data(data_str: Optional[Any], source: Optional[str] = "") -> Optional[str]:

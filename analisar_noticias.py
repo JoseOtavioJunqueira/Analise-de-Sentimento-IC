@@ -113,9 +113,12 @@ def normalizar_data(data_str: Optional[str], source: Optional[str] = "") -> Opti
         # REGRA 2: Bloomberg Linea (Tem o caractere "|" e usa AM/PM)
         # Ex: "02 de Março, 2026 | 06:53 AM"
         elif "bloomberg" in source_lower:
-            texto_limpo = data_como_str.replace("|", " ").strip()
+            iso_limpo = data_como_str.replace("Z", "+00:00")
+            return datetime.fromisoformat(iso_limpo).isoformat()
+            """texto_limpo = data_como_str.replace("|", " ").strip()
             data_obj = dateparser.parse(texto_limpo, languages=['pt', 'en'])
-            return data_obj.isoformat() if data_obj else None
+            return data_obj.isoformat() if data_obj else None"""
+
             
         # REGRA 3: Exame (Texto simples em português ou Timestamp numérico)
         # Ex: "21 de outubro de 2025" ou "1712750000"

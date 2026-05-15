@@ -7,7 +7,7 @@ class ValorSpider(scrapy.Spider):
     # Página 1 é /financas/; demais são /financas/index/feed/pagina-N (até ~50 para cobrir ~3 meses)
     start_urls = ["https://valor.globo.com/financas/"] + [
         f"https://valor.globo.com/financas/index/feed/pagina-{n}/"
-        for n in range(2, 400)
+        for n in range(2, 80)
         #for n in range(2, 51)
     ]
 

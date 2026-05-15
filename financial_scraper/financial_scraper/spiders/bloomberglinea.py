@@ -21,7 +21,10 @@ class BloombergSpider(scrapy.Spider):
         item = FinancialNewsItem()
         item['title'] = response.css('h1.hp-article-title::text').get()
         item['url'] = response.url
-        item['date'] = response.css('small.text-sm.leading-tight::text').get()
+        #item['date'] = response.css('small.text-sm.leading-tight::text').get()
+        # opcao 2 gemini: item['date'] = response.css('div.date time::attr(datetime)').get()
+        # opcao 1 gemini: item['date'] = response.css('div.date time::text').get()
+        item['date'] = response.css('time::attr(datetime)').get()
         item['content'] = response.css('p.text-base.leading-tight.text-center.md\\:text-left::text').get()
         #item['content'] = " ".join(response.css('div[class="text-lg md:text-xl font-medium tracking-tight text-wl-neutral-600"]::text').getall())
         item['source'] = "BloombergLinea"
