@@ -1,0 +1,4 @@
+Data,Sentimento,Decisão,Preço Unitário,Qtd. Ações,Valor Investido,Caixa Livre,Patrimônio Total,Lucro/Prejuízo,Resumo da Notícia
+2025-12-24,POSITIVO,COMPRA,13.29,752,9992.99,7.01,10000.0,,"C&A, Renner e Riachuelo: qual varejista de moda se saiu melhor em 2025? Apesar da Selic a 15% ao ano, as ações de Guararapes, C&A e Renner avançaram em 2025, desafiando o cenário adverso ao varejo"
+2026-01-05,NEGATIVO,VENDA,12.91,0,0.0,9718.3,9718.3,-281.7,"Por que as ações da C&A caíram mais de 15% na bolsa? Outras ações do varejo também operaram em queda no pregão, entre elas a Vivara e a Renner"
+2026-03-05,NEGATIVO,MANTIDO (Zerado),14.69,0,0.0,9718.3,9718.3,,"Vendas da Renner desaceleram no 4º tri, mas lucro do ano foi recorde A administração atribuiu o ritmo mais moderado no trimestre a fatores macroeconômicos e climáticos"
