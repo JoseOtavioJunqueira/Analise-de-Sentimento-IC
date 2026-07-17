@@ -4,6 +4,10 @@ import yfinance as yf
 from datetime import timedelta
 import os
 
+"""compra e venda baseado no sentimento só
+    gera os csvs da pasta resultados_simulação e os expõe no app streamlit na página simulador_1
+"""
+
 def carregar_e_processar_sentimentos(caminho_arquivo, ticker_alvo): # <-- Adicione aqui
     with open(caminho_arquivo, 'r', encoding='utf-8') as f:
         noticias = json.load(f)

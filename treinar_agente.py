@@ -1,4 +1,4 @@
-"""para rodar deve-se executar 
+""" para rodar deve-se executar 
     pip install stable-baselines3 gymnasium
 """
 import gymnasium as gym
@@ -6,33 +6,38 @@ from gymnasium import spaces
 import numpy as np
 import pandas as pd
 from stable_baselines3 import PPO
+import os
+import glob
 
-# ==========================================
-# 1. O MOTOR (O Ambiente de Simulação)
-# ==========================================
+"""
+    estratégia 2 com método de aprendizado melhor
+    precisa do gerar_matriz_mestra 
+
+    quero fazer com que a matriz mestra do gerar matriz mestrar e o resultado desse agente 
+    sejam direcionados para astas e rodem para todos os ativos que tenho já igual o estratégia 
+    1 rodou.
+    Depois montar uma pasta para exibir os resultados no streamlite
+    Adicinar o gráfico de compra e venda da estratégia 1 que o Denis pediu.
+    Treinar os dois modelos q o Denis passou 
+    melhorar com o Claude a coleta  
+"""
+
+# Cria a pasta onde os logs do Streamlit vão morar
+PASTA_RESULTADOS = "resultados_rl"
+os.makedirs(PASTA_RESULTADOS, exist_ok=True)
+
 class ICGymTradingEnv(gym.Env):
-    """
-    Ambiente de Trading Modular.
-    O espaço de observação adapta-se à lista de features fornecida.
-    """
     metadata = {"render_modes": ["human"]}
 
     def __init__(self, df_dados, features):
         super(ICGymTradingEnv, self).__init__()
-        
         self.df = df_dados.reset_index(drop=True)
         self.features = features
         self.max_steps = len(self.df) - 1
         
-        # AÇÕES: 0 = Manter, 1 = Comprar, 2 = Vender
         self.action_space = spaces.Discrete(3)
-        
-        # OBSERVAÇÃO: Tamanho dinâmico
         self.observation_space = spaces.Box(
-            low=-np.inf, 
-            high=np.inf, 
-            shape=(len(self.features),), 
-            dtype=np.float32
+            low=-np.inf, high=np.inf, shape=(len(self.features),), dtype=np.float32
         )
         
         self.current_step = 0
@@ -52,8 +57,7 @@ class ICGymTradingEnv(gym.Env):
 
     def _get_obs(self):
         linha_atual = self.df.iloc[self.current_step]
-        obs = linha_atual[self.features].values.astype(np.float32)
-        return obs
+        return linha_atual[self.features].values.astype(np.float32)
 
     def step(self, action):
         linha_atual = self.df.iloc[self.current_step]
@@ -68,98 +72,59 @@ class ICGymTradingEnv(gym.Env):
                 self.position = 1
                 self.entry_price = preco_atual
                 movimentacao_texto = f"[{data_atual}] COMPRA : R$ {preco_atual:.2f}"
-            else:
-                movimentacao_texto = f"[{data_atual}] MANTER (Já estava comprado)"
-
         elif action == 2: # VENDER
             if self.position == 1:
                 lucro_trade = (preco_atual - self.entry_price) / self.entry_price
                 reward = lucro_trade 
                 self.lucro_acumulado += lucro_trade
-                
                 status = "LUCRO" if lucro_trade > 0 else "PREJUÍZO"
                 movimentacao_texto = f"[{data_atual}] VENDA  : R$ {preco_atual:.2f} | {status}: {(lucro_trade*100):.2f}%"
-                
                 self.position = 0 
                 self.entry_price = 0.0
-            else:
-                movimentacao_texto = f"[{data_atual}] MANTER (Sem ações para vender)"
 
-        elif action == 0: # MANTER
-            estado = "Comprado" if self.position == 1 else "Líquido"
-            movimentacao_texto = f"[{data_atual}] MANTER ({estado})"
-
-        self.historico_movimentacoes.append(movimentacao_texto)
+        if movimentacao_texto: 
+            self.historico_movimentacoes.append(movimentacao_texto)
 
         self.current_step += 1
         terminated = self.current_step >= self.max_steps
-        truncated = False
         
         obs = self._get_obs() if not terminated else np.zeros(len(self.features), dtype=np.float32)
-        info = {"lucro_acumulado": self.lucro_acumulado}
+        return obs, reward, terminated, False, {}
 
-        return obs, reward, terminated, truncated, info
+    def gerar_log_texto(self):
+        """Retorna o relatório completo em texto para ser salvo no arquivo"""
+        linhas = ["=== RELATÓRIO DE MOVIMENTAÇÕES (RL) ==="]
+        linhas.extend(self.historico_movimentacoes)
+        linhas.append("="*50)
+        linhas.append(f"LUCRO TOTAL ACUMULADO NO PERÍODO: {(self.lucro_acumulado * 100):.2f}%")
+        return "\n".join(linhas)
 
-    def render(self):
-        print("\n" + "="*50)
-        print(" RELATÓRIO DE MOVIMENTAÇÕES (BACKTEST RL)")
-        print("="*50)
-        for mov in self.historico_movimentacoes:
-            if "COMPRA" in mov or "VENDA" in mov: 
-                print(mov)
-        print("="*50)
-        print(f" LUCRO TOTAL ACUMULADO NO PERÍODO: {(self.lucro_acumulado * 100):.2f}%")
-        print("="*50 + "\n")
-
-
-# ==========================================
-# 2. O VOLANTE (Treino e Teste com Datas)
-# ==========================================
-def rodar_experimento(caminho_csv, configuracao_features, total_timesteps=10000, 
-                      data_inicio=None, data_fim=None, data_corte_treino=None):
-    """
-    Instancia o ambiente, treina no passado (Treino) e simula o resultado no futuro (Teste).
-    """
-    print(f"\n" + "="*50)
-    print(f" INICIANDO EXPERIMENTO ")
-    print(f" Features: {configuracao_features}")
-    print("="*50)
+def treinar_ticker(caminho_csv, configuracao_features, total_timesteps=10000):
     
-    # Carrega e prepara os dados
+    # Extrai o nome do ticker do nome do arquivo
+    nome_arquivo = os.path.basename(caminho_csv)
+    ticker = nome_arquivo.replace('dataset_rl_', '').replace('.csv', '')
+    
+    print(f"\nIniciando treinamento para: {ticker}")
     df = pd.read_csv(caminho_csv)
     df['data'] = pd.to_datetime(df['data'])
-    
-    # Filtro global de datas (opcional)
-    if data_inicio:
-        df = df[df['data'] >= pd.to_datetime(data_inicio)]
-    if data_fim:
-        df = df[df['data'] <= pd.to_datetime(data_fim)]
-        
     df = df.sort_values('data').reset_index(drop=True)
     
-    # Separação Treino e Teste (Time-Series Split)
-    if data_corte_treino:
-        data_corte = pd.to_datetime(data_corte_treino)
-        df_treino = df[df['data'] <= data_corte].reset_index(drop=True)
-        df_teste = df[df['data'] > data_corte].reset_index(drop=True)
-    else:
-        # Divide automaticamente 80% Treino / 20% Teste
-        corte_idx = int(len(df) * 0.8)
-        df_treino = df.iloc[:corte_idx].reset_index(drop=True)
-        df_teste = df.iloc[corte_idx:].reset_index(drop=True)
+    # Separação Treino (80%) e Teste (20%)
+    corte_idx = int(len(df) * 0.8)
+    if corte_idx == 0:
+        print(f"Poucos dados para {ticker}. Pulando.")
+        return
 
-    print(f"-> Base de TREINO: {len(df_treino)} eventos (De {df_treino['data'].min().date()} a {df_treino['data'].max().date()})")
-    print(f"-> Base de TESTE : {len(df_teste)} eventos (De {df_teste['data'].min().date()} a {df_teste['data'].max().date()})")
-    print("-" * 50)
+    df_treino = df.iloc[:corte_idx].reset_index(drop=True)
+    df_teste = df.iloc[corte_idx:].reset_index(drop=True)
     
-    # Fase de Treinamento
-    print("Fase 1: A treinar o agente na base histórica...")
+    # Fase 1: Treinamento
     env_treino = ICGymTradingEnv(df_treino, features=configuracao_features)
     modelo = PPO("MlpPolicy", env_treino, verbose=0, learning_rate=0.0005)
     modelo.learn(total_timesteps=total_timesteps)
     
-    # Fase de Validação/Backtest
-    print("Fase 2: Simulação na base de teste (dados desconhecidos)...")
+    # Fase 2: Teste
     env_teste = ICGymTradingEnv(df_teste, features=configuracao_features)
     obs, info = env_teste.reset()
     done = False
@@ -169,36 +134,22 @@ def rodar_experimento(caminho_csv, configuracao_features, total_timesteps=10000,
         obs, reward, terminated, truncated, info = env_teste.step(action)
         done = terminated or truncated
         
-    # Exibe o log formatado SOMENTE para o período de teste
-    env_teste.render()
+    # Salva o resultado na nova pasta
+    log_texto = env_teste.gerar_log_texto()
+    caminho_saida = os.path.join(PASTA_RESULTADOS, f"log_rl_{ticker}.txt")
+    
+    with open(caminho_saida, "w", encoding="utf-8") as f:
+        f.write(log_texto)
+        
+    print(f"Concluído! Log salvo em: {caminho_saida}")
 
-
-# ==========================================
-# 3. O PAINEL DE CONTROLO
-# ==========================================
 if __name__ == "__main__":
+    # Define as regras de quais colunas o robô deve ler
+    CONFIG_ESCOLHIDA = ['sentimento_valor', 'var_d1']
     
-    ARQUIVO_DADOS = "dataset_rl_mestra_PETR4.csv" 
+    # Lista todos os arquivos que geramos no passo anterior
+    arquivos_disponiveis = glob.glob("matrizes_rl/*.csv")
+    print(f"Iniciando treinamento em lote para {len(arquivos_disponiveis)} ativos...")
     
-    config_1 = ['sentimento_valor', 'var_d1']
-    config_2 = ['sentimento_valor', 'var_acumulada_3d']
-    config_3 = ['sentimento_valor', 'var_d1', 'var_d2', 'var_d3', 'var_d4', 'var_d5']
-    
-    # EXEMPLO 1: A usar todas as notícias e deixar o script dividir sozinho (80/20)
-    rodar_experimento(
-        caminho_csv=ARQUIVO_DADOS, 
-        configuracao_features=config_1, 
-        total_timesteps=20000
-    )
-    
-    # EXEMPLO 2: A definir datas exatas de início, fim e corte (Descomente para usar)
-    """
-    rodar_experimento(
-        caminho_csv=ARQUIVO_DADOS, 
-        configuracao_features=config_3, 
-        total_timesteps=30000,
-        data_inicio="2022-01-01",        
-        data_fim="2024-12-31",           
-        data_corte_treino="2024-01-01"   
-    )
-    """
+    for arquivo in arquivos_disponiveis:
+        treinar_ticker(arquivo, CONFIG_ESCOLHIDA, total_timesteps=10000)
